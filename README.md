@@ -12,8 +12,8 @@ En el presente proyecto se describe el proceso a seguir para personalizar e inst
 1. Instalar **Git**
 2. Instalar **Node.js**
 3. Instalar **Neovim**
-4. Descargar archivos publicados en **este repositorio**
-5. Instalar el gestor de plugins **vim plug**
+4. Clonar este **este repositorio**
+5. Instalar el gestor de plugins **vim-plug**
 
 **Tenga en cuenta que:** para instalar Neovim, si o si necesitarás utilizar todas esas 5 herramientas, para ello aquí conocerás el paso a paso para instalar cada una correctamente sin errores ni falsa información, cabe mensionar que, *Bash o Windows PowerShell* viene instalados de fabrica en los Sistemas Operativos, por eso no será necesario explicar el como ejecutarlo, ni instalarlo, *¡ni abrirlo ¡eso ya debes de saberlo programador!* y si no sabes mirate un video en YouTube.
 
@@ -58,7 +58,13 @@ Para concer si instaló correctamente neovim, ejecute el siguiente comando, le d
 nvim --version
 ``` 
 
-### Paso No. 4. Descarga los archivos de este repositorio.
+### Paso No. 4. Clona los archivos de este repositorio.
+Para clonar copia y pega este comando en la terminal que manejes
+
+```zsh
+git clone https://github.com/josuerom/config-nvim-linux.git
+``` 
+
 Esta es la personalización que actualmente tengo en mi neovim:
 
 <p align="center" width="0">
@@ -92,10 +98,10 @@ Para saltar esos errores debes presionar la tecla enter las veces necesarias, na
 ### Paso No. 5. Instalar el gestor de plugins VIM PLUG
 **Vim plug** es un administrador de plugins para el editor de texto vim y neovim minimalista, de código abierto creado por **junegunn** y gratuito que puede instalar y actualizar complementos en paralelo. Crea clones para minimizar el uso de espacio del disco y el tiempo de descarga; para realizar una descarga limpia y ligera, ejecuta en la terminal nueva, en la pestaña PowerShell ejecutada como administrador el siguiente comando:
 
-Linux (Flatpak)
+VIM_PLUG (Unix, Linux)
 ```zsh
-curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/nvim}"/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ``` 
 
 Ese comando creará el archivo **plug.vim** en la ruta: **~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim**, pero debe copiar y pegar la carpta autoload y pergarla en la ruta donde esta neovim, para que recuerdes: **/home/josue/.config/nvim/**. 
