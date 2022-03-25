@@ -1,4 +1,4 @@
-<H1 align="center">Instalación y Configuración de Neovim v0.6.0dev para Linux Septiember 2021.</H1>
+<H1 align="center">Instalación y Configuración de Neovim para Linux Septiember 2021.</H1>
 
 <p align="center" width="0">
    <img align="center" width="645" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/neovim-logo-shadow.png">
@@ -131,7 +131,7 @@ Proporciono más imagenes:
    <img align="center" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/nvim-ubuntu-linux.png">
 </p>
 
-# Aún no he terminado la guía sé que faltan cosas importantes, luego la terminaré, gracias.
+# Aún no he terminado la guía sé que faltan muchas cosas importantes por agregar pero cuándo tenga un rato libre la alimento, gracias por legar hasta acá.
 
 <p align="center" width="0">
    <img align="center" width="45" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/neovim-mark-flat.png">
