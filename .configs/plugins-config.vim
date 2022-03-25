@@ -30,7 +30,7 @@ let g:lightline = {
 "    \ 'coc-'
 "    \ ]
 
-" desabilitar la entrega de sugerencias de COC cuando estoy en archivos .java .js
+" desabilitar la entrega de sugerencias de COC cuando estoy en archivos .java .js usando KITE
 "autocmd FileType java let b:coc_suggest_disable = 1
 "autocmd FileType javascript let b:coc_suggest_disable = 1
 autocmd FileType scss setl iskeyword+=@-@

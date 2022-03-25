@@ -1,4 +1,3 @@
-" la tecla líder es <space>
 let mapleader = " "
 
 " desabilito el uso de las feclas del teclado
@@ -7,8 +6,8 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-" salir del modo INSERT con <Esc> o <jk>
-imap jk <Esc>
+" salir del modo INSERT puedes usar <Esc> o <ii> en modo INSERTAR
+imap ii <Esc>
 
 " desplazamiento vertical rápido con (hacia abajo -> ctrl+e) (hacia arriba -> ctrl+y)
 nnoremap <C-k> 10 <C-e>
@@ -27,7 +26,9 @@ nnoremap <Leader>dp :!python %<CR>
 " con space+t abre la terminal cmd
 vnoremap <Leader>t :call OpenTerminal()<CR>
 nnoremap <Leader>t :call OpenTerminal()<CR>
-inoremap <Leader>t :call OpenTerminal()<CR>
+imap trm <Esc> :call OpenTerminal()<CR>
+
+
 
 " para guardar archivos
 nnoremap <Leader>w :w<CR>
@@ -39,7 +40,6 @@ nnoremap <Leader>x :qa!<CR>
 " abrir el árbol, side bar o NERDTreeToggle
 map <Leader>e :NERDTreeToggle<CR>
 map <Leader>p :Explore<CR>
-
 " usa Telescope para la busqueda de archivos y demás
 nnoremap <Leader>f <cmd>Telescope find_files<CR>
 nnoremap <Leader>fl <cmd>Telescope live_grep<CR>
@@ -115,9 +115,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" use <TAB> para saltar al siguiente marcador de posición
+" use <TAB> para saltar al siguiente snippets
 let g:coc_snippet_next = '<TAB>'
-" use <SHIFT-TAB> para saltar al marcador de posición anterior
+" use <SHIFT-TAB> para saltar al anterior snippets
 let g:coc_snippet_prev = '<S-TAB>'
 
 " puedes gatillar el autocompletado COC cuándo esté situado en algun archivo .js o .java
