@@ -6,7 +6,7 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-" salir del modo INSERT puedes usar <Esc> o <ii> en modo INSERTAR
+" usa <Esc> o <ii> para salir del modo INSERTAR
 imap ii <Esc>
 
 " desplazamiento vertical rápido con (hacia abajo -> ctrl+e) (hacia arriba -> ctrl+y)
@@ -27,8 +27,6 @@ nnoremap <Leader>dp :!python %<CR>
 vnoremap <Leader>t :call OpenTerminal()<CR>
 nnoremap <Leader>t :call OpenTerminal()<CR>
 imap trm <Esc> :call OpenTerminal()<CR>
-
-
 
 " para guardar archivos
 nnoremap <Leader>w :w<CR>
@@ -107,8 +105,6 @@ nnoremap m :m .+1<CR>==
 " obtener o copiar la ruta general del archivo posicionado
 nnoremap <Leader>kp :let @*=expand("%")<CR>
 
-"*----------------------- ATAJOS PARA OTRAS FUNCIONALIDADES DE COC -----------------------*
-
 " flujo instantaneo con COC
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -120,22 +116,11 @@ let g:coc_snippet_next = '<TAB>'
 " use <SHIFT-TAB> para saltar al anterior snippets
 let g:coc_snippet_prev = '<S-TAB>'
 
-" puedes gatillar el autocompletado COC cuándo esté situado en algun archivo .js o .java
-" presione <Ctrl+space> para ver las sugerencias.
-if &filetype == 'javascript' || &filetype == 'java'
-  inoremap <silent><expr> <c-space> coc#refresh()
- else
-  inoremap <silent><expr> <c-space> coc#refresh()
-endif
-
 " con las feclas ajustas el tamaño del búfer's abiertos
 nnoremap <silent> <right> :vertical resize +2<CR>
 nnoremap <silent> <left> :vertical resize -2<CR>
 nnoremap <silent> <up> :vertical resize +2<CR>
 nnoremap <silent> <down> :vertical resize -2<CR>
-
-" aplicar AutoFix al problema en la línea actual.
-nmap <Leader>qf <Plug>(coc-fix-current)
 
 " asignar función y objetos de texto de clase
 " NOTA: Requiere compatibilidad con 'textDocument.documentSymbol' del servidor de idiomas.
@@ -147,16 +132,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" vuelva a asignar <C-f> y <C-b> para las ventanas / ventanas emergentes flotantes de desplazamiento.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
 
 " acceso rápido a las funcionalidades de CoCList
 " administrar extensiones

@@ -35,8 +35,8 @@ let g:lightline = {
 "autocmd FileType javascript let b:coc_suggest_disable = 1
 autocmd FileType scss setl iskeyword+=@-@
 
-" cuándo esté situado en algun archivo .js o .java, podrá gatillar el autocompletado COC
-" debe presionar <Ctrl+space> para ver las distintas sugerencias.
+" puedes gatillar el autocompletado COC cuándo estés situado en algun archivo .js o .java
+" presione <Ctrl+space> para ver las diferentes sugerencias.
 if &filetype == 'javascript' || &filetype == 'java'
   inoremap <c-space> <C-x><C-u>
  else
@@ -100,10 +100,10 @@ function! OpenTerminal()
   endif
 endfunction
 
-"*------------------------- CONFIGURACIÓN DE COC >> LA DEJO EN INGLES ------------------------*
+"*------------------------- CONFIGURACIÓN DE COC >> LA DEJO EN INGLES ---------------------------*
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
+if has("nvim-0.6.1") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -133,12 +133,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
