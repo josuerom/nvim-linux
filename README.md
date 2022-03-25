@@ -1,7 +1,7 @@
 <H1 align="center">Instalación y Configuración de Neovim para Linux Septiember 2021.</H1>
 
 <p align="center" width="0">
-   <img align="center" width="645" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/neovim-logo-shadow.png">
+   <img align="center" width="645" src="https://github.com/josuerom/config-nvim-linux/blob/main/screen/2022-03-25%2013-49-12.png">
 </p>
 
 ## Introducción.
@@ -68,7 +68,7 @@ git clone https://github.com/josuerom/config-nvim-linux.git
 Esta es la personalización que actualmente tengo en mi neovim:
 
 <p align="center" width="0">
-   <img align="center" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/js-java-nvim0.6.0dev.png">
+   <img align="center" src="https://github.com/josuerom/config-nvim-linux/blob/main/screen/2022-03-25%2013-52-23.png">
 </p>
 
 **¿Te gustaría tener neovim como lo tengo yo?.** Si tu respuesta es **SÍ** deberás descargarte los archivos publicados en este repositorio ya que son netamente necesarios para que tu Neovim tenga la misma interfaz, atajos y plugins que manejo.
@@ -84,7 +84,7 @@ nvim init.vim
 Añado captura de pantalla, por si estas perdido:
 
 <p align="center" width="0">
-   <img align="center" src="">
+   <img align="center" src="https://github.com/josuerom/config-nvim-linux/blob/main/screen/2022-03-25%2013-52-07.png">
 </p>
 
 Luego de ejecutar el comando, te arrojará estos errores que son normales la primera vez, aparecen porque los plugins no se han instalado, deben ser estos mismos errores:
@@ -130,11 +130,11 @@ josueromram@outlook.es
 
 Proporciono más imagenes:
 <p align="center" width="0">
-   <img align="center" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/technical-js.png">
+   <img align="center" src="">
 </p>
 
 <p align="center" width="0">
-   <img align="center" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/nvim-ubuntu-linux.png">
+   <img align="center" src="https://github.com/josuerom/config-nvim-linux/blob/main/screen/2022-03-25%2013-53-41.png">
 </p>
 
 # Aún no he terminado la guía sé que faltan muchas cosas importantes por agregar pero cuándo tenga un rato libre la alimento, gracias por legar hasta acá.
