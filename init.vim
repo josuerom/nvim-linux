@@ -8,6 +8,7 @@
 							"╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
 									 " Configurado por >> Josué Romero
 									 " Twitter >> https://twitter.com/Josueromram
+									 
 " importo los archivos de configuración global
 so ~/.config/nvim/.configs/plugins-config.vim
 so ~/.config/nvim/.configs/plugins.vim
