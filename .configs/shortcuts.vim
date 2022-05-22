@@ -35,14 +35,14 @@ nmap dt <Esc> :!tsc %<CR>
 nmap dj <Esc> :!java %<CR>
 nmap dp <Esc> :!python %<CR>
 
-" con <space+t> abre la cmd y con <Ctrl+t> abre la powershell
-nmap <Leader>t :call OpenCmd()<CR> <Esc> :resize 14<CR>
-nmap <C-t> :call OpenPowerShell()<CR> <Esc>
+" con <space+t> o <ctrl+t> abres la terminal dentro neovim
+nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
+nmap <C-t> :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 " acceso rápido a archivos de configuración global
-nmap <Leader>¿ :e ~/AppData/Local/nvim/.config/shortcuts.vim<CR>
-nmap <Leader>' :e ~/AppData/Local/nvim/.config/plug-config.vim<CR>
-nmap <Leader>0 :e ~/AppData/Local/nvim/.config/plugins.vim<CR>
+nmap <Leader>¿ :e ~/.config/nvim/.configs/maps.vim<CR>
+nmap <Leader>' :e ~/.config/nvim/.configs/plug-config.vim<CR>
+nmap <Leader>0 :e ~/.config/nvim/.configs/plugins.vim<CR>
 
 " elimina todos los espacios en blanco que contenga el archivo, con <F2>
 nnoremap <F2> :%s/\s\+$//e<CR>
@@ -51,7 +51,7 @@ nnoremap <F3> :e $MYVIMRC<CR>
 " crear un archivo en una nueva pestaña, con <F4>
 nnoremap <F4> :tabnew
 " refresca neovim con <F5>
-nmap <F5> :so ~/AppData/Local/nvim/init.vim<CR>
+nmap <F5> :so ~/.config/nvim/init.vim<CR>
 " copia la ruta general del archivo abierto con <F6>
 nnoremap <F6>kp :let @*=expand("%")<CR>
 
@@ -95,7 +95,7 @@ nnoremap <Leader>ga :Git add -A<CR>
 nnoremap <Leader>gc :Git commit -m "Update files from nvim 🔧 👨‍💻"<CR>
 nnoremap <Leader>gcc :Git commit -m ""
 nnoremap <Leader>glg :Git log --oneline<CR>
-nnoremap <Leader>grr :Git remote add origin https://github.com/josuerom/.git
+nnoremap <Leader>grr :Git remote add origin https://github.com/username/namerepo.git
 nnoremap <Leader>gpp :Git push -u origin main<CR>
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gpu :Git push --set-upstream origin main<CR>
