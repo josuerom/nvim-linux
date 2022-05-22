@@ -7,7 +7,7 @@
 							"██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║ 
 							"╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
 									 " Configurado por >> Josué Romero
-									 " Twitter >> https://twitter.com/Josueromram
+									 " Twitter >> https://twitter.com/Josueromr
 									 
 " importo los archivos de configuración global
 so ~/.config/nvim/.configs/plugins-config.vim
@@ -15,7 +15,7 @@ so ~/.config/nvim/.configs/plugins.vim
 so ~/.config/nvim/.configs/maps.vim
 
 syntax on
-"set title
+set title
 set number
 set mouse=a
 set numberwidth=1
@@ -34,14 +34,10 @@ set termguicolors
 set nowrap
 set noshowmode
 set noswapfile
-
-" para la búsqueda en la cmd
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-" para la terminal
 set splitbelow
 set splitright
 
@@ -51,10 +47,10 @@ set hidden
 set nobackup
 set nowritebackup
 set cmdheight=1
-set updatetime=300
+set updatetime=150
 set shortmess+=c
 
 " configuración del tema
 colorscheme gruvbox
-let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark="hard"
 highlight Normal ctermbg = NONE
