@@ -32,7 +32,7 @@
 	
   "snippets.ultisnips.directories": [
     "UltiSnips",
-    "~/AppData/Local/nvim/UltiSnips"
+    "~/.config/nvim/UltiSnips"
   ],
   "snippets.ultisnips.enable": true,
   "snippets.ultisnips.usePythonx": true,
