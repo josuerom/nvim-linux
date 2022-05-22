@@ -10,7 +10,7 @@
 									 " Twitter >> https://twitter.com/Josueromr
 									 
 " importo los archivos de configuración global
-so ~/.config/nvim/.configs/plugins-config.vim
+so ~/.config/nvim/.configs/plug-config.vim
 so ~/.config/nvim/.configs/plugins.vim
 so ~/.config/nvim/.configs/maps.vim
 
@@ -50,7 +50,10 @@ set cmdheight=1
 set updatetime=150
 set shortmess+=c
 
-" configuración del tema
-colorscheme gruvbox
+" ajustes del tema
+let g:gruvbox_italic=1
+let no_buffers_menu=1
+" contrates: soft, medium & hard
 let g:gruvbox_contrast_dark="hard"
-highlight Normal ctermbg = NONE
+highlight Normal ctermbg=none
+colorscheme gruvbox
