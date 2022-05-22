@@ -5,7 +5,7 @@
 								"██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
 								"╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-call plug#begin('~/AppData/Local/nvim/plugged/')
+call plug#begin('~/.config/nvim/plugged/')
 
 " tema
 Plug 'morhetz/gruvbox'
