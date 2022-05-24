@@ -26,6 +26,21 @@ Git es un software de control de versiones diseñado por **Linus Torvalds** qui�
 
 Para instalarlo da un [click aquí](https://nodejs.org/es/download/ "https://nodejs.org/es/download/"), este enlace te llevará directamente a su pagina oficial de descargar, si requieres más información de instalación, visualizate un video en **YouTube**.
 
+### Instala el OpenJDK-11 o 14
+Este paso es opcional,en esta caso yo sugiero que instalen **Java**, siempre y cuándo valles a trabajar con ese lencuaje, para ello les comparto los comandos que debe ejecutar segun la versión.
+
+Para Fedora,ejecute:
+```zsh
+# OpenJDK-8
+sudo dnf install java-1.8.0-openjdk-devel.x86_64
+
+# OpenJDK-11
+sudo dnf install java-11-openjdk-devel.x86_64
+
+# OpenJDK-Última-Versión
+sudo dnf install java-latest-openjdk-devel.x86_64
+```
+
 ### Paso No. 3. Instalar Neovim.
 Para poder instalarlo debes ejecutar el comando correspondiente a tu distribución.
 
