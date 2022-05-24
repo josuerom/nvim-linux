@@ -9,11 +9,6 @@
 									 " Configurado por >> Josué Romero
 									 " Twitter >> https://twitter.com/Josueromr
 									 
-" importo los archivos de configuración global
-so ~/.config/nvim/.configs/plug-config.vim
-so ~/.config/nvim/.configs/plugins.vim
-so ~/.config/nvim/.configs/maps.vim
-
 syntax on
 set title
 set number
@@ -49,6 +44,11 @@ set nowritebackup
 set cmdheight=1
 set updatetime=150
 set shortmess+=c
+
+" importo los archivos de configuración global
+so $HOME/.config/nvim/general/plug-config.vim
+so $HOME/.config/nvim/general/plugins.vim
+so $HOME/.config/nvim/general/maps.vim
 
 " ajustes del tema
 let g:gruvbox_italic=1
