@@ -7,7 +7,6 @@
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
 " Edit your .vimrc
-"
 "   call plug#begin('~/.vim/plugged')
 "
 "   " Make sure you use single quotes
