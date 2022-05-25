@@ -72,8 +72,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'itchyny/lightline.vim'
 
-" barra lateral
+" barra lateral y iconos
 Plug 'scrooloose/nerdtree'
+Plug 'kristijanhusak/defx-icons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " búsqueda - agrupador
 Plug 'easymotion/vim-easymotion'
