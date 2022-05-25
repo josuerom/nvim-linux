@@ -35,7 +35,7 @@ endglobal
 
 ## Inicio de JAVA snippets
 ## salta errores
-snippet sleep "try sleep catch" b
+snippet tryc "try sleep catch" b
 try {
 	Thread.sleep(${1:1000});
 } catch (InterruptedException e){
@@ -44,7 +44,7 @@ try {
 endsnippet
 
 ## Estructuras para instancias
-snippet newi "new primitive or int" b
+snippet newi "new primitive for class" b
 ${1:nameClass} ${2:object} = new ${3:nameClass}();$0
 endsnippet
 
@@ -163,6 +163,23 @@ for i in args:
 	snip.rv += "\n\t\tthis.%s = %s;" % (i[1], i[1])
 if len(args) == 0:
 	snip.rv += "\n"`
+	}
+}
+endsnippet
+
+## MainClass
+snippet javamainclass "Plantilla JavaMainClass" b
+$2
+
+/**
+  * @author @{username}
+  * @param `!v strftime("%e/%B/%Y - %R")` COL
+*/
+public class `!p snip.rv = snip.basename` {
+	
+	public static void main(String[] args) {
+		${1:¡Empieza a Codear!}
+		${3}
 	}
 }
 endsnippet
