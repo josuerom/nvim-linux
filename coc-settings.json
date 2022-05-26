@@ -2,7 +2,7 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-11",
-      "path": "/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-1.fc36.x86_64",
+      "path": "/usr/lib/jvm/default",
       "default": true
     }
   ],
@@ -29,11 +29,6 @@
     "~/.config/nvim/UltiSnips"
   ],
   "snippets.ultisnips.enable": true,
-	"snippets.ultisnips.usePythonx": true,
-  "snippets.author": "Josué Romero",
-
-  "coc.preferences.colorSupport": true,
-  "coc.preferences.formatOnType": true,
-  "coc.source.file.priority": 60,
-  "coc.source.buffer.priority": 50
+  "snippets.ultisnips.usePythonx": true,
+  "snippets.author": "Josué Romero"
 }
