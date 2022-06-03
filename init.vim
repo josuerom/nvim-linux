@@ -166,7 +166,6 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeMapOpenInTab='\t'
 
 " navegación con tmux
 let g:tmux_navigator_no_mappings=1
@@ -211,35 +210,10 @@ endfunction
 "*---------------------- SOLUCIÓN A EL ERROR DE COC-SNIPPETS -----------------------*
 " Si al iniciar neovim te aparece siempre este molestoso error:
 " [coc.nvim] Error on execute :pyx command, ultisnips feature of coc-snippets requires pyx support on vim.
-" ejecuta el sgt comando en tu terminal:
+" ejecuta los sgts comando en tu distribución Fedora:
 " sudo dnf install python3
 " sudo dnf install python3-pip
 " pip install pynvim
-
-"*---------------------- CONFIGURACIÓN SENCILLA DE COC, LA DEJO EN INGLES ---_----------------------*
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("nvim-0.7.0") || has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 			"███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 			"██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
@@ -271,10 +245,10 @@ nnoremap < 5<C-w><
 " coloca un punto y coma al final de la línea, con <space+,>
 nnoremap <Leader>, $a;<Esc>
 
-" ejecute o compile sus archivos: .js, .ts, .java y .py
-nmap dn <Esc> :!node %<CR>
-nmap dj <Esc> :!java %<CR>
-nmap dp <Esc> :!python %<CR>
+" ejecuta tus archivos: .js, .ts, .java y .py
+nmap <Leader>dn :!node %<CR>
+nmap <Leader>dj :!java %<CR>
+nmap <Leader>dp :!python %<CR>
 
 " con <space+t> abres la terminal dentro neovim
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 15<CR>
@@ -347,7 +321,7 @@ nmap <silent> gr <Plug>(coc-references)
 " dividir pantalla en dos [vertical] con space+i
 nnoremap <Leader>ii :vsplit<CR>
 " dividir pantalla en dos [horizontal] con space+o
-nnoremap <Leader>oo :split<CR>
+"nnoremap <Leader>oo :split<CR>
 
 " navegación entre pestañas abiertas con <spacer+l> y <space+h>
 nnoremap <Leader>l :bnext<CR>
