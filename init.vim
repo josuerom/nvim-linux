@@ -149,12 +149,18 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 
-" si usted utiliza el autocompletado KITE descomente las siguientes líneas y agregue sus lenguajes.
+" si usted utiliza el autocompletado KITE descomente las siguientes líneas hasta la 163
 "let g:kite_supported_languages = ['javascript', 'python']
 " desabilitar la entrega de sugerencias de COC para que KITE sea quien las entrege en estos tipos de archivos
 "autocmd FileType javascript let b:coc_suggest_disable = 1
 "autocmd FileType python let b:coc_suggest_disable = 1
 "autocmd FileType scss setl iskeyword+=@-@
+" Use <Ctrl+space> para gatillar el autocompletado KITE
+"if &filetype == 'javascript' || &filetype == 'python'
+"   inoremap <C-space> <C-x><C-u>
+"else
+"   inoremap <silent><expr> <C-space> coc#refresh()
+"endif
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
