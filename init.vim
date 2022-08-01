@@ -9,72 +9,70 @@
 									 " Creado por >> Josué Romero
 									 " Twitter >> https://twitter.com/Josueromr
 									 
-syntax on
-set title
+syntax enable
 set number
 set mouse=a
-set numberwidth=1
 set relativenumber
 set clipboard=unnamedplus
+set background=dark
 set ruler
-set cursorline
-set termencoding=utf-8
-set scrolloff=8
-set tabstop=2
-set sw=2
-set laststatus=2
+set sw=3
+set tabstop=3
+set termguicolors
 set showmatch
 set showcmd
-set termguicolors
-set nowrap
 set noshowmode
-set noswapfile
+set laststatus=2
 set hlsearch
-set incsearch
 set ignorecase
 set smartcase
 set splitbelow
 set splitright
+set secure
+set exrc
+set foldmethod=manual
+set mat=2
+set smarttab
+set langmenu=latin1
+let $LANG='latin1'
 
-" configuración de COC
-set encoding=utf-8
+" Conquer Of Completion COC
 set hidden
-set nobackup
-set nowritebackup
 set cmdheight=1
-set updatetime=150
+set updatetime=100
 set shortmess+=c
 
-								"██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
-								"██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
-								"██████╔╝██║     ██║   ██║██║  ███╗██║██╔██╗ ██║███████╗  ██║   ██║██║██╔████╔██║
-								"██╔═══╝ ██║     ██║   ██║██║   ██║██║██║╚██╗██║╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
-								"██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
-								"╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
+" otros ajustes
+autocmd! BufWritePost init.vim source ~/AppData/Local/nvim/init.vim
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd FileType java :call RunJava()
+autocmd FileType python :call RunPython()
+autocmd FileType javascript :call RunJsAndTs()
+autocmd FileType typescript :call RunJsAndTs()
 
-" auto-instalación de plugins
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
+"██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
+"██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
+"██████╔╝██║     ██║   ██║██║  ███╗██║██╔██╗ ██║███████╗  ██║   ██║██║██╔████╔██║
+"██╔═══╝ ██║     ██║   ██║██║   ██║██║██║╚██╗██║╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
+"██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
+"╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
+								
 call plug#begin('~/.config/nvim/plugged')
-
-" tema
-Plug 'morhetz/gruvbox'
 
 " resaltado de sintaxis
 Plug 'sheerun/vim-polyglot'
+"Plug 'kien/rainbow_parentheses.vim'
+
+" tema
+Plug 'morhetz/gruvbox'
 
 " barra de estado
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'itchyny/lightline.vim'
 
-" barra lateral y iconos
+" barra lateral - iconos
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 
 " búsqueda - agrupador
 Plug 'easymotion/vim-easymotion'
@@ -87,11 +85,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 
+" historial de commits
+Plug 'junegunn/gv.vim'
+
 " IDE
 Plug 'terryma/vim-multiple-cursors'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/syntastic'
 Plug 'junegunn/goyo.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-signify'
@@ -99,20 +101,20 @@ Plug 'yggdroot/indentline'
 
 call plug#end()
 
-" configuración para el tema
-let g:gruvbox_italic=1
+" ajustes del tema
+"let g:gruvbox_italic=1
 let no_buffers_menu=1
-"contrates válidos: soft, medium & hard
+" soft medium hard
 let g:gruvbox_contrast_dark="hard"
 highlight Normal ctermbg=none
 colorscheme gruvbox
 
-  "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
-  "██╔══██╗██║     ██║   ██║██╔════╝       ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝   ██║   ██║██║████╗ ████║
-  "██████╔╝██║     ██║   ██║██║  ███╗█████╗██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗  ██║   ██║██║██╔████╔██║
-  "██╔═══╝ ██║     ██║   ██║██║   ██║╚════╝██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
-  "██║     ███████╗╚██████╔╝╚██████╔╝      ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝██╗╚████╔╝ ██║██║ ╚═╝ ██║
-  "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ ╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
+"██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
+"██╔══██╗██║     ██║   ██║██╔════╝       ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝   ██║   ██║██║████╗ ████║
+"██████╔╝██║     ██║   ██║██║  ███╗█████╗██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗  ██║   ██║██║██╔████╔██║
+"██╔═══╝ ██║     ██║   ██║██║   ██║╚════╝██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
+"██║     ███████╗╚██████╔╝╚██████╔╝      ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝██╗╚████╔╝ ██║██║ ╚═╝ ██║
+"╚═╝     ╚══════╝ ╚═════╝  ╚═════╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ ╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 " configuración de la barra de estado inferioir
 let g:lightline = {
@@ -139,6 +141,15 @@ let g:lightline = {
     \ }
     \}
 
+" ajuste para mostrar errores una vez se guarde el archivo
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+
 " si usted utiliza el autocompletado KITE descomente la sgt línea y agregue sus lenguajes.
 "let g:kite_supported_languages = ['lenguaje', ...]
 let g:coc_global_extensions = [
@@ -147,19 +158,15 @@ let g:coc_global_extensions = [
   \ 'coc-java'
   \]
 
-" configuración de ultisnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+" configuración de UltiSnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/AppData/Local/nvim/snips']
 let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsListSnippets="<C-_>"
-"let g:UltiSnipsJumpForwardTrigger="<tab"
-"let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-" Use <C-j> para saltar al siguiente marcador de posición en los Snippets
+" use <C-j & C-k> para saltar al siguiente y anterior marcador de posición en los snippets
 let g:coc_snippet_next = '<C-j>'
-" Use <C-k> para saltar al marcador de posición anterior
 let g:coc_snippet_prev = '<C-k>'
 
-" cerrado automatico de la barra lateral o árbol
+" cerrado automatico de la barra lateral o tree
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeAutoDeleteBuffer=1
@@ -167,10 +174,10 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 
-" navegación con tmux
+" navegación rápida tmux
 let g:tmux_navigator_no_mappings=1
 
-" para la búsqueda con FZF (Line Fuzzy Finder)
+" interfaz de búsqueda FZF (Line Fuzzy Finder)
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
 "*------------------------ FUNCIÓNES PARA INTEGRAR LAS TERMINALES DE WINDOWS ---------------------------*
@@ -215,14 +222,138 @@ endfunction
 " sudo dnf install python3-pip
 " pip install pynvim
 
-			"███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
-			"██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
-			"███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗  ██║   ██║██║██╔████╔██║
-			"╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██║     ██║   ██║   ██║   ╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
-			"███████║██║  ██║╚██████╔╝██║  ██║   ██║   ╚██████╗╚██████╔╝   ██║   ███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
-			"╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
+"*--------------------- CONFIGURACIÓN COMPLETA DE CONQUER OF COMPLETION) --------------------*
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.7.0") || has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+"███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
+"██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
+"███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗  ██║   ██║██║██╔████╔██║
+"╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██║     ██║   ██║   ██║   ╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
+"███████║██║  ██║╚██████╔╝██║  ██║   ██║   ╚██████╗╚██████╔╝   ██║   ███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
+"╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 let mapleader = " "
+
+" ejecute sus programas (.java .py .js & .ts)
+" en modo NORMAL o INSERT
+function! RunJava()
+	imap <F1> <Esc> :w<CR> :!java %<CR>
+	nmap <F1> :w<CR> :!java %<CR>
+endfunction
+
+function! RunPython()
+	imap <F1> <Esc> :w<CR> :!python %<CR>
+	nmap <F1> :w<CR> :!python %<CR>
+endfunction
+
+function! RunJsAndTs()
+	imap <F1> <Esc> :w<CR> :!node %<CR>
+	nmap <F1> :w<CR> :!node %<CR>
+endfunction
 
 " para el modo NORMAL desabilito el desplazamiento con las flechas
 noremap <up> <nop>
@@ -245,24 +376,17 @@ nnoremap < 5<C-w><
 " coloca un punto y coma al final de la línea, con <space+,>
 nnoremap <Leader>, $a;<Esc>
 
-" ejecuta tus archivos: .js, .ts, .java y .py
-nmap <Leader>dn :!node %<CR>
-nmap <Leader>dj :!java %<CR>
-nmap <Leader>dp :!python %<CR>
-
 " con <space+t> abres la terminal dentro neovim
-nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 15<CR>
+nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 " elimina todos los espacios en blanco que contenga el archivo, con <F2>
 nnoremap <F2> :%s/\s\+$//e<CR>
 " abre el archivo de configuración general con <F3>
 nnoremap <F3> :e $MYVIMRC<CR>
-" crear un archivo en una nueva pestaña, con <F4>
-nnoremap <F4> :tabnew
+" copia la ruta general del archivo abierto con <F4>
+nnoremap <F4>kp :let @*=expand("%")<CR>
 " refresca neovim con <F5>
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
-" copia la ruta general del archivo abierto con <F6>
-nnoremap <F6>kp :let @*=expand("%")<CR>
 
 " entre al modo goyo sin distracciones, con <F7>
 nmap <F7> :Goyo<CR>
@@ -296,22 +420,21 @@ noremap <silent><C-k> :TmuxNavigateUp<CR>
 nnoremap <silent><C-l> :TmuxNavigateRight<CR>
 
 " atajos para el flujo rápido con git
-nnoremap <Leader>gg :G<CR>
 nnoremap <Leader>go :GV<CR>
-nnoremap <Leader>gy :Git init<CR>
+nnoremap <Leader>g :Git init<CR>
 nnoremap <Leader>gs :Git status<CR>
 nnoremap <Leader>ga :Git add -A<CR>
-nnoremap <Leader>gc :Git commit -m "Update files 🔧💻"<CR>
-nnoremap <Leader>gcc :Git commit -m ""
+nnoremap <Leader>gc :Git commit -m "♻ Update"<CR>
+nnoremap <Leader>gcc :Git commit -v<CR>
 nnoremap <Leader>glg :Git log --oneline<CR>
-nnoremap <Leader>grr :Git remote add origin https://github.com//.git
+nnoremap <Leader>grr :Git remote add origin https://github.com/josuerom/.git
 nnoremap <Leader>gpp :Git push -u origin main<CR>
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gpu :Git push --set-upstream origin main<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>gl :Git pull<CR>
 nnoremap <Leader>gm :Git merge<CR>
-nnoremap <Leader>ge :Git revert 
+nnoremap <Leader>ge :Git revert
 
 " flujo instantaneo con COC
 nmap <silent> gd <Plug>(coc-definition)
