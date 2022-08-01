@@ -9,27 +9,31 @@ En el presente proyecto se describe el proceso a seguir para personalizar e inst
 
 ## Herramientas necesarias.
 
-1. Instalar **Git**
-2. Instalar **Node.js**
-3. Instalar **Neovim**
-4. Clonar este **este repositorio**
-5. Instalar el gestor de plugins **vim-plug**
+1. Instala **Git**
+2. Instala **Node.js**
+3. Instala **Python**
+4. Instala **Neovim**
+5. Clona **este repositorio**
+6. Instala el gestor de plugins **vim-plug**
 
 **Tenga en cuenta que:** para instalar Neovim, si o si necesitarás utilizar todas esas 5 herramientas, para ello aquí conocerás el paso a paso para instalar cada una correctamente sin errores ni falsa información, cabe mensionar que, *Bash o Windows PowerShell* viene instalados de fabrica en los Sistemas Operativos, por eso no será necesario explicar el como ejecutarlo, ni instalarlo, *¡ni abrirlo ¡eso ya debes de saberlo programador!* y si no sabes mirate un video en YouTube.
 
 # Paso a paso para la instalación de NeoVim.
-### Paso No. 1. Instalar Git.
+### Paso No. 1. Instala Git.
 Git es un software de control de versiones diseñado por **Linus Torvalds** quién es él mismo creador del Sistema Operativo **GNU-LINUX**, fue pensado en la eficiencia, la confiabilidad y compatibilidad para mantenimientos de versiones; para realizar la instalación de git da un [click aquí](https://git-scm.com/downloads "https://git-scm.com/downloads"), este es un enlace que te llevará a la pagina oficial de Git. Si no lo tienes instalado deberás intalararlo para que neovim no te arroje errores al momento de iniciarlo. Por otra parte, si usted ya lo tiene instalado haga caso omiso a este paso y continue con los restantes.
 
-### Paso No. 2. Instalar Node.js.
+### Paso No. 2. Instala Node.js.
 **Node.js** es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor basado en el lenguaje de programación JavaScript, en pocas palabras, es un programa el cual permite interpretar o ejecutar archivos javascript sin necesidad de correrlo en el navegador, es por eso que Node.js integra su consola; pero esto es siempre y cuando valles a trabajar con **JavaScript**, si tu no lo dominas o no te interesa trabajar con el *"pues no lo instales y ya"*. Por otra parte si no lo instalas cada vez que habrás neovim te saldrá un aviso en rojo pidiendote que instales Node.js, pero no te preocupes que podrás utilizar neovim sin problema algun. 
 
 Para instalarlo da un [click aquí](https://nodejs.org/es/download/ "https://nodejs.org/es/download/"), este enlace te llevará directamente a su pagina oficial de descargar, si requieres más información de instalación, visualizate un video en **YouTube**.
 
-### Instala el OpenJDK-11 o 14
-Este paso es opcional,en esta caso yo sugiero que instalen **Java**, siempre y cuándo valles a trabajar con ese lencuaje, para ello les comparto los comandos que debe ejecutar segun la versión.
+### Paso No. 3. Instala Python.
+Es un lenguaje de alto nivel de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código, se utiliza para desarrollar aplicaciones de todo tipo, ejemplos: Instagram, Netflix, Spotify, Panda 3D, entre otros. Para instalarlo da un [click aquí](https://www.python.org/downloads/), este enlace te llevará a su página oficial de descargas, si requieres más información consultala en Google.
 
-Para Fedora,ejecute:
+### Si trabajaras con Java debes instalarte el OpenJDK-11 o 14
+Presento los comandos para instalar solo en Fedora Linux, la distribucion que manejo.
+
+Para Fedora, debe ejecutar:
 ```zsh
 # OpenJDK-8
 sudo dnf install java-1.8.0-openjdk-devel.x86_64
@@ -37,11 +41,11 @@ sudo dnf install java-1.8.0-openjdk-devel.x86_64
 # OpenJDK-11
 sudo dnf install java-11-openjdk-devel.x86_64
 
-# OpenJDK-Última-Versión
+# OpenJDK-última-versión
 sudo dnf install java-latest-openjdk-devel.x86_64
 ```
 
-### Paso No. 3. Instalar Neovim.
+### Paso No. 4. Instala Neovim.
 Para poder instalarlo debes ejecutar el comando correspondiente a tu distribución.
 
 Para distribuciones basadas en Debian como: [Ubuntu, Linux Mint, Deepin, SteamOS, MX Linux, PureOS, Kali Linux o Devuan], ejecute:
@@ -73,8 +77,8 @@ Para concer si instaló correctamente neovim, ejecute el siguiente comando, le d
 nvim --version
 ``` 
 
-### Paso No. 4. Clona los archivos de este repositorio.
-Para clonar copia y pega este comando en la terminal que manejes
+### Paso No. 5. Clona los archivos publicados en este repositorio.
+Para clonar copia y pega este comando en tu terminal, pero antes verifica tener instalado Git. 
 
 ```zsh
 git clone https://github.com/josuerom/config-nvim-linux.git
@@ -110,28 +114,36 @@ Luego de ejecutar el comando, te arrojará estos errores que son normales la pri
 
 Para saltar esos errores debes presionar la tecla enter las veces necesarias, nada más faltaría instalar el gestor de plugins **vim plug** para que así culmines con la configuración.
 
-### Paso No. 5. Instalar el gestor de plugins VIM PLUG
+### Paso No. 6. Instala el gestor de plugins VIM PLUG
 **Vim plug** es un administrador de plugins para el editor de texto vim y neovim minimalista, de código abierto creado por **junegunn** y gratuito que puede instalar y actualizar complementos en paralelo. Crea clones para minimizar el uso de espacio del disco y el tiempo de descarga; para realizar una descarga limpia y ligera, ejecuta en la terminal nueva, en la pestaña PowerShell ejecutada como administrador el siguiente comando:
 
-VIM_PLUG (Unix, Linux)
+Copie y pegue el siguiente comando en su terminal GNU/Linux
 ```zsh
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/nvim}"/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ``` 
 
-Ese comando creará el archivo **plug.vim** en la ruta: **~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim**, pero debe copiar y pegar la carpta autoload y pergarla en la ruta donde esta neovim, para que recuerdes: **/home/josue/.config/nvim/**. 
+Ese comando creará el archivo **plug.vim** en la ruta: **~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim**, pero debe copiar y pegar la carpta autoload y pergarla en la ruta donde esta neovim, para que recuerdes es esta: **$HOME/.config/nvim/**. 
 
-Continuando, abre neovim, recuerda que debes estar en modo **NORMAL** y escribir:
-> :PlugInstall
+Una vez culmines con lo anterior abre neovim, con el siguiente comando
+```zsh
+nvim
+```
 
-Anado captura de pantalla, para que sepas lo que debe aparecerte:
+Luego de eso, escriba 
+```zsh
+:PlugI
+# Y presione tabulador, al presionar debe autocompletarse
+# Si se autocompleta de un enter y listo, pero sino debe instalar
+# Git y el gestor de plugins nuevamente.  
+```
 
+Añado captura de pantalla, para que sepas como debe aparecerte:
 <p align="center" width="0">
    <img align="center" src="">
 </p>
 
-Con el comando ejecutado se te instalaran todos los plugins que uso, añado otra captura de pantalla.
-
+Con el comando ejecutado se te instalaran todos los plugins que uso; añado otra captura de pantalla.
 <p align="center" width="0">
    <img align="center" src="">
 </p>
@@ -152,9 +164,9 @@ Proporciono más imagenes:
    <img align="center" src="https://github.com/josuerom/config-nvim-linux/blob/main/screen/2022-03-25%2013-53-41.png">
 </p>
 
-# Aún no he terminado la guía sé que faltan muchas cosas importantes por agregar pero cuándo tenga un rato libre la alimento, gracias por legar hasta acá.
+### Aún no he terminado la guía, falta documentarla un poco más, pero me comprometo a terminarla muy pronto, gracias por haber llegado hasta acá.
 
 <p align="center" width="0">
-   <img align="center" width="45" src="https://github.com/josueromram/nvim-config-windows7-8-10-11/blob/nvim/screenshot/neovim-mark-flat.png">
+   <img align="center" width="100" src="https://github.com/josuerom/josuerom/blob/ProjectsApacheNetbeans12.4/Perfil%20Circular.png">
 </p>
 
