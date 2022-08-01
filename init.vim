@@ -72,7 +72,7 @@ Plug 'itchyny/lightline.vim'
 
 " barra lateral - iconos
 Plug 'scrooloose/nerdtree'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'   "debe aplicar una fuente: Nerd Font
 
 " búsqueda - agrupador
 Plug 'easymotion/vim-easymotion'
@@ -104,8 +104,7 @@ call plug#end()
 " ajustes del tema
 "let g:gruvbox_italic=1
 let no_buffers_menu=1
-" soft medium hard
-let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_dark="hard"   " soft medium hard
 highlight Normal ctermbg=none
 colorscheme gruvbox
 
@@ -150,8 +149,13 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 
-" si usted utiliza el autocompletado KITE descomente la sgt línea y agregue sus lenguajes.
-"let g:kite_supported_languages = ['lenguaje', ...]
+" si usted utiliza el autocompletado KITE descomente las siguientes líneas y agregue sus lenguajes.
+"let g:kite_supported_languages = ['javascript', 'python']
+" desabilitar la entrega de sugerencias de COC para que KITE sea quien las entrege en estos tipos de archivos
+"autocmd FileType javascript let b:coc_suggest_disable = 1
+"autocmd FileType python let b:coc_suggest_disable = 1
+"autocmd FileType scss setl iskeyword+=@-@
+
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-tsserver',
