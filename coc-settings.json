@@ -1,14 +1,4 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["java", "python", "javascript", "typescript", "html", "css", "markdown", "json", "vim", "txt"],
-  "coc.preferences.formatOnType": false,
-  "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    }
-  },
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-11",
@@ -16,15 +6,6 @@
       "default": true
     }
   ],
-  "java.format.enabled": true,
-  "java.format.onType.enabled": true,
-  "java.format.comments.enabled": true,
-  "java.signatureHelp.enabled": true,
-  "java.saveActions.organizeImports": true,
-  "java.selectionRange.enabled": true,
-  "typescript.autoClosingTags": true,
-  "javascript.autoClosingTags": true,
-
   "snippets.priority": 1,
   "snippets.extends": {
     "cpp": ["c"],
@@ -34,15 +15,9 @@
 
   "snippets.ultisnips.directories": [
     "UltiSnips",
-    "~/AppData/Local/nvim/snips"
+    "~/.config/nvim/UltiSnips"
   ],
   "snippets.ultisnips.enable": true,
   "snippets.ultisnips.usePythonx": true,
   "snippets.author": "Josué Romero",
-
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.typeCheckingMode": "basic",
-  "python.formatting.provider": "black",
-  "python.linting.mypyEnabled": true,
-  "python.linting.pylintEnabled": true
 }
