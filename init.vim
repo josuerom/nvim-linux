@@ -35,12 +35,11 @@ set updatetime=50
 set shortmess+=c
 
 " otros ajustes
-autocmd! BufWritePost init.vim source ~/AppData/Local/nvim/init.vim
+autocmd! BufWritePost init.vim source ~/.config/nvim/init.vim
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType python :call RunPython()
 autocmd FileType javascript :call RunJsAndTs()
-autocmd FileType typescript :call RunJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -94,7 +93,7 @@ call plug#end()
 " ajustes del tema
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="hard"   " soft medium hard
-highlight Normal ctermbg=none
+highlight Normal ctermbg=NONE
 colorscheme gruvbox
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
