@@ -212,8 +212,8 @@ endfunction
 " pip install pynvim
 
 " Solución al error de (python3-script-host)
-" descomente la siguiente línea para corregir ese error:
 "let g:python3_host_prog = "~/.virtualenvs/neovim-python3-venv/bin/python3"
+
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
 "███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗  ██║   ██║██║██╔████╔██║
