@@ -41,7 +41,6 @@ autocmd FileType java :call RunJava()
 autocmd FileType python :call RunPython()
 autocmd FileType javascript :call RunJsAndTs()
 
-
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
 "██████╔╝██║     ██║   ██║██║  ███╗██║██╔██╗ ██║███████╗  ██║   ██║██║██╔████╔██║
@@ -98,7 +97,6 @@ let g:gruvbox_contrast_dark="hard"
 highlight Normal ctermbg=NONE
 colorscheme gruvbox
 
-
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝       ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝   ██║   ██║██║████╗ ████║
 "██████╔╝██║     ██║   ██║██║  ███╗█████╗██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗  ██║   ██║██║██╔████╔██║
@@ -131,7 +129,7 @@ let g:lightline = {
     \ }
     \}
 
-" si usted utiliza el autocompletado KITE descomente las siguientes líneas hasta la 163
+" si usted utiliza el autocompletado KITE descomente las siguientes líneas hasta la 145
 "let g:kite_supported_languages = ['javascript', 'python', 'java']
 
 " desabilitar la entrega de sugerencias de COC para que KITE sea quien las entrege en estos tipos de archivos
@@ -147,12 +145,11 @@ let g:lightline = {
 "endif
 
 let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-json'
+  \ 'coc-snippets'
   \]
 
 " configuración de UltiSnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/AppData/Local/nvim/snips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/AppData/Local/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 " use <C-j & C-k> para saltar al siguiente y anterior marcador de posición en los snippets
 let g:coc_snippet_next = '<C-j>'
@@ -172,7 +169,7 @@ let g:tmux_navigator_no_mappings=1
 " interfaz de búsqueda FZF (Line Fuzzy Finder)
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
-"*------------------------ FUNCIÓNES PARA INTEGRAR LAS TERMINALES DE WINDOWS ---------------------------*
+"*------------------------ FUNCIÓNES PARA INTEGRAR LA TERMINAL BASH DE LINUX ---------------------------*
 function! OpenTerminal()
   execute "normal \<C-l>"
   execute "normal \<C-l>"
@@ -213,10 +210,6 @@ endfunction
 " sudo dnf install python3
 " sudo dnf install python3-pip
 " pip install pynvim
-
-"*--------------------- CONFIGURACIÓN COMPLETA DE CONQUER OF COMPLETION) --------------------*
-
-
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
