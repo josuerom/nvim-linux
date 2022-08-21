@@ -211,6 +211,9 @@ endfunction
 " sudo dnf install python3-pip
 " pip install pynvim
 
+" Solución al error de (python3-script-host)
+" descomente la siguiente línea para corregir ese error:
+"let g:python3_host_prog = "~/.virtualenvs/neovim-python3-venv/bin/python3"
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
 "███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗  ██║   ██║██║██╔████╔██║
@@ -269,10 +272,6 @@ nnoremap <F3> :e $MYVIMRC<CR>
 nnoremap <F4>kp :let @*=expand("%")<CR>
 " refresca neovim con <F5>
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
-
-" entre al modo goyo sin distracciones, con <F7>
-nmap <F7> :Goyo<CR>
-imap <F7> <Esc> :Goyo<CR>
 
 " para guardar los cambios del archivo presione <space+w> en modo NORMAL o <ctrl+s> en INSERT
 nnoremap <Leader>w :w<CR>
