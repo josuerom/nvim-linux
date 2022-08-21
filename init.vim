@@ -1,14 +1,14 @@
-"*----------- Configuración [init.vim] 25/Mayo/2022 11:39p.m COL -----------*
- 
-							"██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
-							"██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
-							"██║██╔██╗██║██║░░░██║░░░░░░╚██╗░██╔╝██║██╔████╔██║
-							"██║██║╚████║██║░░░██║░░░░░░░╚████╔╝░██║██║╚██╔╝██║
-							"██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║ 
-							"╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
-									 " Creado por >> Josué Romero
-									 " Twitter >> https://twitter.com/Josueromr
-									 
+"*------------------------ Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL -------------------------*
+
+										"██╗███╗   ██╗██╗████████╗██╗   ██╗██╗███╗   ███╗
+										"██║████╗  ██║██║╚══██╔══╝██║   ██║██║████╗ ████║
+										"██║██╔██╗ ██║██║   ██║   ██║   ██║██║██╔████╔██║
+										"██║██║╚██╗██║██║   ██║   ╚██╗ ██╔╝██║██║╚██╔╝██║
+										"██║██║ ╚████║██║   ██║██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+										"╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+														"Creador >> Josué Romero
+											"Twitter >> https://twitter.com/josueromr
+
 syntax enable
 set number
 set mouse=a
@@ -34,12 +34,13 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 
-" otros ajustes
-autocmd! BufWritePost init.vim source ~/.config/nvim/init.vim
+" integro intrucciones para refrescar, limpiar y ejecutar archivos
+"autocmd! BufWritePost init.vim source ~/AppData/Local/nvim/init.vim
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType python :call RunPython()
 autocmd FileType javascript :call RunJsAndTs()
+
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -91,10 +92,12 @@ Plug 'yggdroot/indentline'
 call plug#end()
 
 " ajustes del tema
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="hard"   " soft medium hard
+"let g:gruvbox_italic=1
+" soft medium hard
+let g:gruvbox_contrast_dark="hard"
 highlight Normal ctermbg=NONE
 colorscheme gruvbox
+
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝       ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝   ██║   ██║██║████╗ ████║
@@ -129,24 +132,23 @@ let g:lightline = {
     \}
 
 " si usted utiliza el autocompletado KITE descomente las siguientes líneas hasta la 163
-let g:kite_supported_languages = ['javascript', 'python', 'java']
+"let g:kite_supported_languages = ['javascript', 'python', 'java']
 
 " desabilitar la entrega de sugerencias de COC para que KITE sea quien las entrege en estos tipos de archivos
-autocmd FileType javascript let b:coc_suggest_disable = 1
-autocmd FileType python let b:coc_suggest_disable = 1
-autocmd FileType scss setl iskeyword+=@-@
+"autocmd FileType javascript let b:coc_suggest_disable = 1
+"autocmd FileType python let b:coc_suggest_disable = 1
+"autocmd FileType scss setl iskeyword+=@-@
 
 " con <Ctrl+space> se gatilla el autocompletado KITE
-if &filetype == 'javascript' || &filetype == 'python' || &filetype == 'java'
-   inoremap <C-space> <C-x><C-u>
-else
-   inoremap <silent><expr> <C-space> coc#refresh()
-endif
+"if &filetype == 'javascript' || &filetype == 'python' || &filetype == 'java'
+"  inoremap <C-space> <C-x><C-u>
+"else
+"  inoremap <silent><expr> <C-space> coc#refresh()
+"endif
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-tsserver',
-  \ 'coc-java'
+  \ 'coc-json'
   \]
 
 " configuración de UltiSnips
