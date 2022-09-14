@@ -47,7 +47,7 @@ autocmd FileType javascript :call RunJsAndTs()
 "██╔═══╝ ██║     ██║   ██║██║   ██║██║██║╚██╗██║╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
 "██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
-								
+
 call plug#begin('~/.config/nvim/plugged')
 
 " resaltado de sintaxis
@@ -145,11 +145,12 @@ let g:lightline = {
 "endif
 
 let g:coc_global_extensions = [
-  \ 'coc-snippets'
+  \ 'coc-snippets',
+  \ 'coc-java',
   \]
 
 " configuración de UltiSnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/AppData/Local/nvim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 " use <C-j & C-k> para saltar al siguiente y anterior marcador de posición en los snippets
 let g:coc_snippet_next = '<C-j>'
@@ -184,7 +185,7 @@ function! OpenTerminal()
     execute "q"
   else
     " se abrirá la shell zsh, pero si usted utilizas otra, debes poner el nombre
-    " de la shell en la línea 194, ya sea: 'zsh, bash, fish', quedando la así: 
+    " de la shell en la línea 194, ya sea: 'zsh, bash, fish', quedando la así:
     " execute 'sp term://zsh'
     execute "sp term://bash"
     " apagar números
