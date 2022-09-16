@@ -129,24 +129,9 @@ let g:lightline = {
     \ }
     \}
 
-" si usted utiliza el autocompletado KITE descomente las siguientes líneas hasta la 145
-"let g:kite_supported_languages = ['javascript', 'python', 'java']
-
-" desabilitar la entrega de sugerencias de COC para que KITE sea quien las entrege en estos tipos de archivos
-"autocmd FileType javascript let b:coc_suggest_disable = 1
-"autocmd FileType python let b:coc_suggest_disable = 1
-"autocmd FileType scss setl iskeyword+=@-@
-
-" con <Ctrl+space> se gatilla el autocompletado KITE
-"if &filetype == 'javascript' || &filetype == 'python' || &filetype == 'java'
-"  inoremap <C-space> <C-x><C-u>
-"else
-"  inoremap <silent><expr> <C-space> coc#refresh()
-"endif
-
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-java',
+  \ 'coc-java'
   \]
 
 " configuración de UltiSnips

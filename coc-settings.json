@@ -2,7 +2,7 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-11",
-      "path": "/usr/lib/jvm/java-11",
+      "path": "/usr/lib/jvm/java-11-openjdk-11.0.16.0.8-1.fc37.x86_64/",
       "default": true
     }
   ],
