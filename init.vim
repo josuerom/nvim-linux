@@ -1,4 +1,4 @@
-"*------------------------ Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL -------------------------*
+"*-------------------- Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL ---------------------*
 
 										"██╗███╗   ██╗██╗████████╗██╗   ██╗██╗███╗   ███╗
 										"██║████╗  ██║██║╚══██╔══╝██║   ██║██║████╗ ████║
@@ -34,8 +34,7 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 
-" integro intrucciones para refrescar, limpiar y ejecutar archivos
-"autocmd! BufWritePost init.vim source ~/AppData/Local/nvim/init.vim
+" integro intrucciones para eliminar espacios vacio y ejecutar archivos
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType python :call RunPython()
@@ -49,7 +48,6 @@ autocmd FileType javascript :call RunJsAndTs()
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 call plug#begin('~/.config/nvim/plugged')
-
 " resaltado de sintaxis
 Plug 'sheerun/vim-polyglot'
 
@@ -62,7 +60,7 @@ Plug 'itchyny/lightline.vim'
 
 " barra lateral - iconos
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'   "debe aplicar una fuente: Nerd Font
+Plug 'ryanoasis/vim-devicons' "debe aplicar una fuente: Nerd Font
 
 " búsqueda - agrupador
 Plug 'easymotion/vim-easymotion'
@@ -87,7 +85,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
-
 call plug#end()
 
 " ajustes del tema
@@ -104,7 +101,7 @@ colorscheme gruvbox
 "██║     ███████╗╚██████╔╝╚██████╔╝      ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝██╗╚████╔╝ ██║██║ ╚═╝ ██║
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ ╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-" configuración de la barra de estado inferioir
+" configuración de la barra de estado inferior
 let g:lightline = {
     \ 'active': {
     \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
@@ -155,7 +152,7 @@ let g:tmux_navigator_no_mappings=1
 " interfaz de búsqueda FZF (Line Fuzzy Finder)
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
-"*------------------------ FUNCIÓNES PARA INTEGRAR LA TERMINAL BASH DE LINUX ---------------------------*
+"*---------------------- FUNCIÓNES PARA INTEGRAR LA TERMINAL BASH DE LINUX -------------------------*
 function! OpenTerminal()
   execute "normal \<C-l>"
   execute "normal \<C-l>"
@@ -198,7 +195,7 @@ endfunction
 " pip install pynvim
 
 " Solución al error de (python3-script-host)
-"let g:python3_host_prog = "~/.virtualenvs/neovim-python3-venv/bin/python3"
+"let g:python3_host_prog="~/.virtualenvs/neovim-python3-venv/bin/python3"
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
@@ -208,7 +205,6 @@ endfunction
 "╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 let mapleader = " "
-
 " ejecute sus programas (.java .py .js & .ts)
 " en modo NORMAL o INSERT
 function! RunJava()
