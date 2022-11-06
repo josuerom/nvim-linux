@@ -37,7 +37,7 @@ set shortmess+=c
 " integro intrucciones para eliminar espacios vacio y ejecutar archivos
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
-autocmd FileType python :call RunPython()
+autocmd FileType cpp :call RunCpp()
 autocmd FileType javascript :call RunJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
@@ -48,6 +48,7 @@ autocmd FileType javascript :call RunJsAndTs()
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 call plug#begin('~/.config/nvim/plugged')
+
 " resaltado de sintaxis
 Plug 'sheerun/vim-polyglot'
 
@@ -60,7 +61,7 @@ Plug 'itchyny/lightline.vim'
 
 " barra lateral - iconos
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons' "debe aplicar una fuente: Nerd Font
+Plug 'ryanoasis/vim-devicons'
 
 " búsqueda - agrupador
 Plug 'easymotion/vim-easymotion'
@@ -73,23 +74,17 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 
-" historial de commits
-Plug 'junegunn/gv.vim'
-
 " IDE
 Plug 'terryma/vim-multiple-cursors'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
+
 call plug#end()
 
-" ajustes del tema
-"let g:gruvbox_italic=1
-" soft medium hard
+" ajuste del tema
 let g:gruvbox_contrast_dark="hard"
 highlight Normal ctermbg=NONE
 colorscheme gruvbox
@@ -128,13 +123,12 @@ let g:lightline = {
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-java'
+  \ 'coc-clangd'
   \]
 
 " configuración de UltiSnips
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
-" use <C-j & C-k> para saltar al siguiente y anterior marcador de posición en los snippets
 let g:coc_snippet_next = '<C-j>'
 let g:coc_snippet_prev = '<C-k>'
 
@@ -152,7 +146,7 @@ let g:tmux_navigator_no_mappings=1
 " interfaz de búsqueda FZF (Line Fuzzy Finder)
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
-"*---------------------- FUNCIÓNES PARA INTEGRAR LA TERMINAL BASH DE LINUX -------------------------*
+"*---------------------- FUNCIÓNE PARA INTEGRAR LA TERMINAL ZSH -------------------------*
 function! OpenTerminal()
   execute "normal \<C-l>"
   execute "normal \<C-l>"
@@ -169,7 +163,7 @@ function! OpenTerminal()
     " se abrirá la shell zsh, pero si usted utilizas otra, debes poner el nombre
     " de la shell en la línea 194, ya sea: 'zsh, bash, fish', quedando la así:
     " execute 'sp term://zsh'
-    execute "sp term://bash"
+    execute "sp term://zsh"
     " apagar números
     execute "set nonu"
     execute "set nornu"
@@ -189,7 +183,7 @@ endfunction
 "*---------------------- SOLUCIÓN A EL ERROR DE COC-SNIPPETS -----------------------*
 " Si al iniciar neovim te aparece siempre este molestoso error:
 " [coc.nvim] Error on execute :pyx command, ultisnips feature of coc-snippets requires pyx support on vim.
-" ejecuta los sgts comando en tu distribución Fedora:
+" ejecuta los sgts comando en tu distribución Fedora o Ubuntu:
 " sudo dnf install python3
 " sudo dnf install python3-pip
 " pip install pynvim
@@ -205,16 +199,16 @@ endfunction
 "╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 let mapleader = " "
-" ejecute sus programas (.java .py .js & .ts)
+" ejecute sus programas (.java .cpp .js o.ts)
 " en modo NORMAL o INSERT
 function! RunJava()
    imap <F1> <Esc> :w<CR> :!java %<CR>
    nmap <F1> :w<CR> :!java %<CR>
 endfunction
 
-function! RunPython()
-   imap <F1> <Esc> :w<CR> :!python %<CR>
-   nmap <F1> :w<CR> :!python %<CR>
+function! RunCpp()
+   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o %< % && ./%< < inp<CR>
+   nmap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
 endfunction
 
 function! RunJsAndTs()
