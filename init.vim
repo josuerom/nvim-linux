@@ -1,4 +1,4 @@
-"*-------------------- Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL ---------------------*
+"*-------------------- Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL -----------------------*
 
 										"██╗███╗   ██╗██╗████████╗██╗   ██╗██╗███╗   ███╗
 										"██║████╗  ██║██║╚══██╔══╝██║   ██║██║████╗ ████║
@@ -123,14 +123,16 @@ let g:lightline = {
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-clangd'
+  \ 'coc-java',
+  \ 'coc-clangd',
+  \ 'coc-vimlsp'
   \]
 
 " configuración de UltiSnips
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:coc_snippet_next = '<C-j>'
-let g:coc_snippet_prev = '<C-k>'
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " cerrado automatico de la barra lateral o tree
 let NERDTreeShowHidden=1
@@ -251,24 +253,22 @@ nmap <F5> :so ~/.config/nvim/init.vim<CR>
 
 " para guardar los cambios del archivo presione <space+w> en modo NORMAL o <ctrl+s> en INSERT
 nnoremap <Leader>w :w<CR>
+nnoremap <C-s> :w<CR>
 imap <C-s> <Esc> :w<CR>
 " para cerrar búfers <space+q>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>qq :q!<CR>
+nnoremap <Leader>q :q!<CR>
 " para salir rápidamente de nvim <space+x>
 nnoremap <Leader>x :qa!<CR>
 
 " abre el árbol, side bar o NERDTree
 nmap <Leader>e :NERDTreeToggle<CR>
-" abre arbol de nvim
-nmap <Leader>p :Explore<CR>
 " ejecute FZF (Fuzy Find Files)
 nmap <Leader>f :FZF<CR>
 
 " comentar líneas con <}+}>
-vmap }} <plug>NERDCommenterToggle
-nmap }} <plug>NERDCommenterToggle
-imap }} <Esc> :w<CR> <plug>NERDCommenterToggle
+vmap <C-}> <plug>NERDCommenterToggle
+nmap <C-}> <plug>NERDCommenterToggle
+imap <C-}> <Esc> :w<CR> <plug>NERDCommenterToggle
 
 " navegación rápida entre buffers abiertos
 nnoremap <silent><C-h> :TmuxNavigateLeft<CR>
@@ -277,11 +277,10 @@ noremap <silent><C-k> :TmuxNavigateUp<CR>
 nnoremap <silent><C-l> :TmuxNavigateRight<CR>
 
 " atajos para el flujo rápido con git
-nnoremap <Leader>go :GV<CR>
 nnoremap <Leader>g :Git init<CR>
 nnoremap <Leader>gs :Git status<CR>
 nnoremap <Leader>ga :Git add -A<CR>
-nnoremap <Leader>gc :Git commit -m "♻ Update"<CR>
+nnoremap <Leader>gc :Git commit -m "♻  Update"<CR>
 nnoremap <Leader>gcc :Git commit -v<CR>
 nnoremap <Leader>glg :Git log --oneline<CR>
 nnoremap <Leader>grr :Git remote add origin https://github.com/josuerom/.git
@@ -298,10 +297,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" dividir pantalla en dos [vertical] con space+i
+" dividir pantalla en dos [vertical] con space+ii
 nnoremap <Leader>ii :vsplit<CR>
-" dividir pantalla en dos [horizontal] con space+o
-"nnoremap <Leader>oo :split<CR>
+" dividir pantalla en dos [horizontal] con space+oo
+nnoremap <Leader>oo :split<CR>
 
 " navegación entre pestañas abiertas con <spacer+l> y <space+h>
 nnoremap <Leader>l :bnext<CR>
