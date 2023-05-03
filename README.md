@@ -81,7 +81,7 @@ nvim --version
 Para clonar copia y pega este comando en tu terminal, pero antes verifica tener instalado Git. 
 
 ```zsh
-git clone https://github.com/josuerom/config-nvim-linux.git ~/.config/nvim
+git clone https://github.com/josuerom/nvim-linux.git ~/.config/nvim
 ``` 
 
 Esta es la personalización que actualmente tengo en mi neovim:
