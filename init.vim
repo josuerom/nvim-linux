@@ -37,8 +37,11 @@ set shortmess+=c
 " integro intrucciones para eliminar espacios vacio y ejecutar archivos
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
+autocmd FileType java :call RunJava2()
 autocmd FileType python :call RunPython()
+autocmd FileType python :call RunPython2()
 autocmd FileType cpp :call RunCpp()
+autocmd FileType cpp :call RunCpp2()
 autocmd FileType javascript :call RunJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
@@ -141,8 +144,7 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeWinPos=1
-let NERDTreePosition=1
+let NERDTreeWinPos="right"
 
 " navegación rápida tmux
 let g:tmux_navigator_no_mappings=1
@@ -237,8 +239,8 @@ function! RunPython2()
 endfunction
 
 function! RunJsAndTs()
-   imap <F1> <Esc> :w<CR> :!node %<CR>
-   nmap <F1> :w<CR> :!node %<CR>
+   imap <F1> <Esc> :w<CR> :!node % < input<CR>
+   nmap <F1> :w<CR> :!node % < input<CR>
 endfunction
 
 " para el modo NORMAL desabilito el desplazamiento con las flechas
