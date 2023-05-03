@@ -203,21 +203,37 @@ endfunction
 let mapleader = " "
 " ejecute sus programas (.java .cpp .js o.ts)
 " en modo NORMAL o INSERT
+
 function! RunJava()
    imap <F1> <Esc> :w<CR> :!java %<CR>
    nmap <F1> :w<CR> :!java %<CR>
 endfunction
 
+function! RunJava2()
+   imap <F2> <Esc> :w<CR> :!java % < input<CR>
+   nmap <F2> :w<CR> :!java % < input<CR>
+endfunction
+
+
 function! RunCpp()
-   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o %< % && ./%< < input.in<CR>
-   nmap <F1> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o "%<" "%" && "./%<" < input.in<CR>
+   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o %< % && ./%<<CR>
+   nmap <F1> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o "%<" "%" && "./%<"<CR>
+endfunction
+
+
+function! RunCpp2()
+   imap <F2> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o %< % && ./%< < input<CR>
+   nmap <F2> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o "%<" "%" && "./%<" < input<CR>
 endfunction
 
 function! RunPython()
-   "imap <F1> <Esc> :w<CR> :!python3 % < input.in<CR>
-   "nmap <F1> :w<CR> :!python3 % < input.in<CR>
    imap <F1> <Esc> :w<CR> :!python3 %<CR>
    nmap <F1> :w<CR> :!python3 %<CR>
+endfunction
+
+function! RunPython2()
+   imap <F2> <Esc> :w<CR> :!python3 % < input<CR>
+   nmap <F2> :w<CR> :!python3 % < input<CR>
 endfunction
 
 function! RunJsAndTs()
@@ -249,15 +265,15 @@ nnoremap <Leader>, $a;<Esc>
 " con <space+t> abres la terminal dentro neovim
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
-" elimina todos los espacios en blanco que contenga el archivo, con <F2>
-nnoremap <F2> :%s/\s\+$//e<CR>
 " abre el archivo de configuración general con <F3>
 nnoremap <F3> :e $MYVIMRC<CR>
 " copia la ruta general del archivo abierto con <F4>
 nnoremap <F4>kp :let @*=expand("%")<CR>
 " refresca neovim con <F5>
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
-" copia todo el contenido del archivo abierto
+" elimina todos los espacios en blanco que contenga el archivo, con <F2>
+nnoremap <F6> :%s/\s\+$//e<CR>
+" copia todo el contenido del archivo abierto con Ctrl + a
 nnoremap <C-a> :%y+<CR>
 
 " para guardar los cambios del archivo presione <space+w> en modo NORMAL o <ctrl+s> en INSERT
