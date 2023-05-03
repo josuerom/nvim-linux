@@ -1,13 +1,13 @@
 "*-------------------- Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL -----------------------*
 
-										"██╗███╗   ██╗██╗████████╗██╗   ██╗██╗███╗   ███╗
-										"██║████╗  ██║██║╚══██╔══╝██║   ██║██║████╗ ████║
-										"██║██╔██╗ ██║██║   ██║   ██║   ██║██║██╔████╔██║
-										"██║██║╚██╗██║██║   ██║   ╚██╗ ██╔╝██║██║╚██╔╝██║
-										"██║██║ ╚████║██║   ██║██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
-										"╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
-														"Creador >> Josué Romero
-											"Twitter >> https://twitter.com/josueromr
+									"██╗███╗   ██╗██╗████████╗██╗   ██╗██╗███╗   ███╗
+									"██║████╗  ██║██║╚══██╔══╝██║   ██║██║████╗ ████║
+									"██║██╔██╗ ██║██║   ██║   ██║   ██║██║██╔████╔██║
+									"██║██║╚██╗██║██║   ██║   ╚██╗ ██╔╝██║██║╚██╔╝██║
+									"██║██║ ╚████║██║   ██║██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+									"╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+													"Creador >> Josué Romero
+										"Twitter >> https://twitter.com/josueromr
 
 syntax enable
 set number
@@ -37,6 +37,7 @@ set shortmess+=c
 " integro intrucciones para eliminar espacios vacio y ejecutar archivos
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
+autocmd FileType python :call RunPython()
 autocmd FileType cpp :call RunCpp()
 autocmd FileType javascript :call RunJsAndTs()
 
@@ -85,8 +86,8 @@ Plug 'yggdroot/indentline'
 call plug#end()
 
 " ajuste del tema
-let g:gruvbox_contrast_dark="hard"
-highlight Normal ctermbg=NONE
+let g:gruvbox_contrast_dark = "hard"
+highlight Normal ctermbg = NONE
 colorscheme gruvbox
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
@@ -124,8 +125,7 @@ let g:lightline = {
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-java',
-  \ 'coc-clangd',
-  \ 'coc-vimlsp'
+  \ 'coc-python',
   \]
 
 " configuración de UltiSnips
@@ -142,6 +142,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeWinPos=1
+let NERDTreePosition=1
 
 " navegación rápida tmux
 let g:tmux_navigator_no_mappings=1
@@ -149,7 +150,7 @@ let g:tmux_navigator_no_mappings=1
 " interfaz de búsqueda FZF (Line Fuzzy Finder)
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
-"*---------------------- FUNCIÓNE PARA INTEGRAR LA TERMINAL ZSH -------------------------*
+"*---------------------- FUNCIÓN PARA INTEGRAR LA SHELL BASH O ZSH -------------------------*
 function! OpenTerminal()
   execute "normal \<C-l>"
   execute "normal \<C-l>"
@@ -166,7 +167,7 @@ function! OpenTerminal()
     " se abrirá la shell zsh, pero si usted utilizas otra, debes poner el nombre
     " de la shell en la línea 194, ya sea: 'zsh, bash, fish', quedando la así:
     " execute 'sp term://zsh'
-    execute "sp term://zsh"
+    execute "sp term://bash"
     " apagar números
     execute "set nonu"
     execute "set nornu"
@@ -186,10 +187,8 @@ endfunction
 "*---------------------- SOLUCIÓN A EL ERROR DE COC-SNIPPETS -----------------------*
 " Si al iniciar neovim te aparece siempre este molestoso error:
 " [coc.nvim] Error on execute :pyx command, ultisnips feature of coc-snippets requires pyx support on vim.
-" ejecuta los sgts comando en tu distribución Fedora o Ubuntu:
-" sudo dnf install python3
-" sudo dnf install python3-pip
-" pip install pynvim
+" ejecuta el sgt comando en tu distribución Linux:
+" sudo dnf install python3 python3-pip -y && pip install pynvim
 
 " Solución al error de (python3-script-host)
 "let g:python3_host_prog="~/.virtualenvs/neovim-python3-venv/bin/python3"
@@ -210,8 +209,15 @@ function! RunJava()
 endfunction
 
 function! RunCpp()
-   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o %< % && ./%< < inp<CR>
-   nmap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o %< % && ./%< < input.in<CR>
+   nmap <F1> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o "%<" "%" && "./%<" < input.in<CR>
+endfunction
+
+function! RunPython()
+   "imap <F1> <Esc> :w<CR> :!python3 % < input.in<CR>
+   "nmap <F1> :w<CR> :!python3 % < input.in<CR>
+   imap <F1> <Esc> :w<CR> :!python3 %<CR>
+   nmap <F1> :w<CR> :!python3 %<CR>
 endfunction
 
 function! RunJsAndTs()
@@ -251,6 +257,8 @@ nnoremap <F3> :e $MYVIMRC<CR>
 nnoremap <F4>kp :let @*=expand("%")<CR>
 " refresca neovim con <F5>
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
+" copia todo el contenido del archivo abierto
+nnoremap <C-a> :%y+<CR>
 
 " para guardar los cambios del archivo presione <space+w> en modo NORMAL o <ctrl+s> en INSERT
 nnoremap <Leader>w :w<CR>
@@ -281,10 +289,10 @@ nnoremap <silent><C-l> :TmuxNavigateRight<CR>
 nnoremap <Leader>g :Git init<CR>
 nnoremap <Leader>gs :Git status<CR>
 nnoremap <Leader>ga :Git add -A<CR>
-nnoremap <Leader>gc :Git commit -m "♻  Update"<CR>
+nnoremap <Leader>gc :Git commit -m "♻  Update file"<CR>
 nnoremap <Leader>gcc :Git commit -v<CR>
 nnoremap <Leader>glg :Git log --oneline<CR>
-nnoremap <Leader>grr :Git remote add origin https://github.com/josuerom/.git
+nnoremap <Leader>grr :Git remote add origin https://github.com/$USERNAME$/.git
 nnoremap <Leader>gpp :Git push -u origin main<CR>
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gpu :Git push --set-upstream origin main<CR>
