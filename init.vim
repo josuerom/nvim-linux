@@ -250,14 +250,17 @@ nnoremap <Leader>, $a;<Esc>
 " con <space+t> abres la terminal dentro neovim
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
-" abre el archivo de configuración general con <F3>
-nnoremap <F3> :e $MYVIMRC<CR>
+" abre el archivo de ES input
+nnoremap <F3> :w<CR> :e ~/workspaces/sample/input<CR>
 " copia la ruta general del archivo abierto con <F4>
 nnoremap <F4>kp :let @*=expand("%")<CR>
+" abre el archivo de configuración general con <F3>
+nnoremap <F5> :e $MYVIMRC<CR>
 " refresca neovim con <F5>
-nmap <F5> :so ~/.config/nvim/init.vim<CR>
+nmap <F6> :so ~/.config/nvim/init.vim<CR>
 " elimina todos los espacios en blanco que contenga el archivo, con <F2>
-nnoremap <F6> :%s/\s\+$//e<CR>
+nnoremap <F7> :%s/\s\+$//e<CR>
+
 " copia todo el contenido del archivo abierto con Ctrl + a
 nnoremap <C-a> :%y+<CR>
 
