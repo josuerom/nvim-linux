@@ -1,12 +1,12 @@
 "*-------------------- Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL -----------------------*
 
-									"██╗███╗   ██╗██╗████████╗██╗   ██╗██╗███╗   ███╗
-									"██║████╗  ██║██║╚══██╔══╝██║   ██║██║████╗ ████║
-									"██║██╔██╗ ██║██║   ██║   ██║   ██║██║██╔████╔██║
-									"██║██║╚██╗██║██║   ██║   ╚██╗ ██╔╝██║██║╚██╔╝██║
-									"██║██║ ╚████║██║   ██║██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
-									"╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
-													"Creador >> Josué Romero
+"     ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
+"     ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
+"     ██║██╔██╗██║██║░░░██║░░░░░░╚██╗░██╔╝██║██╔████╔██║
+"     ██║██║╚████║██║░░░██║░░░░░░░╚████╔╝░██║██║╚██╔╝██║
+"     ██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║
+"     ╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
+													"Creador >> josuerom
 										"Twitter >> https://twitter.com/josueromr
 
 syntax enable
@@ -37,12 +37,10 @@ set shortmess+=c
 " integro intrucciones para eliminar espacios vacio y ejecutar archivos
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
-autocmd FileType java :call RunJava2()
-autocmd FileType python :call RunPython()
-autocmd FileType python :call RunPython2()
 autocmd FileType cpp :call RunCpp()
-autocmd FileType cpp :call RunCpp2()
+autocmd FileType python :call RunPython()
 autocmd FileType javascript :call RunJsAndTs()
+autocmd FileType typescript :call RunJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -51,7 +49,7 @@ autocmd FileType javascript :call RunJsAndTs()
 "██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim/plugins')
 
 " resaltado de sintaxis
 Plug 'sheerun/vim-polyglot'
@@ -127,15 +125,13 @@ let g:lightline = {
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-java',
-  \ 'coc-python',
   \]
 
 " configuración de UltiSnips
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " cerrado automatico de la barra lateral o tree
 let NERDTreeShowHidden=1
@@ -203,44 +199,31 @@ endfunction
 "╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
 let mapleader = " "
-" ejecute sus programas (.java .cpp .js o.ts)
-" en modo NORMAL o INSERT
 
 function! RunJava()
-   imap <F1> <Esc> :w<CR> :!java %<CR>
-   nmap <F1> :w<CR> :!java %<CR>
+   imap <F2> <Esc> :w<CR> :!java % < ~/workspaces/sample/input<CR>
+   nmap <F2> :w<CR> :!java % < ~/workspaces/sample/input<CR>
 endfunction
-
-function! RunJava2()
-   imap <F2> <Esc> :w<CR> :!java % < input<CR>
-   nmap <F2> :w<CR> :!java % < input<CR>
-endfunction
-
 
 function! RunCpp()
-   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o %< % && ./%<<CR>
-   nmap <F1> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o "%<" "%" && "./%<"<CR>
-endfunction
+   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -Wextra -Wpedantic -Werror -o ~/sol.out %<<CR>
+   nmap <F1> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -Wextra -Wpedantic -Werror -o ~/sol.out "%"<CR>
 
-
-function! RunCpp2()
-   imap <F2> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o %< % && ./%< < input<CR>
-   nmap <F2> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -O2 -o "%<" "%" && "./%<" < input<CR>
+   imap <F2> <Esc> :w<CR> :!~/sol.out < ~/workspaces/sample/input<CR>
+   nmap <F2> :w<CR> :!~/sol.out < ~/workspaces/sample/input<CR>
 endfunction
 
 function! RunPython()
-   imap <F1> <Esc> :w<CR> :!python3 %<CR>
-   nmap <F1> :w<CR> :!python3 %<CR>
-endfunction
-
-function! RunPython2()
-   imap <F2> <Esc> :w<CR> :!python3 % < input<CR>
-   nmap <F2> :w<CR> :!python3 % < input<CR>
+   imap <F2> <Esc> :w<CR> :!python3 % < ~/workspaces/sample/input<CR>
+   nmap <F2> :w<CR> :!python3 % < ~/workspaces/sample/input<CR>
 endfunction
 
 function! RunJsAndTs()
-   imap <F1> <Esc> :w<CR> :!node % < input<CR>
-   nmap <F1> :w<CR> :!node % < input<CR>
+   imap <F1> <Esc> :w<CR> :!node %<CR>
+   nmap <F1> :w<CR> :!node %<CR>
+
+   imap <F2> <Esc> :w<CR> :!node % < ~/workspaces/sample/input<CR>
+   nmap <F2> :w<CR> :!node % < ~/workspaces/sample/input<CR>
 endfunction
 
 " para el modo NORMAL desabilito el desplazamiento con las flechas
@@ -310,7 +293,7 @@ nnoremap <Leader>ga :Git add -A<CR>
 nnoremap <Leader>gc :Git commit -m "♻  Update file"<CR>
 nnoremap <Leader>gcc :Git commit -v<CR>
 nnoremap <Leader>glg :Git log --oneline<CR>
-nnoremap <Leader>grr :Git remote add origin https://github.com/$USERNAME$/.git
+nnoremap <Leader>grr :Git remote add origin https://github.com/$USER$/.git
 nnoremap <Leader>gpp :Git push -u origin main<CR>
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gpu :Git push --set-upstream origin main<CR>
