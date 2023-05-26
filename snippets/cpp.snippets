@@ -29,7 +29,7 @@ endglobal
 #       TextMate Snippets for programming competitive by JOSUEROM         #
 ###########################################################################
 snippet in
-#include <$0>
+#include $0
 endsnippet
 
 snippet ii
@@ -42,12 +42,11 @@ endsnippet
 
 snippet ioc
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(0); cout.tie(0);
 endsnippet
 
 snippet gcc
-#pragma GCC optimize("03,unroll-loops")
-#pragma GCC target("avx2")
+#pragma GCC optimize("O3,unroll-loops")
 endsnippet
 
 snippet def
@@ -88,13 +87,12 @@ endsnippet
 snippet fm
 int main() {
    ios::sync_with_stdio(false);
-   cin.tie(0);
+   cin.tie(0); cout.tie(0);
    $0
-   return 0;
 }
 endsnippet
 
-snippet fm
+snippet fsol
 void solve() {
    $0
 }
@@ -139,11 +137,19 @@ snippet josuerom
 #endif
 endsnippet
 
+snippet style_josuerom
+/**
+    ──▀ █▀▀█ █▀▀ █──█ █▀▀ █▀▀█ █▀▀█ █▀▄▀█ 
+    ──█ █──█ ▀▀█ █──█ █▀▀ █▄▄▀ █──█ █─▀─█ 
+    █▄█ ▀▀▀▀ ▀▀▀ ─▀▀▀ ▀▀▀ ▀─▀▀ ▀▀▀▀ ▀───▀
+**/
+endsnippet
+
 snippet templateT
 template <typename T>
 endsnippet
 
-snippet stru
+snippet struct
 struct $1 {
    $2
 }
@@ -161,7 +167,7 @@ snippet rac
 cin.getline($1, N$2, '\n');
 endsnippet
 
-snippet rstr
+snippet rl
 getline(cin, s$1);
 endsnippet
 
@@ -171,7 +177,7 @@ double getCurrentTime() {
    return (double)(clock() - startTime) / CLOCKS_PER_SEC;
 }
 $1startTime = clock();
-printf("\ntime = %.5lf\n", getCurrentTime());
+printf("time = %.5lf ms\n", getCurrentTime());
 endsnippet
 
 snippet MAX
@@ -186,13 +192,19 @@ snippet pai
 pair<$1, $2>$3
 endsnippet
 
+snippet author
+/**
+ *   author:  josuerom
+ *   created: `!v strftime("%d/%m/%Y %H:%M:%S")`
+**/
+endsnippet
+
 snippet tem1.cpp
 /**
  *   author:  josuerom
- *   created: `!v strftime("%e/%B/%Y - %R")`
+ *   created: `!v strftime("%d/%m/%Y %H:%M:%S")`
 **/
-#pragma GCC optimize("03,unroll-loops")
-#pragma GCC target("avx2")
+#pragma GCC optimize("O3,unroll-loops")
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -201,43 +213,68 @@ using namespace std;
    #include "debug.h"
 #endif
 
+#define rall(a) (a).rbegin(),(a).rend()
 #define all(a) (a).begin(),(a).end()
 #define ull unsigned long long int
 #define len(a) (int) (a).size()
 #define ll long long int
 #define pb push_back
 #define mp make_pair
-#define ss second
-#define ff first
+#define s second
+#define f first
 
 int main() {
    ios::sync_with_stdio(false);
-   cin.tie(0);
+   cin.tie(0); cout.tie(0);
    $1
-   return 0;
 }
 endsnippet
 
 snippet tem2.cpp
 /**
+    ──▀ █▀▀█ █▀▀ █──█ █▀▀ █▀▀█ █▀▀█ █▀▄▀█ 
+    ──█ █──█ ▀▀█ █──█ █▀▀ █▄▄▀ █──█ █─▀─█ 
+    █▄█ ▀▀▀▀ ▀▀▀ ─▀▀▀ ▀▀▀ ▀─▀▀ ▀▀▀▀ ▀───▀
+**/
+#pragma GCC optimize("O3,unroll-loops")
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#ifdef josuerom
+   #include "debug.h"
+#endif
+
+#define rall(a) (a).rbegin(),(a).rend()
+#define all(a) (a).begin(),(a).end()
+#define ull unsigned long long int
+#define len(a) (int) (a).size()
+#define ll long long int
+#define pb push_back
+#define mp make_pair
+#define s second
+#define f first
+
+int main() {
+   ios::sync_with_stdio(false);
+   cin.tie(0); cout.tie(0);
+   $1
+}
+endsnippet
+
+snippet tem3.cpp
+/**
  *   author:  josuerom
- *   created: `!v strftime("%e/%B/%Y - %R")`
+ *   created: `!v strftime("%d/%m/%Y %H:%M:%S")`
 **/
 #include <bits/stdc++.h>
 
 using namespace std;
 
-#ifdef josuerom
-   #include "debug.h"
-#else
-   #define debug(...) 42
-#endif
-
 int main() {
    ios::sync_with_stdio(false);
-   cin.tie(0);
+   cin.tie(0); cout.tie(0);
    $1
-   return 0;
 }
 endsnippet
 

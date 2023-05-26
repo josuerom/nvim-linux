@@ -1,13 +1,13 @@
 "*-------------------- Configuración Inicial [init.vim] 25/Mayo/2021 11:29a.m COL -----------------------*
 
-"     ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
-"     ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
-"     ██║██╔██╗██║██║░░░██║░░░░░░╚██╗░██╔╝██║██╔████╔██║
-"     ██║██║╚████║██║░░░██║░░░░░░░╚████╔╝░██║██║╚██╔╝██║
-"     ██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║
-"     ╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
-													"Creador >> josuerom
-										"Twitter >> https://twitter.com/josueromr
+"                   ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
+"                   ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
+"                   ██║██╔██╗██║██║░░░██║░░░░░░╚██╗░██╔╝██║██╔████╔██║
+"                   ██║██║╚████║██║░░░██║░░░░░░░╚████╔╝░██║██║╚██╔╝██║
+"                   ██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║
+"                   ╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
+"                                                   Creador >> josuerom
+"                                                   Twitter >> https://twitter.com/josueromr
 
 syntax enable
 set number
@@ -128,10 +128,17 @@ let g:coc_global_extensions = [
   \]
 
 " configuración de UltiSnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+"let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<C-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+" configuración de coc-snippets
+imap <C-l> <Plug>(coc-snippets-expand)
+let g:coc_snippets_next = '<c-j>'
+let g:coc_snippets_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+xmap <Leader>y  <Plug>(coc-convert-snippet)
 
 " cerrado automatico de la barra lateral o tree
 let NERDTreeShowHidden=1
@@ -201,29 +208,33 @@ endfunction
 let mapleader = " "
 
 function! RunJava()
-   imap <F2> <Esc> :w<CR> :!java % < ~/workspaces/sample/input<CR>
-   nmap <F2> :w<CR> :!java % < ~/workspaces/sample/input<CR>
+   imap <F2> <Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>
+   nmap <F2> :w<CR> :!java % < ~/workspace/sample/input<CR>
+   nmap <F3> :w<CR> :terminal %<CR>ils -a<CR>java 
 endfunction
 
 function! RunCpp()
-   imap <F1> <Esc> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -Wextra -Wpedantic -Werror -o ~/sol.out %<<CR>
-   nmap <F1> :w<CR> :!g++ -fsanitize=address -std=c++20 -Djosuerom -Wall -Wextra -Wpedantic -Werror -o ~/sol.out "%"<CR>
+   imap <F1> <Esc> :w<CR> :!g++ -std=c++20 -Djosuerom -Wall -Wextra -Wpedantic -Werror -fsanitize=address % -o ~/workspace/build/sol.out<CR>
+   nmap <F1> :w<CR> :!g++ -std=c++20 -Djosuerom -Wall -Wextra -Wpedantic -Werror -fsanitize=address % -o ~/workspace/build/sol.out<CR>
 
-   imap <F2> <Esc> :w<CR> :!~/sol.out < ~/workspaces/sample/input<CR>
-   nmap <F2> :w<CR> :!~/sol.out < ~/workspaces/sample/input<CR>
+   imap <F2> <Esc> :w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>
+   nmap <F2> :w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>
+   nmap <F3> :w<CR> :terminal ~/workspace/build/<CR>isol.out<CR> 
 endfunction
 
 function! RunPython()
-   imap <F2> <Esc> :w<CR> :!python3 % < ~/workspaces/sample/input<CR>
-   nmap <F2> :w<CR> :!python3 % < ~/workspaces/sample/input<CR>
+   imap <F2> <Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
+   nmap <F2> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
+   nmap <F3> :w<CR> :terminal %<CR>ils -a<CR>python3 
 endfunction
 
 function! RunJsAndTs()
    imap <F1> <Esc> :w<CR> :!node %<CR>
    nmap <F1> :w<CR> :!node %<CR>
 
-   imap <F2> <Esc> :w<CR> :!node % < ~/workspaces/sample/input<CR>
-   nmap <F2> :w<CR> :!node % < ~/workspaces/sample/input<CR>
+   imap <F2> <Esc> :w<CR> :!node % < ~/workspace/sample/input<CR>
+   nmap <F2> :w<CR> :!node % < ~/workspace/sample/input<CR>
+   nmap <F3> :w<CR> :terminal %<CR>ils -a<CR>node 
 endfunction
 
 " para el modo NORMAL desabilito el desplazamiento con las flechas
@@ -234,7 +245,7 @@ noremap <right> <nop>
 
 " salir del modo INSERT con <Esc> <Ctrl+c> o <jj>
 imap <C-c> <Esc>
-imap jj <Esc>
+imap ññ <Esc>
 
 " desplazamiento vertical rápido con (hacia abajo -> ctrl+e) (hacia arriba -> ctrl+y)
 nnoremap <C-k> 50 <C-e>
@@ -250,38 +261,48 @@ nnoremap <Leader>, $a;<Esc>
 " con <space+t> abres la terminal dentro neovim
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
+" acceso rápido a archivos de configuración global
+nmap <Leader>¿ :e $MYVIMRC<CR>
+
 " abre el archivo de ES input
-nnoremap <F3> :w<CR> :e ~/workspaces/sample/input<CR>
+nnoremap <F4> :w<CR> :e ~/workspace/sample/input<CR>
 " copia la ruta general del archivo abierto con <F4>
-nnoremap <F4>kp :let @*=expand("%")<CR>
+nnoremap <F5>kp :let @*=expand("%")<CR>
 " abre el archivo de configuración general con <F3>
-nnoremap <F5> :e $MYVIMRC<CR>
+nnoremap <F6> :e $MYVIMRC<CR>
 " refresca neovim con <F5>
-nmap <F6> :so ~/.config/nvim/init.vim<CR>
+nmap <F7> :so ~/.config/nvim/init.vim<CR>
 " elimina todos los espacios en blanco que contenga el archivo, con <F2>
-nnoremap <F7> :%s/\s\+$//e<CR>
+nnoremap <F8> :%s/\s\+$//e<CR>
 
 " copia todo el contenido del archivo abierto con Ctrl + a
-nnoremap <C-a> :%y+<CR>
+imap <C-a> <Esc> :w<CR> :%y+<CR>
+nmap <C-a> :w<CR> :%y+<CR>
 
-" para guardar los cambios del archivo presione <space+w> en modo NORMAL o <ctrl+s> en INSERT
-nnoremap <Leader>w :w<CR>
-nnoremap <C-s> :w<CR>
+" para guardar los cambios del archivo presione <space+w> en modeo INSERT o NORMAL
+nmap <Leader>w :w<CR>
+nmap <C-s> <Esc> :w<CR>
 imap <C-s> <Esc> :w<CR>
 " para cerrar búfers <space+q>
-nnoremap <Leader>q :q!<CR>
+nmap <C-q> :q<CR>
+nmap <Leader>q :q<CR>
+imap <C-q> <Esc> :q<CR>
 " para salir rápidamente de nvim <space+x>
-nnoremap <Leader>x :qa!<CR>
+nmap <C-x> :qa!<CR>
+nmap <Leader>x :qa!<CR>
+imap <C-x> <Esc> :qa!<CR>
 
 " abre el árbol, side bar o NERDTree
 nmap <Leader>e :NERDTreeToggle<CR>
+" abre arbol de nvim
+nmap <Leader>p :Explore<CR>
 " ejecute FZF (Fuzy Find Files)
 nmap <Leader>f :FZF<CR>
 
-" comentar líneas con <}+}>
-vmap <C-}> <plug>NERDCommenterToggle
-nmap <C-}> <plug>NERDCommenterToggle
-imap <C-}> <Esc> :w<CR> <plug>NERDCommenterToggle
+" comentar por línea con <}+}>
+vmap }} <plug>NERDCommenterToggle
+nmap }} <plug>NERDCommenterToggle
+imap }} <Esc> :w<CR> <plug>NERDCommenterToggle
 
 " navegación rápida entre buffers abiertos
 nnoremap <silent><C-h> :TmuxNavigateLeft<CR>
@@ -289,13 +310,14 @@ nnoremap <silent><C-j> :TmuxNavigateDown<CR>
 noremap <silent><C-k> :TmuxNavigateUp<CR>
 nnoremap <silent><C-l> :TmuxNavigateRight<CR>
 
-" atajos para el flujo rápido con git
+" atajos para el flujo rápido con Git
+nnoremap <Leader>go :GV<CR>
 nnoremap <Leader>g :Git init<CR>
 nnoremap <Leader>gs :Git status<CR>
 nnoremap <Leader>ga :Git add -A<CR>
-nnoremap <Leader>gc :Git commit -m "♻  Update file"<CR>
+nnoremap <Leader>gc :Git commit -m "♻ Update"<CR>
 nnoremap <Leader>gcc :Git commit -v<CR>
-nnoremap <Leader>glg :Git log --oneline<CR>
+nnoremap <Leader>glo :Git log --oneline<CR>
 nnoremap <Leader>grr :Git remote add origin https://github.com/$USER$/.git
 nnoremap <Leader>gpp :Git push -u origin main<CR>
 nnoremap <Leader>gp :Git push<CR>
@@ -303,17 +325,14 @@ nnoremap <Leader>gpu :Git push --set-upstream origin main<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>gl :Git pull<CR>
 nnoremap <Leader>gm :Git merge<CR>
-nnoremap <Leader>ge :Git revert
 
 " flujo instantaneo con COC
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" dividir pantalla en dos [vertical] con space+ii
-nnoremap <Leader>ii :vsplit<CR>
-" dividir pantalla en dos [horizontal] con space+oo
-nnoremap <Leader>oo :split<CR>
+" dividir pantalla en dos [vertical] con <space+ii>
+nnoremap <Leader>ii :vsp<CR>
 
 " navegación entre pestañas abiertas con <spacer+l> y <space+h>
 nnoremap <Leader>l :bnext<CR>
@@ -323,22 +342,22 @@ nnoremap <Leader>dl :bdelete<CR>
 " búsqueda por dos carácteres con easymotion
 nmap <Leader>s <Plug>(easymotion-s2)
 
-" atajos para el gestor vim-plug
+" atajos para el gestor Vim-Plug
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>pc :PlugClean<CR>
 nnoremap <Leader>pu :PlugUpdate<CR>
 nnoremap <Leader>pp :PlugUpgrade<CR>
 
-" indentar líneas y bloques en cualquier modo VISUAL
+" indentar líneas y bloques en modo NORMAL o VISUAL
 vnoremap < <gv
 vnoremap > >gv
 
-" para multiple cursor debe poner el cursor encima de una palabra y presionar
+" para multiples cursores debe poner el cursor encima de una palabra y presionar
 " <ctrl+n> para buscar las coincidencias en el archivo y luego presione <c>
-" para cambiar su contenido
+" para editar el contenido seleccionado
 
-" para agrupar una cadena de texto con cualquier simbolo ya sea: () [] {} '' "" debes
-" selecionar la palabra hasta un carácter antes y presionar: <s+el-simbolo-a-usar>
+" para agrupar una cadena de texto con cualquier simbolo ya sea: () [] {} '' ""
+" debes selecionar la palabra hasta un carácter antes y presionar: <s+el-simbolo-a-usar>
 " por ejemplo: <s+[>
 xmap s <Plug>VSurround
 
@@ -346,25 +365,17 @@ xmap s <Plug>VSurround
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
-" cambiar la posición de las líneas
+" cambia la posición de una línea
 nnoremap n :m .-2<CR>==
 nnoremap m :m .+1<CR>==
 
 " Para camiar el carácter que contenga una cadena de texto o cambiar el carácteres que los contiene,
-" por ejemplo: si tienes un: 'Hi UserName' al presionar cs+el-simbolo-a-usar, la cadena de carácteres
-" magicamente se cambiará sin necesidad de realizarlo manualmente.
-
-" entrega o gatillado automatico de sugerencias - autocompletado COC
-imap <silent><expr> <C-space> coc#refresh()
+" por ejemplo: si tienes un: 'Hi! World' al presionar <cs+el-simbolo-a-usar> la cadena de carácteres
+" que los agrupa magicamente se cambiaran sin necesidad de realizarlo manualmente
 
 " administrar todos los snippets con <F12>
 nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 " actualizar extensiones
-nnoremap <silent><nowait> <Leader>cuu :<C-u>CocUpdate<CR>
+nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 " desintalar extensiones
-nnoremap <silent><nowait> <Leader>cii :<C-u>CocUninstall coc-
-
-" Use <C-j> para saltar a los demás marcadores de posición
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-" Use <space+y> para convertir el código seleccionado en un snippet
-xmap <Leader>y  <Plug>(coc-convert-snippet)
+nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
