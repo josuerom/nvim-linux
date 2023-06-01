@@ -1,4 +1,4 @@
-<H1 align="center">Instalación y Configuración de Neovim para Linux Septiember 2021.</H1>
+<H1 align="center">Instalación y Configuración de Neovim para Linux Septiembre 2022</H1>
 
 <p align="center" width="0">
    <img align="center" width="645" src="https://github.com/josuerom/config-nvim-linux/blob/main/screen/2022-03-25%2013-49-12.png">
@@ -76,12 +76,18 @@ Para concer si instaló correctamente neovim, ejecute el siguiente comando, le d
 ```zsh
 nvim --version
 ``` 
+Para instalar el editor en su versión más reciente por el archivo *appimage*, debe descargarlo desde [aquí](https://github.com/neovim/neovim/releases/tag/stable) y luego debe ejecutar este comando:
+```zsh
+cd ~/Descargas && chmod +x nvim.appimage && sudo mv nvim.appimage /usr/local/bin/nvim && sudo ln -s /usr/local/bin/nvim /usr/local/bin/vim
+``` 
 
 ### Paso No. 5. Clona los archivos publicados en este repositorio.
 Para clonar copia y pega este comando en tu terminal, pero antes verifica tener instalado Git. 
 
 ```zsh
-git clone https://github.com/josuerom/nvim-linux.git ~/.config/nvim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/nvim}"/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+git clone https://github.com/josuerom/nvim-linux.git ~/.config/nvim && nvim
 ``` 
 
 Esta es la personalización que actualmente tengo en mi neovim:
@@ -135,7 +141,7 @@ Luego de eso, escriba
 :PlugI
 # Y presione tabulador, al presionar debe autocompletarse
 # Si se autocompleta de un enter y listo, pero sino debe instalar
-# Git y el gestor de plugins nuevamente.  
+# Git y el gestor de plugins vim-plug de nuevo  
 ```
 
 Añado captura de pantalla, para que sepas como debe aparecerte:
