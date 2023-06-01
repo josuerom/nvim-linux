@@ -10,7 +10,7 @@ En el presente proyecto se describe el proceso a seguir para personalizar e inst
 ## Herramientas necesarias.
 
 1. Instala **Git**
-2. Instala **Node.js**
+2. Instala **Node.js npm or yarn**
 3. Instala **Python**
 4. Instala **Neovim**
 5. Clona **este repositorio**
@@ -26,6 +26,10 @@ Git es un software de control de versiones diseñado por **Linus Torvalds** qui�
 **Node.js** es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor basado en el lenguaje de programación JavaScript, en pocas palabras, es un programa el cual permite interpretar o ejecutar archivos javascript sin necesidad de correrlo en el navegador, es por eso que Node.js integra su consola; pero esto es siempre y cuando valles a trabajar con **JavaScript**, si tu no lo dominas o no te interesa trabajar con el *"pues no lo instales y ya"*. Por otra parte si no lo instalas cada vez que habrás neovim te saldrá un aviso en rojo pidiendote que instales Node.js, pero no te preocupes que podrás utilizar neovim sin problema algun. 
 
 Para instalarlo da un [click aquí](https://nodejs.org/es/download/ "https://nodejs.org/es/download/"), este enlace te llevará directamente a su pagina oficial de descargar, si requieres más información de instalación, visualizate un video en **YouTube**.
+
+```bash
+sudo apt install nodejs npm yarn -y
+```
 
 ### Paso No. 3. Instala Python.
 Es un lenguaje de alto nivel de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código, se utiliza para desarrollar aplicaciones de todo tipo, ejemplos: Instagram, Netflix, Spotify, Panda 3D, entre otros. Para instalarlo da un [click aquí](https://www.python.org/downloads/), este enlace te llevará a su página oficial de descargas, si requieres más información consultala en Google.

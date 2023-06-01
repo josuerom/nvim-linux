@@ -54,12 +54,11 @@ call plug#begin('~/.config/nvim/plugins')
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'scrooloose/nerdtree'
-  Plug 'ryanoasis/vim-devicons' -- need nerd-fonts
+  "Plug 'ryanoasis/vim-devicons' "need nerd-fonts
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-surround'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'terryma/vim-multiple-cursors'
   Plug 'preservim/nerdcommenter'
   Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
   Plug 'junegunn/fzf.vim'
