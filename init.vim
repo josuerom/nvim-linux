@@ -34,10 +34,10 @@ set updatetime=50
 set shortmess+=c
 
 autocmd BufWritePre * :%s/\s\+$//e
-autocmd FileType java :call runJava()
-autocmd FileType cpp :call runCpp()
-autocmd FileType python :call runPython()
-autocmd FileType javascript,typescript :call runJsAndTs()
+autocmd FileType java :call RunJava()
+autocmd FileType cpp :call RunCpp()
+autocmd FileType python :call RunPython()
+autocmd FileType javascript,typescript :call RunJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -187,13 +187,13 @@ endfunction
 
 let mapleader = " "
 
-function! runJava()
+function! RunJava()
    imap <F2> <Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!java % < ~/workspace/sample/input<CR>
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>java
 endfunction
 
-function! runCpp()
+function! RunCpp()
    imap <F1> <Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wpedantic -Werror -Djosuerom<CR>
    nmap <F1> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wpedantic -Werror -Djosuerom<CR>
 
@@ -202,13 +202,13 @@ function! runCpp()
    nmap <F3> :w<CR> :cd ~/workspace/build/<CR> :terminal<CR>i./sol.out<CR>
 endfunction
 
-function! runPython()
+function! RunPython()
    imap <F2> <Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>python3
 endfunction
 
-function! runJsAndTs()
+function! RunJsAndTs()
    imap <F1> <Esc> :w<CR> :!node %<CR>
    nmap <F1> :w<CR> :!node %<CR>
 
@@ -217,7 +217,7 @@ function! runJsAndTs()
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>node
 endfunction
 
-"function! name_function()
+"function! RunLanguage()
 "   mode <key> <Esc> command
 "endfunction
 

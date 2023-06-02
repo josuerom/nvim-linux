@@ -3,7 +3,7 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-21",
-      "path": "/usr/lib/jvm/java-21-openjdk-21.0.16.0.8-1.fc37.x86_64/",
+      "path": "/usr/bin/java",
       "default": true
     }
   ],
@@ -23,12 +23,12 @@
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"]
   },
-  "snippets.userSnippetsDirectory": "~/workspace/nvim/snippets/ultisnips",
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets/ultisnips",
   "snippets.shortcut": "S",
   "snippets.autoTrigger": true,
   "snippets.triggerCharacters": [],
   "snippets.loadFromExtensions": true,
-  "snippets.textmateSnippetsRoots": ["~/workspace/nvim/snippets/vscode"],
+  "snippets.textmateSnippetsRoots": ["~/.config/nvim/snippets/vscode"],
   "snippets.ultisnips.enable": true,
   "snippets.ultisnips.usePythonx": true,
   "snippets.ultisnips.directories": ["ultisnips"],
