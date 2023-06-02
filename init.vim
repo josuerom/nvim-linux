@@ -1,13 +1,13 @@
-"*-------------------- Configuración Inicial [init.vim] 25/Septiembre/2022 11:29a.m COL -----------------------*
+"*-------------- Configuración Inicial [init.vim] 25/Septiembre/2022 11:29a.m COL --------------*
 
-"                          ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
-"                          ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
-"                          ██║██╔██╗██║██║░░░██║░░░░░░╚██╗░██╔╝██║██╔████╔██║
-"                          ██║██║╚████║██║░░░██║░░░░░░░╚████╔╝░██║██║╚██╔╝██║
-"                          ██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║
-"                          ╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
-"                                         Creador >> josuerom
-"                               Twitter >> https://twitter.com/josueromr
+"                        ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
+"                        ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
+"                        ██║██╔██╗██║██║░░░██║░░░░░░╚██╗░██╔╝██║██╔████╔██║
+"                        ██║██║╚████║██║░░░██║░░░░░░░╚████╔╝░██║██║╚██╔╝██║
+"                        ██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║
+"                        ╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
+"                                      Creado por >> josuerom
+"                             Twitter >> https://twitter.com/josueromr
 
 syntax enable
 set number
@@ -18,7 +18,6 @@ set clipboard=unnamedplus
 set background=dark
 set ruler
 set sw=3
-set tabstop=3
 set termguicolors
 set showmatch
 set showcmd
@@ -59,11 +58,11 @@ call plug#begin('~/.config/nvim/plugins')
   Plug 'tpope/vim-surround'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'terryma/vim-multiple-cursors'
   Plug 'preservim/nerdcommenter'
   Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
   Plug 'junegunn/fzf.vim'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'yggdroot/indentline'
 
 call plug#end()
 
@@ -187,7 +186,7 @@ let mapleader = " "
 function! RunJava()
    imap <F2> <Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!java % < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :terminal %:h<CR>ils<CR>java 
+   nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>java
 endfunction
 
 function! RunCpp()
@@ -196,13 +195,13 @@ function! RunCpp()
 
    imap <F2> <Esc> :w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :terminal ~/workspace/build/<CR>i./sol.out<CR> 
+   nmap <F3> :w<CR> :cd ~/workspace/build/<CR> :terminal<CR>i./sol.out<CR>
 endfunction
 
 function! RunPython()
    imap <F2> <Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :terminal %:h<CR>ils<CR>python3 
+   nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>python3
 endfunction
 
 function! RunJsAndTs()
@@ -211,7 +210,7 @@ function! RunJsAndTs()
 
    imap <F2> <Esc> :w<CR> :!node % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!node % < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :terminal %:h<CR>ils<CR>node 
+   nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>node
 endfunction
 
 noremap <up> <nop>
@@ -234,17 +233,19 @@ nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 nmap <Leader>¿ :e $MYVIMRC<CR>
 
-nnoremap <F4> :w<CR> :e ~/workspace/sample/input<CR>
-nnoremap <F5>kp :let @*=expand("%")<CR>
-nnoremap <F6> :e $MYVIMRC<CR>
+nmap <F4> :w<CR> :e ~/workspace/sample/input<CR>
+imap <F4> <Esc> :w<CR> :e ~/workspace/sample/input<CR>
+
+nnoremap <F5> :so $MYVIMRC<CR>
+nnoremap <F6>kp :let @*=expand("%")<CR>
 nmap <F7> :so ~/.config/nvim/init.vim<CR>
 
-imap <C-a> <Esc> :w<CR> :%y+<CR>
-nmap <C-a> :w<CR> :%y+<CR>
+imap <C-c> <Esc> :w<CR> :%y+<CR>
+nmap <C-c> :w<CR> :%y+<CR>
 
-nmap <Leader>w :w<CR>
-nmap <C-s> <Esc> :w<CR>
-imap <C-s> <Esc> :w<CR>
+nmap <Leader>w :w!<CR>
+nmap <C-s> :w!<CR>
+imap <C-s> <Esc> :w!<CR>
 
 nmap <C-q> :q<CR>
 nmap <Leader>q :q<CR>
@@ -265,14 +266,14 @@ imap }} <Esc> :w<CR> <plug>NERDCommenterToggle
 
 nnoremap <silent><C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent><C-j> :TmuxNavigateDown<CR>
-noremap <silent><C-k> :TmuxNavigateUp<CR>
+nnoremap <silent><C-k> :TmuxNavigateUp<CR>
 nnoremap <silent><C-l> :TmuxNavigateRight<CR>
 
 " atajos para el flujo rápido con Git
 nnoremap <Leader>go :GV<CR>
-nnoremap <Leader>g :Git init<CR>
+nnoremap <Leader>gi :Git init<CR>
 nnoremap <Leader>gs :Git status<CR>
-nnoremap <Leader>ga :Git add -A<CR>
+nnoremap <Leader>ga :Git add .<CR>
 nnoremap <Leader>gc :Git commit -m "♻ Update"<CR>
 nnoremap <Leader>gcc :Git commit -v<CR>
 nnoremap <Leader>glo :Git log --oneline<CR>
@@ -329,3 +330,8 @@ nnoremap m :m .+1<CR>==
 nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
+
+" NOTA: para que mi configuración le funcione correctamente y no inicie con errores.
+" USTED DEBE INSTALAR las siguientes 6 herramientas:
+" git nodejs python3 npm yarn
+" y el gestor de plugins: vim-plug desde: https://github.com/junegunn/vim-plug
