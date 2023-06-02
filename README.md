@@ -9,12 +9,12 @@ En el presente proyecto se describe el proceso a seguir para personalizar e inst
 
 ## Herramientas necesarias.
 
-1. Instala **Git**
-2. Instala **Node.js npm or yarn**
-3. Instala **Python**
-4. Instala **Neovim**
-5. Clona **este repositorio**
-6. Instala el gestor de plugins **vim-plug**
+1. Instala **git**
+2. Instala **nodejs npm & yarn**
+3. Instala **python3**
+4. Instala **neovim**
+5. Instala el gestor de plugins **vim-plug**
+6. Clona **este repositorio**
 
 **Tenga en cuenta que:** para instalar Neovim, si o si necesitarás utilizar todas esas 5 herramientas, para ello aquí conocerás el paso a paso para instalar cada una correctamente sin errores ni falsa información, cabe mensionar que, *Bash o Windows PowerShell* viene instalados de fabrica en los Sistemas Operativos, por eso no será necesario explicar el como ejecutarlo, ni instalarlo, *¡ni abrirlo ¡eso ya debes de saberlo programador!* y si no sabes mirate un video en YouTube.
 
@@ -84,8 +84,41 @@ Para instalar el editor en su versión más reciente por el archivo *appimage*, 
 ```zsh
 cd ~/Descargas && chmod +x nvim.appimage && sudo mv nvim.appimage /usr/local/bin/nvim && sudo ln -s /usr/local/bin/nvim /usr/local/bin/vim
 ``` 
+### Paso No. 5. Instala el gestor de plugins VIM PLUG
+**Vim plug** es un administrador de plugins para el editor de texto vim y neovim minimalista, de código abierto creado por **junegunn** y gratuito que puede instalar y actualizar complementos en paralelo. Crea clones para minimizar el uso de espacio del disco y el tiempo de descarga; para realizar una descarga limpia y ligera, ejecuta en la terminal nueva, en la pestaña PowerShell ejecutada como administrador el siguiente comando:
 
-### Paso No. 5. Clona los archivos publicados en este repositorio.
+Copie y pegue el siguiente comando en su terminal GNU/Linux
+```zsh
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/nvim}"/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+``` 
+
+Ese comando creará el archivo **plug.vim** en la ruta: **~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim**, pero debe copiar y pegar la carpta autoload y pergarla en la ruta donde esta neovim, para que recuerdes es esta: **$HOME/.config/nvim/**. 
+
+Una vez culmines con lo anterior abre neovim, con el siguiente comando
+```zsh
+nvim
+```
+
+Luego de eso, escriba 
+```zsh
+:PlugI
+# Y presione tabulador, al presionar debe autocompletarse
+# Si se autocompleta de un enter y listo, pero sino debe instalar
+# Git y el gestor de plugins vim-plug de nuevo  
+```
+
+Añado captura de pantalla, para que sepas como debe aparecerte:
+<p align="center" width="0">
+   <img align="center" src="">
+</p>
+
+Con el comando ejecutado se te instalaran todos los plugins que uso; añado otra captura de pantalla.
+<p align="center" width="0">
+   <img align="center" src="">
+</p>
+
+### Paso No. 6. Clona los archivos publicados en este repositorio
 Para clonar copia y pega este comando en tu terminal, pero antes verifica tener instalado Git. 
 
 ```zsh
@@ -123,40 +156,6 @@ Luego de ejecutar el comando, te arrojará estos errores que son normales la pri
 </p>
 
 Para saltar esos errores debes presionar la tecla enter las veces necesarias, nada más faltaría instalar el gestor de plugins **vim plug** para que así culmines con la configuración.
-
-### Paso No. 6. Instala el gestor de plugins VIM PLUG
-**Vim plug** es un administrador de plugins para el editor de texto vim y neovim minimalista, de código abierto creado por **junegunn** y gratuito que puede instalar y actualizar complementos en paralelo. Crea clones para minimizar el uso de espacio del disco y el tiempo de descarga; para realizar una descarga limpia y ligera, ejecuta en la terminal nueva, en la pestaña PowerShell ejecutada como administrador el siguiente comando:
-
-Copie y pegue el siguiente comando en su terminal GNU/Linux
-```zsh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/nvim}"/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-``` 
-
-Ese comando creará el archivo **plug.vim** en la ruta: **~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim**, pero debe copiar y pegar la carpta autoload y pergarla en la ruta donde esta neovim, para que recuerdes es esta: **$HOME/.config/nvim/**. 
-
-Una vez culmines con lo anterior abre neovim, con el siguiente comando
-```zsh
-nvim
-```
-
-Luego de eso, escriba 
-```zsh
-:PlugI
-# Y presione tabulador, al presionar debe autocompletarse
-# Si se autocompleta de un enter y listo, pero sino debe instalar
-# Git y el gestor de plugins vim-plug de nuevo  
-```
-
-Añado captura de pantalla, para que sepas como debe aparecerte:
-<p align="center" width="0">
-   <img align="center" src="">
-</p>
-
-Con el comando ejecutado se te instalaran todos los plugins que uso; añado otra captura de pantalla.
-<p align="center" width="0">
-   <img align="center" src="">
-</p>
 
 Despues de que hayan terminado todas las descargas y quieras ver los cambios efectuados, presiona las teclas [espacio+x], en el modo **NORMAL**
 
