@@ -50,6 +50,8 @@ call plug#begin('~/.config/nvim/plugins')
 
   Plug 'sheerun/vim-polyglot'
   Plug 'morhetz/gruvbox'
+  Plug 'navarasu/onedark.nvim'
+  Plug 'tanvirtin/monokai.nvim'
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'scrooloose/nerdtree'
@@ -70,6 +72,8 @@ call plug#end()
 let g:gruvbox_contrast_dark = "hard"
 highlight Normal ctermbg = NONE
 colorscheme gruvbox
+"colorscheme onedark
+"colorscheme monokai
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝       ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝   ██║   ██║██║████╗ ████║
@@ -213,6 +217,11 @@ function! RunJsAndTs()
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>node
 endfunction
 
+"
+function! name_function()
+endfunction
+"
+
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
@@ -259,7 +268,6 @@ nmap <Leader>e :NERDTreeToggle<CR>
 nmap <Leader>p :Explore<CR>
 nmap <Leader>f :FZF<CR>
 
-" comentar por línea con <}+}>
 vmap }} <plug>NERDCommenterToggle
 nmap }} <plug>NERDCommenterToggle
 imap }} <Esc> :w<CR> <plug>NERDCommenterToggle
@@ -269,23 +277,6 @@ nnoremap <silent><C-j> :TmuxNavigateDown<CR>
 nnoremap <silent><C-k> :TmuxNavigateUp<CR>
 nnoremap <silent><C-l> :TmuxNavigateRight<CR>
 
-" atajos para el flujo rápido con Git
-nnoremap <Leader>go :GV<CR>
-nnoremap <Leader>gi :Git init<CR>
-nnoremap <Leader>gs :Git status<CR>
-nnoremap <Leader>ga :Git add .<CR>
-nnoremap <Leader>gc :Git commit -m "♻ Update"<CR>
-nnoremap <Leader>gcc :Git commit -v<CR>
-nnoremap <Leader>glo :Git log --oneline<CR>
-nnoremap <Leader>grr :Git remote add origin https://github.com/$USER$/.git
-nnoremap <Leader>gpp :Git push -u origin main<CR>
-nnoremap <Leader>gp :Git push<CR>
-nnoremap <Leader>gpu :Git push --set-upstream origin main<CR>
-nnoremap <Leader>gf :Git fetch<CR>
-nnoremap <Leader>gl :Git pull<CR>
-nnoremap <Leader>gm :Git merge<CR>
-
-" flujo instantaneo con COC
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -331,7 +322,9 @@ nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
 
-" NOTA: para que mi configuración le funcione correctamente y no inicie con errores.
-" USTED DEBE INSTALAR las siguientes 6 herramientas:
-" git nodejs python3 npm yarn
-" y el gestor de plugins: vim-plug desde: https://github.com/junegunn/vim-plug
+" NOTA:
+  Para que mi configuración le funcione correctamente y no inicie con errores.
+  USTED DEBE INSTALAR las siguientes 6 herramientas:
+  git nodejs python3 npm yarn
+  Y el gestor de plugins: vim-plug --> https://github.com/junegunn/vim-plug
+"
