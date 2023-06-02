@@ -34,10 +34,10 @@ set updatetime=50
 set shortmess+=c
 
 autocmd BufWritePre * :%s/\s\+$//e
-autocmd FileType java :call RunJava()
-autocmd FileType cpp :call RunCpp()
-autocmd FileType python :call RunPython()
-autocmd FileType javascript,typescript :call RunJsAndTs()
+autocmd FileType java :call runJava()
+autocmd FileType cpp :call runCpp()
+autocmd FileType python :call runPython()
+autocmd FileType javascript,typescript :call runJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -187,13 +187,13 @@ endfunction
 
 let mapleader = " "
 
-function! RunJava()
+function! runJava()
    imap <F2> <Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!java % < ~/workspace/sample/input<CR>
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>java
 endfunction
 
-function! RunCpp()
+function! runCpp()
    imap <F1> <Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wpedantic -Werror -Djosuerom<CR>
    nmap <F1> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wpedantic -Werror -Djosuerom<CR>
 
@@ -202,13 +202,13 @@ function! RunCpp()
    nmap <F3> :w<CR> :cd ~/workspace/build/<CR> :terminal<CR>i./sol.out<CR>
 endfunction
 
-function! RunPython()
+function! runPython()
    imap <F2> <Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
    nmap <F2> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>python3
 endfunction
 
-function! RunJsAndTs()
+function! runJsAndTs()
    imap <F1> <Esc> :w<CR> :!node %<CR>
    nmap <F1> :w<CR> :!node %<CR>
 
@@ -217,10 +217,9 @@ function! RunJsAndTs()
    nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>node
 endfunction
 
-"
-function! name_function()
-endfunction
-"
+"function! name_function()
+"   mode <key> <Esc> command
+"endfunction
 
 noremap <up> <nop>
 noremap <down> <nop>
@@ -241,7 +240,6 @@ nnoremap <Leader>, $a;<Esc>
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 nmap <Leader>¿ :e $MYVIMRC<CR>
-
 nmap <F4> :w<CR> :e ~/workspace/sample/input<CR>
 imap <F4> <Esc> :w<CR> :e ~/workspace/sample/input<CR>
 
@@ -322,9 +320,7 @@ nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
 
-" NOTA:
-  Para que mi configuración le funcione correctamente y no inicie con errores.
-  USTED DEBE INSTALAR las siguientes 6 herramientas:
-  git nodejs python3 npm yarn
-  Y el gestor de plugins: vim-plug --> https://github.com/junegunn/vim-plug
-"
+" NOTA: para que mi configuración le funcione correctamente y no inicie con errores.
+" USTED DEBE INSTALAR las siguientes 6 herramientas:
+"   git nodejs python3 npm yarn 
+" Y vim-plug --> https://github.com/junegunn/vim-plug
