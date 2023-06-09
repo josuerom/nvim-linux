@@ -2,7 +2,7 @@
   // Java
   "java.configuration.runtimes": [
     {
-      "name": "JavaSE-21",
+      "name": "JavaSE",
       "path": "/usr/bin/java",
       "default": true
     }

@@ -55,7 +55,7 @@ call plug#begin('~/.config/nvim/plugins')
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'scrooloose/nerdtree'
-  "Plug 'ryanoasis/vim-devicons' "need nerd-fonts
+  "Plug 'ryanoasis/vim-devicons' "your terminal need nerd-fonts
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-surround'
   Plug 'christoomey/vim-tmux-navigator'
@@ -109,8 +109,6 @@ let g:lightline = {
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-java',
-  \ 'coc-clangd',
   \]
 
 " configuración de coc-snippets
