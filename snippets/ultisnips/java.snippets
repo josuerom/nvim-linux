@@ -616,7 +616,15 @@ while (tt-- > 0) {
 }
 endsnippet
 
-snippet author "header file" b
+snippet tc "Read test case" b
+int tt = sc.nextInt();
+while (tt-- > 0) {
+   $1
+   solve($2);
+}
+endsnippet
+
+snippet @ "header file" b
 /**
  *   author:  josuerom
  *   created: `!v strftime("%d/%m/%Y %H:%M:%S")`
@@ -635,69 +643,66 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.StringTokenizer;
-import java.util.Collections;
 import static java.lang.Math.*;
 
 public class `!p snip.rv = snip.basename` {
    static FastReader fr = new FastReader();
    static PrintWriter pw = new PrintWriter(System.out);
-   static final boolean DEBUG = false;
+   static final Random random = new Random();
+   static final int MOD = 1_000_000_007;
    static final int MAX = 1_000_007;
+   static final boolean DEBUG = true;
 
    public static void main(String[] authorJosuerom) {
-      $1
-      pw.flush(); pw.close();
+	   int tt = 1;
+      $1tt = fr.readInt();
+      while (tt-- > 0) solve();
+      fr.close(); pw.close();
    }
 
-   public static void solve($3) {
+   static void solve() {
+      $2
    }
 
-   static class Treasure {
-      static final Random random = new Random();
-      static final int MOD = 1_000_000_007;
+   static void ruffleSort(int[] a) {
+      int n = a.length;
+      for (int i = 0; i < n; i++) {
+         int oi = random.nextInt(n), temp = a[oi];
+         a[oi] = a[i]; a[i] = temp;
+      }
+      Arrays.sort(a);
+   }
 
-      public Treasure() { }
+   static long add(long a, long b) {
+      return (a+b) % MOD;
+   }
+   static long sub(long a, long b) {
+      return ((a-b) % MOD + MOD) % MOD;
+   }
+   static long mul(long a, long b) {
+      return (a*b) % MOD;
+   }
+   static long div(long a, long b) {
+      return (a/b) % MOD;
+   }
+   static long exp(long base, long exp) {
+      if (exp==0) return 1;
+      long half=exp(base, exp/2);
+      if (exp%2==0) return mul(half, half);
+      return mul(half, mul(half, base));
+   }
 
-      static void ruffleSort(int[] a) {
-         int n = a.length;
-         for (int i = 0; i < n; i++) {
-            int oi = random.nextInt(n), temp = a[oi];
-            a[oi] = a[i]; a[i] = temp;
-         }
-         Arrays.sort(a);
-      }
+   static long[] factorials = new long[2_000_007];
+   static long[] invFactorials = new long[2_000_007];
 
-      static long add(long a, long b) {
-         return (a+b) % MOD;
-      }
-      static long sub(long a, long b) {
-         return ((a-b) % MOD + MOD) % MOD;
-      }
-      static long mul(long a, long b) {
-         return (a*b) % MOD;
-      }
-      static long div(long a, long b) {
-         return (a/b) % MOD;
-      }
-      static long exp(long base, long exp) {
-         if (exp==0) return 1;
-         long half=exp(base, exp/2);
-         if (exp%2==0) return mul(half, half);
-         return mul(half, mul(half, base));
-      }
-
-      static long[] factorials = new long[2_000_007];
-      static long[] invFactorials = new long[2_000_007];
-
-      static void precompFacts() {
-         factorials[0] = invFactorials[0] = 1;
-         for (int i = 1; i < factorials.length; i++) factorials[i] = mul(factorials[i-1], i);
-         invFactorials[factorials.length-1] = exp(factorials[factorials.length-1], MOD-2);
-         for (int i = invFactorials.length-2; i >= 0; i--) invFactorials[i] = mul(invFactorials[i+1], i+1);
-      }
-      static long nCr(int n, int r) {
-         return mul(factorials[n], mul(invFactorials[r], invFactorials[n-r]));
-      }
+   static void precompFacts() {
+      factorials[0] = invFactorials[0] = 1;
+      for (int i = 1; i < factorials.length; i++) factorials[i] = mul(factorials[i-1], i);
+      invFactorials[factorials.length-1] = exp(factorials[factorials.length-1], MOD-2);
+      for (int i = invFactorials.length-2; i >= 0; i--) invFactorials[i] = mul(invFactorials[i+1], i+1);
+   }
+   static long nCr(int n, int r) {
+      return mul(factorials[n], mul(invFactorials[r], invFactorials[n-r]));
    }
 
    static class FastReader {
@@ -707,6 +712,11 @@ public class `!p snip.rv = snip.basename` {
       public FastReader() {
          br = new BufferedReader(new InputStreamReader(System.in));
          st = new StringTokenizer("");
+      }
+
+      void close() {
+         try { br.close(); }
+         catch (IOException e) { e.printStackTrace(); }
       }
 
       String next() {
@@ -727,7 +737,12 @@ public class `!p snip.rv = snip.basename` {
       long readLong() { return Long.parseLong(next()); }
       int readInt() { return Integer.parseInt(next()); }
 
-      int[] readArrayInt(int N) {
+      long[] readArrayLong(int N) {
+         long[] a = new long[N];
+         for (int i = 0; i < N; i++) { a[i] = readLong(); }
+         return a;
+      }
+      int[] readArray(int N) {
          int[] a = new int[N];
          for (int i = 0; i < N; i++) { a[i] = readInt(); }
          return a;
@@ -744,33 +759,21 @@ snippet tem2 "Template 2 medium level" b
 **/
 import java.util.Scanner;
 import java.util.Arrays;
-import static java.lang.Math.min;
-import static java.lang.Math.max;
-import static java.lang.Math.abs;
+import static java.lang.Math.*;
 
 public class `!p snip.rv = snip.basename` {
-   static final boolean DEBUG = false;
-
    public static void main(String[] authorJosuerom) {
       readInput();
    }
 
-   public static void solve(int[] a$2) {
-      $3
+   static void readInput() {
+      Scanner sc = new Scanner(System.in);
+      $1
+      sc.close(); System.out.close();
    }
 
-   public static void readInput() {
-      Scanner sc = new Scanner(System.in);
-      int tt = sc.nextInt();
-      while (tt-- > 0) {
-         int N = sc.nextInt();
-         int vi = new int[N];
-         for (int i = 0; i < N$1; i++) {
-            vi[i] = sc.nextInt();
-         }
-         solve(vi);
-      }
-      sc.close(); System.out.close();
+   static void solve($2) {
+      $3
    }
 }
 endsnippet
@@ -797,23 +800,117 @@ snippet tem4 "Template 4 team 2 bits" b
      █▄  █▄█ █ ░█░ ▄█ ▀▄ ▄▀
    created: `!v strftime("%d/%m/%Y %H:%M:%S")`
 **/
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.Arrays;
-import static java.lang.Math.min;
-import static java.lang.Math.max;
-import static java.lang.Math.abs;
+import java.util.Random;
+import java.util.StringTokenizer;
+import static java.lang.Math.*;
 
 public class `!p snip.rv = snip.basename` {
-   static Scanner sc = new Scanner(System.in);
+   static FastReader fr = new FastReader();
+   static PrintWriter pw = new PrintWriter(System.out);
+   static final Random random = new Random();
+   static final int MOD = 1_000_000_007;
+   static final int MAX = 1_000_007;
+   static final boolean DEBUG = true;
 
    public static void main(String[] authorJosuerom) {
-	   $1
-      solve();
-      sc.close(); System.out.close();
+	   int tt = 1;
+      $1tt = fr.readInt();
+      while (tt-- > 0) solve();
+      fr.close(); pw.close();
    }
 
-   public static void solve() {
+   static void solve() {
       $2
+   }
+
+   static void ruffleSort(int[] a) {
+      int n = a.length;
+      for (int i = 0; i < n; i++) {
+         int oi = random.nextInt(n), temp = a[oi];
+         a[oi] = a[i]; a[i] = temp;
+      }
+      Arrays.sort(a);
+   }
+
+   static long add(long a, long b) {
+      return (a+b) % MOD;
+   }
+   static long sub(long a, long b) {
+      return ((a-b) % MOD + MOD) % MOD;
+   }
+   static long mul(long a, long b) {
+      return (a*b) % MOD;
+   }
+   static long div(long a, long b) {
+      return (a/b) % MOD;
+   }
+   static long exp(long base, long exp) {
+      if (exp==0) return 1;
+      long half=exp(base, exp/2);
+      if (exp%2==0) return mul(half, half);
+      return mul(half, mul(half, base));
+   }
+
+   static long[] factorials = new long[2_000_007];
+   static long[] invFactorials = new long[2_000_007];
+
+   static void precompFacts() {
+      factorials[0] = invFactorials[0] = 1;
+      for (int i = 1; i < factorials.length; i++) factorials[i] = mul(factorials[i-1], i);
+      invFactorials[factorials.length-1] = exp(factorials[factorials.length-1], MOD-2);
+      for (int i = invFactorials.length-2; i >= 0; i--) invFactorials[i] = mul(invFactorials[i+1], i+1);
+   }
+   static long nCr(int n, int r) {
+      return mul(factorials[n], mul(invFactorials[r], invFactorials[n-r]));
+   }
+
+   static class FastReader {
+      BufferedReader br;
+      StringTokenizer st;
+
+      public FastReader() {
+         br = new BufferedReader(new InputStreamReader(System.in));
+         st = new StringTokenizer("");
+      }
+
+      void close() {
+         try { br.close(); }
+         catch (IOException e) { e.printStackTrace(); }
+      }
+
+      String next() {
+         while (!st.hasMoreTokens()) {
+            try { st = new StringTokenizer(br.readLine()); }
+            catch (IOException e) { e.printStackTrace(); }
+         }
+         return st.nextToken();
+      }
+      String readLine() {
+         String line = null;
+         try { line = br.readLine(); }
+         catch (IOException e) { e.printStackTrace(); }
+         return line;
+      }
+
+      double readDouble() { return Double.parseDouble(next()); }
+      long readLong() { return Long.parseLong(next()); }
+      int readInt() { return Integer.parseInt(next()); }
+
+      long[] readArrayLong(int N) {
+         long[] a = new long[N];
+         for (int i = 0; i < N; i++) { a[i] = readLong(); }
+         return a;
+      }
+      int[] readArray(int N) {
+         int[] a = new int[N];
+         for (int i = 0; i < N; i++) { a[i] = readInt(); }
+         return a;
+      }
    }
 }
 endsnippet
