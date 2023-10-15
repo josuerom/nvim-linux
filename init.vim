@@ -182,11 +182,11 @@ endfunction
 
 let mapleader = " "
 
-function! RunJava()
+function! CompileJava()
     let l:filename = expand('%:t')
     " Verifica si 'javac' está disponible en el sistema
     " Intenta compilar con 'javac' y muestra los errores si los hay
-    let l:compile_command = 'javac ' . l:filename
+    let l:compile_command = 'javac -d ~/workspace/bin ' . l:filename
     let l:error_output = system(l:compile_command . ' 2>&1')
     " Verifica si hubo errores durante la compilación
     if v:shell_error
@@ -195,6 +195,23 @@ function! RunJava()
     else
         echo "Compilación exitosa!"
     endif
+endfunction
+
+function! CompileCpp()
+    let l:filename = expand('%:t')
+    let l:compile_command = 'g++ ' . l:filename . ' -o ' . '~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
+    let l:error_output = system(l:compile_command . ' 2>&1')
+    if v:shell_error
+        echo "Error de compilación:"
+        echo l:error_output
+    else
+        echo "Compilación exitosa!"
+    endif
+endfunction
+
+function! RunJava()
+    imap <F1> <Esc> :w<CR> :call CompileJava()<CR>
+    nmap <F1> :w<CR> :call CompileJava()<CR>
     imap <F2> <Esc> :w<CR> :!java % < ~/workspace/samples/in
     nmap <F2> :w<CR> :!java % < ~/workspace/samples/in
     imap <F3> <Esc> :w<CR> :terminal time java %<CR>i
@@ -202,43 +219,13 @@ function! RunJava()
 endfunction
 
 function! RunCpp()
-    let l:filename = expand('%:t')
-    " Verifica si 'g++' está disponible en el sistema
-    " Intenta compilar con 'g++' y muestra los errores si los hay
-    let l:compile_command = 'g++ ' . l:filename . ' -o ' . '~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
-    let l:error_output = system(l:compile_command . ' 2>&1')
-    " Verifica si hubo errores durante la compilación
-    if v:shell_error
-        echo "Error de compilación:"
-        echo l:error_output
-    else
-        echo "Compilación exitosa!"
-    endif
+    imap <F1> <Esc> :w<CR> :call CompileCpp()<CR>
+    nmap <F1> :w<CR> :call CompileCpp()<CR>
     imap <F2> <Esc> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in
     nmap <F2> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in
     imap <F3> <Esc> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
     nmap <F3> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
 endfunction
-
-
-function! RunPython()
-   imap <F2> <Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
-   nmap <F2> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>python3
-endfunction
-
-function! RunJsAndTs()
-   imap <F1> <Esc> :w<CR> :!node %<CR>
-   nmap <F1> :w<CR> :!node %<CR>
-
-   imap <F2> <Esc> :w<CR> :!node % < ~/workspace/sample/input<CR>
-   nmap <F2> :w<CR> :!node % < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>node
-endfunction
-
-"function! RunLanguage()
-"   mode <key> <Esc> command
-"endfunction
 
 noremap <up> <nop>
 noremap <down> <nop>
@@ -259,12 +246,9 @@ nnoremap <Leader>, $a;<Esc>
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 nmap <Leader>¿ :e $MYVIMRC<CR>
-nmap <F4> :w<CR> :e ~/workspace/sample/input<CR>
-imap <F4> <Esc> :w<CR> :e ~/workspace/sample/input<CR>
-
+nnoremap <F4>kp :let @*=expand("%")<CR>
 nnoremap <F5> :so $MYVIMRC<CR>
-nnoremap <F6>kp :let @*=expand("%")<CR>
-nmap <F7> :so ~/.config/nvim/init.vim<CR>
+nmap <F6> :so ~/.config/nvim/init.vim<CR>
 
 imap <C-c> <Esc> :w<CR> :%y+<CR>
 nmap <C-c> :w<CR> :%y+<CR>
@@ -338,8 +322,3 @@ nnoremap m :m .+1<CR>==
 nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
-
-" NOTA: para que mi configuración le funcione correctamente y no inicie con errores.
-" USTED DEBE INSTALAR las siguientes 6 herramientas:
-"   git nodejs python3 npm yarn 
-" Y vim-plug --> https://github.com/junegunn/vim-plug
