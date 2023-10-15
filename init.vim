@@ -36,8 +36,9 @@ set shortmess+=c
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
-autocmd FileType python :call RunPython()
-autocmd FileType javascript,typescript :call RunJsAndTs()
+autocmd FileType cpp,java :call EditInputFiles()
+"autocmd FileType python :call RunPython()
+"autocmd FileType javascript,typescript :call RunJsAndTs()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -50,29 +51,25 @@ call plug#begin('~/.config/nvim/plugins')
 
   Plug 'sheerun/vim-polyglot'
   Plug 'morhetz/gruvbox'
+  Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'navarasu/onedark.nvim'
   Plug 'tanvirtin/monokai.nvim'
-  Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'scrooloose/nerdtree'
-  "Plug 'ryanoasis/vim-devicons' "your terminal need nerd-fonts
+  Plug 'ryanoasis/vim-devicons' "Nerd Font in terminal
   Plug 'easymotion/vim-easymotion'
   Plug 'tpope/vim-surround'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'terryma/vim-multiple-cursors'
   Plug 'preservim/nerdcommenter'
-  Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
-  Plug 'junegunn/fzf.vim'
   Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
 " ajuste del tema
-let g:gruvbox_contrast_dark = "hard"
-highlight Normal ctermbg = NONE
-colorscheme gruvbox
-"colorscheme onedark
+colorscheme onedark
+"colorscheme gruvbox
 "colorscheme monokai
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
@@ -100,7 +97,7 @@ let g:lightline = {
     \   'gitbranch': 'fugitive#head',
     \   'kitestatus': 'kite#statusline'
     \ },
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme': 'onedark',
     \ 'subseparator': {
     \   'left': '',
     \   'right': ''
@@ -109,7 +106,7 @@ let g:lightline = {
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \]
+\]
 
 " configuración de coc-snippets
 let g:coc_snippets_next = '<c-j>'
@@ -186,18 +183,21 @@ endfunction
 let mapleader = " "
 
 function! RunJava()
-   imap <F2> <Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>
-   nmap <F2> :w<CR> :!java % < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>java
+   imap <F2> <Esc> :w<CR> :!java % < ~/workspace/samples/in1<CR>
+   nmap <F2> :w<CR> :!java % < ~/workspace/samples/in1<CR>
+   imap <F3> <Esc> :w<CR> :!java % < ~/workspace/samples/in2<CR>
+   nmap <F3> :w<CR> :!java % < ~/workspace/samples/in2<CR>
+   imap <F4> <Esc> :w<CR> :!java % < ~/workspace/samples/in3<CR>
+   nmap <F4> :w<CR> :!java % < ~/workspace/samples/in3<CR>
+   nmap <F5> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>java
 endfunction
 
 function! RunCpp()
-   imap <F1> <Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wpedantic -Werror -Djosuerom<CR>
-   nmap <F1> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wpedantic -Werror -Djosuerom<CR>
-
-   imap <F2> <Esc> :w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>
-   nmap <F2> :w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :cd ~/workspace/build/<CR> :terminal<CR>i./sol.out<CR>
+   imap <F1> <Esc> :w<CR> :!g++ % -o ~/workspace/bin/sol.out -std=c++17 -Wall -pedantic -DDEBUG -DLOCAL<CR>
+   nmap <F1> :w<CR> :!g++ % -o ~/workspace/bin/sol.out -std=c++17 -Wall -pedantic -DDEBUG -DLOCAL<CR>
+   imap <F2> <Esc> :w<CR> :!~/workspace/bin/sol.out < ~/workspace/sample/input<CR>
+   nmap <F2> :w<CR> :!~/workspace/bin/sol.out < ~/workspace/sample/input<CR>
+   nmap <F3> :w<CR> :cd ~/workspace/bin/<CR> :terminal<CR>i./sol.out<CR>
 endfunction
 
 function! RunPython()
