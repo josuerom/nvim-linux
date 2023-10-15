@@ -51,7 +51,7 @@ call plug#begin('~/.config/nvim/plugins')
 
   Plug 'sheerun/vim-polyglot'
   Plug 'morhetz/gruvbox'
-  Plug 'shinchu/lightline-gruvbox.vim'
+  "Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'navarasu/onedark.nvim'
   Plug 'tanvirtin/monokai.nvim'
   Plug 'itchyny/lightline.vim'
@@ -183,22 +183,43 @@ endfunction
 let mapleader = " "
 
 function! RunJava()
-   imap <F2> <Esc> :w<CR> :!java % < ~/workspace/samples/in1<CR>
-   nmap <F2> :w<CR> :!java % < ~/workspace/samples/in1<CR>
-   imap <F3> <Esc> :w<CR> :!java % < ~/workspace/samples/in2<CR>
-   nmap <F3> :w<CR> :!java % < ~/workspace/samples/in2<CR>
-   imap <F4> <Esc> :w<CR> :!java % < ~/workspace/samples/in3<CR>
-   nmap <F4> :w<CR> :!java % < ~/workspace/samples/in3<CR>
-   nmap <F5> :w<CR> :!cd %:h<CR> :terminal<CR>ils<CR>java
+    let l:filename = expand('%:t')
+    " Verifica si 'javac' está disponible en el sistema
+    " Intenta compilar con 'javac' y muestra los errores si los hay
+    let l:compile_command = 'javac ' . l:filename
+    let l:error_output = system(l:compile_command . ' 2>&1')
+    " Verifica si hubo errores durante la compilación
+    if v:shell_error
+        echo "Error de compilación:"
+        echo l:error_output
+    else
+        echo "Compilación exitosa!"
+    endif
+    imap <F2> <Esc> :w<CR> :!java % < ~/workspace/samples/in
+    nmap <F2> :w<CR> :!java % < ~/workspace/samples/in
+    imap <F3> <Esc> :w<CR> :terminal time java %<CR>i
+    nmap <F3> :w<CR> :terminal time java %<CR>i
 endfunction
 
 function! RunCpp()
-   imap <F1> <Esc> :w<CR> :!g++ % -o ~/workspace/bin/sol.out -std=c++17 -Wall -pedantic -DDEBUG -DLOCAL<CR>
-   nmap <F1> :w<CR> :!g++ % -o ~/workspace/bin/sol.out -std=c++17 -Wall -pedantic -DDEBUG -DLOCAL<CR>
-   imap <F2> <Esc> :w<CR> :!~/workspace/bin/sol.out < ~/workspace/sample/input<CR>
-   nmap <F2> :w<CR> :!~/workspace/bin/sol.out < ~/workspace/sample/input<CR>
-   nmap <F3> :w<CR> :cd ~/workspace/bin/<CR> :terminal<CR>i./sol.out<CR>
+    let l:filename = expand('%:t')
+    " Verifica si 'g++' está disponible en el sistema
+    " Intenta compilar con 'g++' y muestra los errores si los hay
+    let l:compile_command = 'g++ ' . l:filename . ' -o ' . '~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
+    let l:error_output = system(l:compile_command . ' 2>&1')
+    " Verifica si hubo errores durante la compilación
+    if v:shell_error
+        echo "Error de compilación:"
+        echo l:error_output
+    else
+        echo "Compilación exitosa!"
+    endif
+    imap <F2> <Esc> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in
+    nmap <F2> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in
+    imap <F3> <Esc> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
+    nmap <F3> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
 endfunction
+
 
 function! RunPython()
    imap <F2> <Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>
