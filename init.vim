@@ -1,4 +1,4 @@
-"*-------------- Configuración Inicial [init.vim] 25/Septiembre/2022 11:29a.m COL --------------*
+"*-------------- Configuración Inicial [init.vim] 15/Octubre/2023 17:43 COL --------------*
 
 "                        ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
 "                        ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
@@ -36,9 +36,7 @@ set shortmess+=c
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
-autocmd FileType cpp,java :call EditInputFiles()
-"autocmd FileType python :call RunPython()
-"autocmd FileType javascript,typescript :call RunJsAndTs()
+autocmd BufReadPost * call EditInputFiles()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -47,11 +45,10 @@ autocmd FileType cpp,java :call EditInputFiles()
 "██║     ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-call plug#begin('~/.config/nvim/plugins')
+call plug#begin('~/.config/nvim/plugged')
 
   Plug 'sheerun/vim-polyglot'
   Plug 'morhetz/gruvbox'
-  "Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'navarasu/onedark.nvim'
   Plug 'tanvirtin/monokai.nvim'
   Plug 'itchyny/lightline.vim'
@@ -68,8 +65,8 @@ call plug#begin('~/.config/nvim/plugins')
 call plug#end()
 
 " ajuste del tema
-colorscheme onedark
-"colorscheme gruvbox
+colorscheme gruvbox
+"colorscheme onedark
 "colorscheme monokai
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗        ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗   ██╗   ██╗██╗███╗   ███╗
@@ -97,16 +94,14 @@ let g:lightline = {
     \   'gitbranch': 'fugitive#head',
     \   'kitestatus': 'kite#statusline'
     \ },
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'gruvbox',
     \ 'subseparator': {
     \   'left': '',
     \   'right': ''
     \ }
     \}
 
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-\]
+let g:coc_global_extensions = [ 'coc-snippets' ]
 
 " configuración de coc-snippets
 let g:coc_snippets_next = '<c-j>'
@@ -173,14 +168,13 @@ endfunction
 " Solución al error de (python3-script-host)
 "let g:python3_host_prog="~/.virtualenvs/neovim-python3-venv/bin/python3"
 
-"███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
-"██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
-"███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗  ██║   ██║██║██╔████╔██║
-"╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██║     ██║   ██║   ██║   ╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
-"███████║██║  ██║╚██████╔╝██║  ██║   ██║   ╚██████╗╚██████╔╝   ██║   ███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
-"╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-let mapleader = " "
+░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
+██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
+██║░░╚═╝██║░░██║██╔████╔██║██████╔╝██║██║░░░░░█████╗░░██████╔╝░░░╚██╗░██╔╝██║██╔████╔██║
+██║░░██╗██║░░██║██║╚██╔╝██║██╔═══╝░██║██║░░░░░██╔══╝░░██╔══██╗░░░░╚████╔╝░██║██║╚██╔╝██║
+╚█████╔╝╚█████╔╝██║░╚═╝░██║██║░░░░░██║███████╗███████╗██║░░██║██╗░░╚██╔╝░░██║██║░╚═╝░██║
+░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
 
 function! CompileJava()
     let l:filename = expand('%:t')
@@ -227,6 +221,24 @@ function! RunCpp()
     nmap <F3> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
 endfunction
 
+function! EditInputFiles()
+    imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in1<CR>
+    nmap <F4> :w<CR> :e ~/workspace/samples/in1<CR>
+    imap <F5> <Esc> :w<CR> :e ~/workspace/samples/in2<CR>
+    nmap <F5> :w<CR> :e ~/workspace/samples/in2<CR>
+    imap <F6> <Esc> :w<CR> :e ~/workspace/samples/in3<CR>
+    nmap <F6> :w<CR> :e ~/workspace/samples/in3<CR>
+endfunction
+
+"███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
+"██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
+"███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗  ██║   ██║██║██╔████╔██║
+"╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██║     ██║   ██║   ██║   ╚════██║  ╚██╗ ██╔╝██║██║╚██╔╝██║
+"███████║██║  ██║╚██████╔╝██║  ██║   ██║   ╚██████╗╚██████╔╝   ██║   ███████║██╗╚████╔╝ ██║██║ ╚═╝ ██║
+"╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
+
+let mapleader = " "
+
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
@@ -245,10 +257,9 @@ nnoremap <Leader>, $a;<Esc>
 
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
-nmap <Leader>¿ :e $MYVIMRC<CR>
-nnoremap <F4>kp :let @*=expand("%")<CR>
-nnoremap <F5> :so $MYVIMRC<CR>
-nmap <F6> :so ~/.config/nvim/init.vim<CR>
+nnoremap <F7>kp :let @*=expand("%")<CR>
+nnoremap <F8> :so $MYVIMRC<CR>
+nmap <F9> :so ~/.config/nvim/init.vim<CR>
 
 imap <C-c> <Esc> :w<CR> :%y+<CR>
 nmap <C-c> :w<CR> :%y+<CR>
@@ -315,10 +326,10 @@ xnoremap J :move '>+1<CR>gv-gv
 nnoremap n :m .-2<CR>==
 nnoremap m :m .+1<CR>==
 
-" Para camiar el carácter que contenga una cadena de texto o cambiar el carácteres que los contiene,
-" por ejemplo: si tienes un: 'Hi! World' al presionar <cs+el-simbolo-a-usar> la cadena de carácteres
-" que los agrupa magicamente se cambiaran sin necesidad de realizarlo manualmente
-
 nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
+
+" Para camiar el carácter que contenga una cadena de texto o cambiar el carácteres que los contiene,
+" por ejemplo: si tienes un: 'Hi! World' al presionar <cs+el-simbolo-a-usar> la cadena de carácteres
+" que los agrupa magicamente se cambiaran sin necesidad de realizarlo manualmente
