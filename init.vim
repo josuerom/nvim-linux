@@ -36,7 +36,7 @@ set shortmess+=c
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
-autocmd BufReadPost * call EditInputFiles()
+autocmd BufReadCmd * if line('$') > 0 | call EditInputFiles() | endif
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -167,7 +167,6 @@ endfunction
 
 " Solución al error de (python3-script-host)
 "let g:python3_host_prog="~/.virtualenvs/neovim-python3-venv/bin/python3"
-
 
 "░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
 "██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
