@@ -128,6 +128,24 @@ let g:tmux_navigator_no_mappings=1
 " interfaz de búsqueda FZF (Line Fuzzy Finder)
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 
+" Define la función para activar el snippet tem1 en nuevos archivos .cpp
+function! TemplateCpp()
+    if &filetype == 'cpp'
+        " Llama al snippet tem1
+        call CocActionAsync('runCommand', 'snippets.editSnippet', 'tem1')
+    endif
+endfunction
+
+function! TemplateJava()
+    if &filetype == 'java'
+        call CocActionAsync('runCommand', 'snippets.editSnippet', 'tem1')
+    endif
+endfunction
+
+" Llama a la función cuando se abre un nuevo archivo
+autocmd BufNewFile *.cpp call TemplateCpp()
+autocmd BufNewFile *.java call TemplateJava()
+
 "*---------------------- FUNCIÓN PARA INTEGRAR LA SHELL BASH O ZSH -------------------------*
 function! OpenTerminal()
   execute "normal \<C-l>"
@@ -165,8 +183,8 @@ endfunction
 "*---------------------- SOLUCIÓN A EL ERROR DE COC-SNIPPETS -----------------------*
 " Si al iniciar neovim te aparece siempre este molestoso error:
 " [coc.nvim] Error on execute :pyx command, ultisnips feature of coc-snippets requires pyx support on vim.
-" ejecuta el sgt comando en tu distribución Linux:
-" sudo dnf install python3 python3-pip -y && pip install pynvim
+" ejecuta el sgt comando en tu distribución:
+" sudo apt install python3 python3-pip -y && pip install pynvim
 
 "░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
 "██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
@@ -237,13 +255,17 @@ endfunction
 "░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗██╗░░╚██╔╝░░██║██║░╚═╝░██║
 "░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
 
+" Desactiva los complementos y la indentación en el inicio
 autocmd VimEnter * silent! colorscheme default | silent! filetype plugin indent off | silent! syntax off | silent! set noswapfile | silent! set nobackup | silent! set noundofile | silent! set nowrap
+
+" Función para mostrar el contenido de welcome.txt al inicio
 function! WelcomeCoder()
     silent! %bwipeout!
-    silent! 0read ~/.config/nvim/welcome.txt
+    silent! execute '0read ~/.config/nvim/welcome.txt'
     set laststatus=0
 endfunction
 
+" Llama a WelcomeCoder() al iniciar neovim
 autocmd VimEnter * call WelcomeCoder()
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
