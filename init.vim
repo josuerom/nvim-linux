@@ -36,7 +36,8 @@ set shortmess+=c
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
-autocmd FileType cpp,java,txt,in,out :call EditInputFiles()
+autocmd FileType cpp,java,txt,in :call EditInputFiles()
+"autocmd BufRead,BufNewFile * call EditInputFiles()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -95,6 +96,8 @@ let g:lightline = {
     \   'kitestatus': 'kite#statusline'
     \ },
     \ 'colorscheme': 'gruvbox',
+    "\ 'colorscheme': 'onedark',
+    "\ 'colorscheme': 'monokai',
     \ 'subseparator': {
     \   'left': '',
     \   'right': ''
@@ -165,9 +168,6 @@ endfunction
 " ejecuta el sgt comando en tu distribución Linux:
 " sudo dnf install python3 python3-pip -y && pip install pynvim
 
-" Solución al error de (python3-script-host)
-"let g:python3_host_prog="~/.virtualenvs/neovim-python3-venv/bin/python3"
-
 "░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
 "██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
 "██║░░╚═╝██║░░██║██╔████╔██║██████╔╝██║██║░░░░░█████╗░░██████╔╝░░░╚██╗░██╔╝██║██╔████╔██║
@@ -228,6 +228,23 @@ function! EditInputFiles()
     imap <F6> <Esc> :w<CR> :e ~/workspace/samples/in3<CR>
     nmap <F6> :w<CR> :e ~/workspace/samples/in3<CR>
 endfunction
+
+
+"░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗░░░██╗░░░██╗██╗███╗░░░███╗
+"░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝░░░██║░░░██║██║████╗░████║
+"░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░░░░╚██╗░██╔╝██║██╔████╔██║
+"░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░░░░░╚████╔╝░██║██║╚██╔╝██║
+"░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗██╗░░╚██╔╝░░██║██║░╚═╝░██║
+"░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
+
+autocmd VimEnter * silent! colorscheme default | silent! filetype plugin indent off | silent! syntax off | silent! set noswapfile | silent! set nobackup | silent! set noundofile | silent! set nowrap
+function! WelcomeCoder()
+    silent! %bwipeout!
+    silent! 0read ~/.config/nvim/welcome.txt
+    set laststatus=0
+endfunction
+
+autocmd VimEnter * call WelcomeCoder()
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
