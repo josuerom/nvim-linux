@@ -37,7 +37,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
 autocmd FileType cpp,java,txt,in :call EditInputFiles()
-"autocmd BufRead,BufNewFile * call EditInputFiles()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -96,8 +95,6 @@ let g:lightline = {
     \   'kitestatus': 'kite#statusline'
     \ },
     \ 'colorscheme': 'gruvbox',
-    "\ 'colorscheme': 'onedark',
-    "\ 'colorscheme': 'monokai',
     \ 'subseparator': {
     \   'left': '',
     \   'right': ''
@@ -124,27 +121,6 @@ let NERDTreeWinPos="right"
 
 " navegación rápida tmux
 let g:tmux_navigator_no_mappings=1
-
-" interfaz de búsqueda FZF (Line Fuzzy Finder)
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-
-" Define la función para activar el snippet tem1 en nuevos archivos .cpp
-function! TemplateCpp()
-    if &filetype == 'cpp'
-        " Llama al snippet tem1
-        call CocActionAsync('runCommand', 'snippets.editSnippet', 'tem1')
-    endif
-endfunction
-
-function! TemplateJava()
-    if &filetype == 'java'
-        call CocActionAsync('runCommand', 'snippets.editSnippet', 'tem1')
-    endif
-endfunction
-
-" Llama a la función cuando se abre un nuevo archivo
-autocmd BufNewFile *.cpp call TemplateCpp()
-autocmd BufNewFile *.java call TemplateJava()
 
 "*---------------------- FUNCIÓN PARA INTEGRAR LA SHELL BASH O ZSH -------------------------*
 function! OpenTerminal()
@@ -221,8 +197,8 @@ function! CompileCpp()
 endfunction
 
 function! RunJava()
-    imap <F1> <Esc> :w<CR> :call CompileJava()<CR>
-    nmap <F1> :w<CR> :call CompileJava()<CR>
+    imap <silent><F1> <Esc> :w<CR> :call CompileJava()<CR>
+    nmap <silent><F1> :w<CR> :call CompileJava()<CR>
     imap <F2> <Esc> :w<CR> :!java % < ~/workspace/samples/in
     nmap <F2> :w<CR> :!java % < ~/workspace/samples/in
     imap <F3> <Esc> :w<CR> :terminal time java %<CR>i
@@ -230,8 +206,8 @@ function! RunJava()
 endfunction
 
 function! RunCpp()
-    imap <F1> <Esc> :w<CR> :call CompileCpp()<CR>
-    nmap <F1> :w<CR> :call CompileCpp()<CR>
+    imap <silent><F1> <Esc> :w<CR> :call CompileCpp()<CR>
+    nmap <silent><F1> :w<CR> :call CompileCpp()<CR>
     imap <F2> <Esc> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in
     nmap <F2> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in
     imap <F3> <Esc> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
@@ -256,17 +232,15 @@ endfunction
 "░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
 
 " Desactiva los complementos y la indentación en el inicio
-autocmd VimEnter * silent! colorscheme default | silent! filetype plugin indent off | silent! syntax off | silent! set noswapfile | silent! set nobackup | silent! set noundofile | silent! set nowrap
-
+"autocmd VimEnter * silent! colorscheme default | silent! filetype plugin indent off | silent! syntax off | silent! set noswapfile | silent! set nobackup | silent! set noundofile | silent! set nowrap
 " Función para mostrar el contenido de welcome.txt al inicio
-function! WelcomeCoder()
-    silent! %bwipeout!
-    silent! execute '0read ~/.config/nvim/welcome.txt'
-    set laststatus=0
-endfunction
-
+"function! WelcomeCoder()
+"    silent! %bwipeout!
+"    silent! execute '0read ~/.config/nvim/welcome.txt'
+"    set laststatus=0
+"endfunction
 " Llama a WelcomeCoder() al iniciar neovim
-autocmd VimEnter * call WelcomeCoder()
+"autocmd VimEnter * call WelcomeCoder()
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
