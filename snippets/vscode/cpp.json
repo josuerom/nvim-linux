@@ -88,7 +88,7 @@
   "function preCalculate": {
     "prefix": "funpre",
     "body": [
-      "function<int$1(int)> preCalculate = [&](int n) {",
+      "function<int$1(int)> preCalculate = [&](int n$2) {",
       "};"
     ]
   },
@@ -112,12 +112,6 @@
     "prefix": "in",
     "body": [
       "#include $1"
-    ]
-  },
-  "typedef": {
-    "prefix": "typ",
-    "body": [
-      "typedef ${1:long long ll};$1"
     ]
   },
   "#define": {
@@ -184,15 +178,15 @@
     "prefix": "author",
     "body": [
       "/**",
-      " *   author:  josuerom",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "-*   author:  josuerom",
+      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/",
     ]
   },
   "set hour and date": {
     "prefix": "date",
     "body": [
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
+      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
     ]
   },
   "style josuerom": {
@@ -215,8 +209,8 @@
     "prefix": "tem1",
     "body": [
       "/**",
-      " *   author:  josuerom",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "-*   author:  josuerom",
+      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/",
       "#include <bits/stdc++.h>",
       "using namespace std;\n",
@@ -228,16 +222,16 @@
       "#define long  long long",
       "#define endl  '\\n'",
       "\n$2\n",
-      "void solve() {",
+      "void solve() {\n\t$3",
       "}\n",
       "int main() {",
       "\tios::sync_with_stdio(false);",
       "\tcin.tie(0);",
-      "\tint tt = 1;",
-      "\tcin >> tt;$1",
-      "\tfor (int nc = 1; nc <= tt; nc++) {",
+      "\tint tt = 1, nc = 0;",
+      "\t$1cin >> tt;",
+      "\twhile (tt--) {",
       "#ifdef LOCAL",
-      "\t\tcout << \"Case #\" << nc << \": \";",
+      "\t\tcout << \"Case #\" << ++nc << \": \";",
       "\t\tsolve();",
       "#else",
       "\t\tsolve();",
@@ -271,10 +265,10 @@
     "prefix": "tem3",
     "body": [
       "/**",
-      " *   █▀█  █▀▀▄ ─▀─ ▀▀█▀▀ █▀▀ ▄▀ ▀▄",
-      " *   ─▄▀  █▀▀▄ ▀█▀ ──█── ▀▀█ █─ ─█",
-      " *   █▄▄  ▀▀▀─ ▀▀▀ ──▀── ▀▀▀ ▀▄ ▄▀",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "-*   █▀█  █▀▀▄ ─▀─ ▀▀█▀▀ █▀▀ ▄▀ ▀▄",
+      "-*   ─▄▀  █▀▀▄ ▀█▀ ──█── ▀▀█ █─ ─█",
+      "-*   █▄▄  ▀▀▀─ ▀▀▀ ──▀── ▀▀▀ ▀▄ ▄▀",
+      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/",
       "#include <bits/stdc++.h>",
       "using namespace std;\n",
@@ -284,17 +278,17 @@
       "#define debug(...) 42",
       "#endif\n",
       "const int N = 1e6$2 + 7;",
-      "int a[N], n;\n"
-      "void solve() {",
+      "int a[N], n;\n",
+      "void solve() {\n\t$3",
       "}\n",
       "int main() {",
       "\tios::sync_with_stdio(false);",
       "\tcin.tie(0);",
-      "\tint tt = 1;",
-      "\tcin >> tt;$1",
-      "\tfor (int nc = 1; nc <= tt; nc++) {",
+      "\tint tt = 1, nc = 0;",
+      "\t$1cin >> tt;",
+      "\twhile (tt--) {",
       "#ifdef LOCAL",
-      "\t\tcout << \"Case #\" << nc << \": \";",
+      "\t\tcout << \"Case #\" << ++nc << \": \";",
       "\t\tsolve();",
       "#else",
       "\t\tsolve();",
@@ -309,8 +303,8 @@
     "prefix": "tem4",
     "body": [
       "/**",
-      " *   author:  josuerom",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "-*   author:  josuerom",
+      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/",
       "#include <bits/stdc++.h>",
       "using namespace std;",
