@@ -17,8 +17,11 @@ set relativenumber
 set clipboard=unnamedplus
 set background=dark
 set ruler
-set sw=3
-set termguicolors
+set tabstop=3
+set shiftwidth=3
+set expandtab
+set smartindent
+set autoindent
 set showmatch
 set showcmd
 set noshowmode
@@ -32,6 +35,7 @@ set hidden
 set cmdheight=1
 set updatetime=50
 set shortmess+=c
+
 
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
@@ -162,6 +166,10 @@ endfunction
 " ejecuta el sgt comando en tu distribución:
 " sudo apt install python3 python3-pip -y && pip install pynvim
 
+" comando para autocargar mi template en archivos cpp y java
+"autocmd BufNewFile *.cpp 0r ~/workspace/templates/template.cpp
+"autocmd BufNewFile *.java 0r ~/workspace/templates/template.java
+
 "░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
 "██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
 "██║░░╚═╝██║░░██║██╔████╔██║██████╔╝██║██║░░░░░█████╗░░██████╔╝░░░╚██╗░██╔╝██║██╔████╔██║
@@ -171,11 +179,8 @@ endfunction
 
 function! CompileJava()
     let l:filename = expand('%:t')
-    " Verifica si 'javac' está disponible en el sistema
-    " Intenta compilar con 'javac' y muestra los errores si los hay
     let l:compile_command = 'javac -d ~/workspace/bin ' . l:filename
     let l:error_output = system(l:compile_command . ' 2>&1')
-    " Verifica si hubo errores durante la compilación
     if v:shell_error
         echo "Error de compilación:"
         echo l:error_output
@@ -186,7 +191,7 @@ endfunction
 
 function! CompileCpp()
     let l:filename = expand('%:t')
-    let l:compile_command = 'g++ ' . l:filename . ' -o ' . '~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
+    let l:compile_command = 'g++ ' . l:filename . ' -o ~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
         echo "Error de compilación:"
@@ -340,7 +345,6 @@ nnoremap m :m .+1<CR>==
 
 nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
-nnoremap <silent><nowait> <Leader>cun :<C-u>CocUninstall coc-
 
 " Para camiar el carácter que contenga una cadena de texto o cambiar el carácteres que los contiene,
 " por ejemplo: si tienes un: 'Hi! World' al presionar <cs+el-simbolo-a-usar> la cadena de carácteres
