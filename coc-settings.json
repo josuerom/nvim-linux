@@ -9,8 +9,7 @@
   // Java
   "java.configuration.runtimes": [
     {
-      "name": "JavaSE",
-      //"path": "/usr/bin/jvm/",
+      "name": "JavaSE-11",
       "path": "/usr/lib/jvm/java-11-openjdk-11.0.20.0.8-1.fc38.x86_64/",
       "default": true
     }
@@ -18,9 +17,7 @@
   // Snippets
   "snippets.priority": 1,
   "snippets.extends": {
-    "cpp": ["c"],
-    "javascriptreact": ["javascript"],
-    "typescript": ["javascript"]
+    "cpp": ["c"]
   },
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets/ultisnips",
   "snippets.shortcut": "S",
