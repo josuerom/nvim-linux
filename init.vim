@@ -67,6 +67,8 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " ajuste del tema
+let g:gruvbox_contrast_dark = "hard"
+highlight Normal ctermbg = NONE
 colorscheme gruvbox
 "colorscheme onedark
 "colorscheme monokai
@@ -260,8 +262,8 @@ nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
 imap <Esc> :w<CR> <F5> :so ~/.config/nvim/init.vim<CR>
-nmap <F6>kp :let @*=expand("%")<CR>
-imap <Esc> :w<CR> <F6>kp :let @*=expand("%")<CR>
+nmap <F6> kp :let @*=expand("%")<CR>
+imap <F6> <Esc> :w<CR> kp :let @*=expand("%")<CR>
 
 imap <C-a> <Esc> :w<CR> :%y+<CR>
 nmap <C-a> :w<CR> :%y+<CR>
@@ -273,13 +275,13 @@ imap <C-s> <Esc> :w!<CR>
 nmap <C-q> :q<CR>
 nmap <Leader>q :q<CR>
 imap <C-q> <Esc> :q<CR>
-
 nmap <C-x> :qa!<CR>
 nmap <Leader>x :qa!<CR>
 imap <C-x> <Esc> :qa!<CR>
 
 nmap <Leader>e :NERDTreeToggle<CR>
 nmap <Leader>p :Explore<CR>
+nmap <Leader>nf :tabnew 
 
 vmap }} <plug>NERDCommenterToggle
 nmap }} <plug>NERDCommenterToggle
@@ -310,6 +312,7 @@ nnoremap <Leader>pp :PlugUpgrade<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" editar archivo de entrada
 imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
 nmap <F4> :w<CR> :e ~/workspace/samples/in
 
