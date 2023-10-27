@@ -67,7 +67,7 @@
     "body": [
       "for (auto &e : $1)",
       "\tcout << e << \" \";",
-      "cout << br;",
+      "cout << br;"
     ]
   },
   "for (auto $e : vp)": {
@@ -75,14 +75,14 @@
     "body": [
       "for (auto &e : $1)",
       "\tcout << e.fi <<\", \"<< e.se << '\\n';",
-      "cout << br;",
+      "cout << br;"
     ]
   },
   "while": {
     "prefix": "wh",
     "body": [
       "while ($1) {",
-      "}",
+      "}"
     ]
   },
   "function preCalculate": {
@@ -99,7 +99,7 @@
       "cin >> tt;",
       "while (tt--) {",
       "\t$1",
-      "}",
+      "}"
     ]
   },
   "#include <bits/stdc++.h>": {
@@ -180,7 +180,7 @@
       "/**",
       "-*   author:  josuerom",
       "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/",
+      "**/"
     ]
   },
   "set hour and date": {
@@ -195,14 +195,14 @@
       "/**",
       "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
       "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
-      "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
-      "**/",
+      "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "**/"
     ]
   },
   "#pragma GCC": {
     "prefix": "gcc",
     "body": [
-      "#pragma GCC optimize(\"Ofast\")",
+      "#pragma GCC optimize(\"Ofast\")"
     ]
   },
   "Template for codeforces": {
@@ -221,8 +221,8 @@
       "#endif\n",
       "#define ll  long long",
       "#define br  '\\n'\n",
-      "$2",
-      "void solve() {\n\t$3",
+      "\n$2\n",
+      "void solve() {$3",
       "}\n",
       "int main() {",
       "\tios::sync_with_stdio(false);",
@@ -231,7 +231,7 @@
       "\t$1cin >> tt;",
       "\twhile (tt--) {",
       "#ifdef LOCAL",
-      "\t\tcout << \"Case #\" << ++nc << \": \";",
+      "\t\tcout << \"Case #\" << ++nc << \":\\n";",
       "\t\tsolve();",
       "#else",
       "\t\tsolve();",
@@ -240,7 +240,7 @@
       "\treturn 0;",
       "}"
     ],
-    "description": "Plantilla efectiva y eficaz para la CP"
+    "description": "Plantilla para CF"
   },
   "Template Ultra-Light": {
     "prefix": "tem2",
@@ -257,7 +257,7 @@
       "\tcin.tie(0);",
       "\t$1",
       "\treturn 0;",
-      "}",
+      "}"
     ],
     "description": "Plantilla estándar simple"
   },
@@ -277,8 +277,8 @@
       "#else",
       "#define debug(...) 42",
       "#endif\n",
-      "$2\n",
-      "void solve() {\n\t$3",
+      "\n$2\n",
+      "void solve() {$3",
       "}\n",
       "int main() {",
       "\tios::sync_with_stdio(false);",

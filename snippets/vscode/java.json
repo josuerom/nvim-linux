@@ -24,7 +24,7 @@
     "prefix": "sst",
     "body": [
       "System.out.println($1 ? $2 : $3);"
-    ],
+    ]
   },
   "System veredict Y/N": {
     "prefix": "ssv",
@@ -50,7 +50,7 @@
     "prefix": "ppt",
     "body": [
       "io.println($1 ? $2 : $3);"
-    ],
+    ]
   },
   "Print veredict Y/N": {
     "prefix": "ppv",
@@ -69,7 +69,7 @@
     "prefix": "rot",
     "body": [
       "${1:boolean} $2 = ($3) ? $4 : $5;"
-    ],
+    ]
   },
   "Scanner(System.in)": {
     "prefix": "sc",
@@ -125,62 +125,62 @@
     "prefix": "if",
     "body": [
       "if (${1:condition}) $2"
-    ],
+    ]
   },
   "else": {
     "prefix": "el",
     "body": [
-      "else $2",
-    ],
+      "else $2"
+    ]
   },
   "else if ()": {
     "prefix": "eli",
     "body": [
-      "else if ($1) $2",
-    ],
+      "else if ($1) $2"
+    ]
   },
   "do while": {
     "prefix": "do",
     "body": [
       "do {\n\t$1",
       "} while ($2);"
-    ],
+    ]
   },
   "while": {
     "prefix": "wh",
     "body": [
       "while ($1) {",
       "}"
-    ],
+    ]
   },
   "for iterator": {
     "prefix": "fori",
     "body": [
       "for (int ${1:i} = 0; ${1:i} < $2; ${1:i}++) $3{",
       "}"
-    ],
+    ]
   },
   "for reverse iterator": {
     "prefix": "forr",
     "body": [
       "for (int ${1:i} = $2 - 1; ${1:i} >= 0; ${1:i}--) $3{",
       "}"
-    ],
+    ]
   },
   "for each": {
     "prefix": "fore",
     "body": [
       "for (${1:int} e : $2) {",
-      "\t${3:System.out}.print(e + \" \");"
+      "\t${3:System.out}.print(e + \" \");",
       "}",
       "${3:System.out}.println();"
-    ],
+    ]
   },
   "Object creation": {
     "prefix": "obj",
     "body": [
       "${1:nameClass} ${2:name} = new ${1:nameConstructor}();"
-    ],
+    ]
   },
   "Constructor ()": {
     "prefix": "construct",
@@ -188,12 +188,12 @@
       "public ${TM_FILENAME_BASE}($1) {",
       "\tthis.$2 = $2;",
       "}"
-    ],
+    ]
   },
   "import": {
     "prefix": "im",
     "body": [
-      "import java.$1;",
+      "import java.$1;"
     ],
     "description": "Import packages"
   },
@@ -230,7 +230,7 @@
   "Date": {
     "prefix": "date",
     "body": [
-      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
     ],
     "description": "Encabezado"
   },
@@ -238,55 +238,55 @@
     "prefix": "tostr",
     "body": [
       "Arrays.toString($1)"
-    ],
+    ]
   },
   "Set static array": {
     "prefix": "arr",
     "body": [
       "${1:int}[] a$2 = new ${1:int}[MAX$3];"
-    ],
+    ]
   },
   "Read int": {
     "prefix": "ri",
     "body": [
       "int $1 = io.nextInt();"
-    ],
+    ]
   },
   "Read Line": {
     "prefix": "rln",
     "body": [
       "String line = io.nextLine();"
-    ],
+    ]
   },
   "Read long": {
     "prefix": "rl",
     "body": [
       "long $1 = io.nextLong();"
-    ],
+    ]
   },
   "Read double": {
     "prefix": "rd",
     "body": [
       "double $1 = io.nextDouble();"
-    ],
+    ]
   },
   "Read int array": {
     "prefix": "rarr",
     "body": [
       "int[] $1 = io.readArray($2);"
-    ],
+    ]
   },
   "Read char[] array": {
     "prefix": "rac",
     "body": [
       "char[] $2 = io.next().toCharArray();"
-    ],
+    ]
   },
   "Set constant int": {
     "prefix": "MAX",
     "body": [
       "final int MAX = 100000$1_7;"
-    ],
+    ]
   },
   "read test cases": {
     "prefix": "tt",
@@ -295,8 +295,8 @@
       "while (tt-- > 0) {",
       "\t$1",
       "\tsolve(io, $2);",
-      "}",
-    ],
+      "}"
+    ]
   },
   "read test cases with Scanner": {
     "prefix": "ttt",
@@ -305,7 +305,7 @@
       "while (tt-- > 0) {",
       "\t$1",
       "}"
-    ],
+    ]
   },
   "style josuerom": {
     "prefix": "header",
@@ -314,7 +314,7 @@
       "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
       "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
       "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/",
+      "**/"
     ]
   },
   "Template for codeforces": {
@@ -404,7 +404,7 @@
       "   }",
       "}"
     ],
-    "description": "Plantilla efectiva y efizaz",
+    "description": "Plantilla para CF"
   },
   "Template 2 BITS()": {
     "prefix": "tem2",
@@ -495,7 +495,7 @@
       "   }",
       "}"
     ],
-    "description": "Plantilla equipo 2 Bits()",
+    "description": "Plantilla equipo 2 Bits()"
   },
   "Template Ultra-Ligth": {
     "prefix": "tem3",
@@ -512,8 +512,8 @@
       "\t\t$1",
       "\t\tSystem.exit(0);",
       "\t}",
-      "}",
+      "}"
     ],
-    "description": "Plantilla estandar simple",
+    "description": "Plantilla estandar simple"
   }
 }
