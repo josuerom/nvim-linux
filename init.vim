@@ -39,7 +39,6 @@ set shortmess+=c
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
-autocmd FileType cpp,java,txt,in :call EditInputFiles()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -177,22 +176,22 @@ function! CompileJava()
     let l:compile_command = 'javac -d ~/workspace/bin ' . l:filename
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
-        echo "Error de Compilación:"
+        echo "Error de Compilación :("
         echo l:error_output
     else
-        echo "Compilación Exitosa!"
+        echo "Compilación Exitosa :)"
     endif
 endfunction
 
 function! CompileCpp()
     let l:filename = expand('%:t')
-    let l:compile_command = 'g++ ' . l:filename . ' -o ~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
+    let l:compile_command = 'g++ ' . l:filename . ' -o ~/workspace/bin/sol.out -std=c++17 -march=native -Wall -Wno-sign-conversion -DDEBUG -DLOCAL'
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
-        echo "Error de Compilación:"
+        echo "Error de Compilación :("
         echo l:error_output
     else
-        echo "Compilación Exitosa!"
+        echo "Compilación Exitosa :)"
     endif
 endfunction
 
@@ -213,12 +212,6 @@ function! RunCpp()
     imap <F3> <Esc> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
     nmap <F3> :w<CR> :terminal time ~/workspace/bin/sol.out<CR>i
 endfunction
-
-function! EditInputFiles()
-    imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
-    nmap <F4> :w<CR> :e ~/workspace/samples/in
-endfunction
-
 
 "░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗░░░██╗░░░██╗██╗███╗░░░███╗
 "░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝░░░██║░░░██║██║████╗░████║
@@ -270,8 +263,8 @@ imap <Esc> :w<CR> <F5> :so ~/.config/nvim/init.vim<CR>
 nmap <F6>kp :let @*=expand("%")<CR>
 imap <Esc> :w<CR> <F6>kp :let @*=expand("%")<CR>
 
-imap <C-c> <Esc> :w<CR> :%y+<CR>
-nmap <C-c> :w<CR> :%y+<CR>
+imap <C-a> <Esc> :w<CR> :%y+<CR>
+nmap <C-a> :w<CR> :%y+<CR>
 
 nmap <Leader>w :w!<CR>
 nmap <C-s> :w!<CR>
@@ -316,6 +309,9 @@ nnoremap <Leader>pp :PlugUpgrade<CR>
 
 vnoremap < <gv
 vnoremap > >gv
+
+imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
+nmap <F4> :w<CR> :e ~/workspace/samples/in
 
 " para multiples cursores debe poner el cursor encima de una palabra y presionar
 " <ctrl+n> para buscar las coincidencias en el archivo y luego presione <c>
