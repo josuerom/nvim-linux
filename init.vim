@@ -36,7 +36,6 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 
-
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
@@ -112,16 +111,16 @@ let g:coc_snippets_next = '<c-j>'
 let g:coc_snippets_prev = '<c-k>'
 imap <C-l> <Plug>(coc-snippets-expand)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-xmap <Leader>y  <Plug>(coc-convert-snippet)
+xmap <Leader>cs <Plug>(coc-convert-snippet)
 
 " cerrado automatico de la barra lateral o tree
+let NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeWinPos="right"
 
 " navegación rápida tmux
 let g:tmux_navigator_no_mappings=1
@@ -166,10 +165,6 @@ endfunction
 " ejecuta el sgt comando en tu distribución:
 " sudo apt install python3 python3-pip -y && pip install pynvim
 
-" comando para autocargar mi template en archivos cpp y java
-"autocmd BufNewFile *.cpp 0r ~/workspace/templates/template.cpp
-"autocmd BufNewFile *.java 0r ~/workspace/templates/template.java
-
 "░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
 "██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
 "██║░░╚═╝██║░░██║██╔████╔██║██████╔╝██║██║░░░░░█████╗░░██████╔╝░░░╚██╗░██╔╝██║██╔████╔██║
@@ -182,10 +177,10 @@ function! CompileJava()
     let l:compile_command = 'javac -d ~/workspace/bin ' . l:filename
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
-        echo "Error de compilación:"
+        echo "Error de Compilación:"
         echo l:error_output
     else
-        echo "Compilación exitosa!"
+        echo "Compilación Exitosa!"
     endif
 endfunction
 
@@ -194,18 +189,18 @@ function! CompileCpp()
     let l:compile_command = 'g++ ' . l:filename . ' -o ~/workspace/bin/sol.out -std=c++17 -march=native -Wall -pedantic -DDEBUG -DLOCAL'
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
-        echo "Error de compilación:"
+        echo "Error de Compilación:"
         echo l:error_output
     else
-        echo "Compilación exitosa!"
+        echo "Compilación Exitosa!"
     endif
 endfunction
 
 function! RunJava()
     imap <silent><F1> <Esc> :w<CR> :call CompileJava()<CR>
     nmap <silent><F1> :w<CR> :call CompileJava()<CR>
-    imap <F2> <Esc> :w<CR> :!java % < ~/workspace/samples/in
-    nmap <F2> :w<CR> :!java % < ~/workspace/samples/in
+    imap <F2> <Esc> :w<CR> :!java -cp ~/workspace/bin %:t < ~/workspace/samples/in
+    nmap <F2> :w<CR> :!java -cp ~/workspace/bin %:t < ~/workspace/samples/in
     imap <F3> <Esc> :w<CR> :terminal time java %<CR>i
     nmap <F3> :w<CR> :terminal time java %<CR>i
 endfunction
@@ -220,12 +215,8 @@ function! RunCpp()
 endfunction
 
 function! EditInputFiles()
-    imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in1<CR>
-    nmap <F4> :w<CR> :e ~/workspace/samples/in1<CR>
-    imap <F5> <Esc> :w<CR> :e ~/workspace/samples/in2<CR>
-    nmap <F5> :w<CR> :e ~/workspace/samples/in2<CR>
-    imap <F6> <Esc> :w<CR> :e ~/workspace/samples/in3<CR>
-    nmap <F6> :w<CR> :e ~/workspace/samples/in3<CR>
+    imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
+    nmap <F4> :w<CR> :e ~/workspace/samples/in
 endfunction
 
 
@@ -274,9 +265,10 @@ nnoremap <Leader>, $a;<Esc>
 
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
-nnoremap <F7>kp :let @*=expand("%")<CR>
-nnoremap <F8> :so $MYVIMRC<CR>
-nmap <F9> :so ~/.config/nvim/init.vim<CR>
+nmap <F5> :so ~/.config/nvim/init.vim<CR>
+imap <Esc> :w<CR> <F5> :so ~/.config/nvim/init.vim<CR>
+nmap <F6>kp :let @*=expand("%")<CR>
+imap <Esc> :w<CR> <F6>kp :let @*=expand("%")<CR>
 
 imap <C-c> <Esc> :w<CR> :%y+<CR>
 nmap <C-c> :w<CR> :%y+<CR>
@@ -295,11 +287,10 @@ imap <C-x> <Esc> :qa!<CR>
 
 nmap <Leader>e :NERDTreeToggle<CR>
 nmap <Leader>p :Explore<CR>
-nmap <Leader>f :FZF<CR>
 
 vmap }} <plug>NERDCommenterToggle
 nmap }} <plug>NERDCommenterToggle
-imap }} <Esc> :w<CR> <plug>NERDCommenterToggle
+imap }} <Esc> <plug>NERDCommenterToggle <Esc>i
 
 nnoremap <silent><C-h> :TmuxNavigateLeft<CR>
 nnoremap <silent><C-j> :TmuxNavigateDown<CR>
