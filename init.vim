@@ -67,7 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " ajuste del tema
-let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark = 'hard'
 highlight Normal ctermbg = NONE
 colorscheme gruvbox
 "colorscheme onedark
@@ -115,7 +115,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <Leader>cs <Plug>(coc-convert-snippet)
 
 " cerrado automatico de la barra lateral o tree
-let NERDTreeWinPos="right"
+let NERDTreeWinPos='right'
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeAutoDeleteBuffer=1
@@ -224,7 +224,7 @@ endfunction
 
 " Desactiva los complementos y la indentación en el inicio
 "autocmd VimEnter * silent! colorscheme default | silent! filetype plugin indent off | silent! syntax off | silent! set noswapfile | silent! set nobackup | silent! set noundofile | silent! set nowrap
-" Función para mostrar el contenido de welcome.txt al inicio
+" Función para mostrar bienvenida welcome.txt al inicio
 "function! WelcomeCoder()
 "    silent! %bwipeout!
 "    silent! execute '0read ~/.config/nvim/welcome.txt'
@@ -261,7 +261,7 @@ nnoremap <Leader>, $a;<Esc>
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
-imap <Esc> :w<CR> <F5> :so ~/.config/nvim/init.vim<CR>
+imap <F5> <Esc> :w<CR> <F5> :so ~/.config/nvim/init.vim<CR>
 nmap <F6> kp :let @*=expand("%")<CR>
 imap <F6> <Esc> :w<CR> kp :let @*=expand("%")<CR>
 
