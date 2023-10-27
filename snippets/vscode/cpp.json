@@ -221,7 +221,7 @@
       "#endif\n",
       "#define ll  long long",
       "#define br  '\\n'\n",
-      "\n$2\n",
+      "$2\n",
       "void solve() {$3",
       "}\n",
       "int main() {",
