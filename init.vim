@@ -178,7 +178,7 @@ function! CompileJava()
     let l:compile_command = 'javac -d ~/workspace/bin ' . l:filename
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
-        echo "Error de Compilación :("
+        echo "OJO:"
         echo l:error_output
     else
         echo "Compilación Exitosa :)"
@@ -190,7 +190,7 @@ function! CompileCpp()
     let l:compile_command = 'g++ ' . l:filename . ' -o ~/workspace/bin/sol.out -std=c++17 -march=native -Wall -Wno-sign-conversion -DDEBUG -DLOCAL'
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
-        echo "Error de Compilación :("
+        echo "OJO:"
         echo l:error_output
     else
         echo "Compilación Exitosa :)"
@@ -200,8 +200,8 @@ endfunction
 function! RunJava()
     imap <silent><F1> <Esc> :w<CR> :call CompileJava()<CR>
     nmap <silent><F1> :w<CR> :call CompileJava()<CR>
-    imap <F2> <Esc> :w<CR> :!java -cp ~/workspace/bin %:t < ~/workspace/samples/in
-    nmap <F2> :w<CR> :!java -cp ~/workspace/bin %:t < ~/workspace/samples/in
+    imap <F2> <Esc> :w<CR> :!java -cp ~/workspace/bin %:r < ~/workspace/samples/in
+    nmap <F2> :w<CR> :!java -cp ~/workspace/bin %:r < ~/workspace/samples/in
     imap <F3> <Esc> :w<CR> :terminal time java %<CR>i
     nmap <F3> :w<CR> :terminal time java %<CR>i
 endfunction
@@ -260,8 +260,12 @@ nnoremap <Leader>, $a;<Esc>
 
 nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
 
+" editar archivos de entrada: agrege su número y presione Enter
+imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
+nmap <F4> :w<CR> :e ~/workspace/samples/in
+
 nmap <F5> :so ~/.config/nvim/init.vim<CR>
-imap <F5> <Esc> :w<CR> <F5> :so ~/.config/nvim/init.vim<CR>
+imap <F5> <Esc> :w<CR> :so ~/.config/nvim/init.vim<CR>
 nmap <F6> kp :let @*=expand("%")<CR>
 imap <F6> <Esc> :w<CR> kp :let @*=expand("%")<CR>
 
@@ -311,10 +315,6 @@ nnoremap <Leader>pp :PlugUpgrade<CR>
 
 vnoremap < <gv
 vnoremap > >gv
-
-" editar archivo de entrada
-imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
-nmap <F4> :w<CR> :e ~/workspace/samples/in
 
 " para multiples cursores debe poner el cursor encima de una palabra y presionar
 " <ctrl+n> para buscar las coincidencias en el archivo y luego presione <c>
