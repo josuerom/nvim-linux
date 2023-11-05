@@ -115,9 +115,10 @@ Con el comando ejecutado se te instalaran todos los plugins que uso; añado otra
 Para clonar copia y pega este comando en tu terminal, pero antes verifica tener instalado Git. 
 
 ```zsh
+git clone https://github.com/josuerom/nvim-linux.git ~/.config/nvim && nvim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/nvim}"/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-git clone https://github.com/josuerom/nvim-linux.git ~/.config/nvim && nvim
+
 ``` 
 
 Esta es la personalización que actualmente tengo en mi neovim:
