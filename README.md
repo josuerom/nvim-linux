@@ -10,11 +10,10 @@ En el presente proyecto se describe el proceso a seguir para personalizar e inst
 ## Herramientas necesarias.
 
 1. Instala **git**
-2. Instala **nodejs npm & yarn**
-3. Instala **python3**
-4. Instala **neovim**
-5. Instala el gestor de plugins **vim-plug**
-6. Clona **este repositorio**
+2. Instala **nodejs**
+3. Instala **neovim**
+4. Instala el gestor de plugins **vim-plug**
+5. Clona **este repositorio**
 
 **Tenga en cuenta que:** para instalar Neovim, si o si necesitarás utilizar todas esas 5 herramientas, para ello aquí conocerás el paso a paso para instalar cada una correctamente sin errores ni falsa información, cabe mensionar que, *Bash o Windows PowerShell* viene instalados de fabrica en los Sistemas Operativos, por eso no será necesario explicar el como ejecutarlo, ni instalarlo, *¡ni abrirlo ¡eso ya debes de saberlo programador!* y si no sabes mirate un video en YouTube.
 
@@ -28,13 +27,10 @@ Git es un software de control de versiones diseñado por **Linus Torvalds** qui�
 Para instalarlo da un [click aquí](https://nodejs.org/es/download/ "https://nodejs.org/es/download/"), este enlace te llevará directamente a su pagina oficial de descargar, si requieres más información de instalación, visualizate un video en **YouTube**.
 
 ```bash
-sudo apt install nodejs npm yarn -y
+sudo apt install nodejs
 ```
 
-### Paso No. 3. Instala Python.
-Es un lenguaje de alto nivel de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código, se utiliza para desarrollar aplicaciones de todo tipo, ejemplos: Instagram, Netflix, Spotify, Panda 3D, entre otros. Para instalarlo da un [click aquí](https://www.python.org/downloads/), este enlace te llevará a su página oficial de descargas, si requieres más información consultala en Google.
-
-### Si trabajaras con Java debes instalarte el OpenJDK-11 o 14
+### Si trabajaras con Java debes instalarte el OpenJDK-8 o 11
 Presento los comandos para instalar solo en Fedora Linux, la distribucion que manejo.
 
 Para Fedora, debe ejecutar:
@@ -49,10 +45,10 @@ sudo dnf install java-11-openjdk-devel.x86_64
 sudo dnf install java-latest-openjdk-devel.x86_64
 ```
 
-### Paso No. 4. Instala Neovim.
+### Paso No. 3. Instala Neovim.
 Para poder instalarlo debes ejecutar el comando correspondiente a tu distribución.
 
-Para distribuciones basadas en Debian como: [Ubuntu, Linux Mint, Deepin, SteamOS, MX Linux, PureOS, Kali Linux o Devuan], ejecute:
+Para distribuciones basadas en Debian, ejecute:
 ```bash
 sudo apt install neovim
 ``` 
@@ -76,15 +72,12 @@ Por snap, ejecute:
 ```zsh
 sudo snap install neovim
 ``` 
-Para concer si instaló correctamente neovim, ejecute el siguiente comando, le deberá arrojar la versión que haya instalado:
-```zsh
-nvim --version
-``` 
+
 Para instalar el editor en su versión más reciente por el archivo *appimage*, debe descargarlo desde [aquí](https://github.com/neovim/neovim/releases/tag/stable) y luego debe ejecutar este comando:
 ```zsh
 cd ~/Descargas && chmod +x nvim.appimage && sudo mv nvim.appimage /usr/local/bin/nvim && sudo ln -s /usr/local/bin/nvim /usr/local/bin/vim
 ``` 
-### Paso No. 5. Instala el gestor de plugins VIM PLUG
+### Paso No. 4. Instala el gestor de plugins VIM PLUG
 **Vim plug** es un administrador de plugins para el editor de texto vim y neovim minimalista, de código abierto creado por **junegunn** y gratuito que puede instalar y actualizar complementos en paralelo. Crea clones para minimizar el uso de espacio del disco y el tiempo de descarga; para realizar una descarga limpia y ligera, ejecuta en la terminal nueva, en la pestaña PowerShell ejecutada como administrador el siguiente comando:
 
 Copie y pegue el siguiente comando en su terminal GNU/Linux
@@ -118,7 +111,7 @@ Con el comando ejecutado se te instalaran todos los plugins que uso; añado otra
    <img align="center" src="">
 </p>
 
-### Paso No. 6. Clona los archivos publicados en este repositorio
+### Paso No. 5. Clona los archivos publicados en este repositorio
 Para clonar copia y pega este comando en tu terminal, pero antes verifica tener instalado Git. 
 
 ```zsh
