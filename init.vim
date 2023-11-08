@@ -68,7 +68,6 @@ call plug#end()
 
 " ajuste del tema
 let g:gruvbox_contrast_dark = 'hard'
-highlight Normal ctermbg = NONE
 colorscheme gruvbox
 "colorscheme onedark
 "colorscheme monokai
@@ -214,24 +213,6 @@ function! RunCpp()
     imap <F3> <Esc> :w<CR> :terminal ~/workspace/bin/sol.out<CR>i
     nmap <F3> :w<CR> :terminal ~/workspace/bin/sol.out<CR>i
 endfunction
-
-"░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗░░░██╗░░░██╗██╗███╗░░░███╗
-"░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝░░░██║░░░██║██║████╗░████║
-"░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░░░░╚██╗░██╔╝██║██╔████╔██║
-"░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░░░░░╚████╔╝░██║██║╚██╔╝██║
-"░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗██╗░░╚██╔╝░░██║██║░╚═╝░██║
-"░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
-
-" Desactiva los complementos y la indentación en el inicio
-"autocmd VimEnter * silent! colorscheme default | silent! filetype plugin indent off | silent! syntax off | silent! set noswapfile | silent! set nobackup | silent! set noundofile | silent! set nowrap
-" Función para mostrar bienvenida welcome.txt al inicio
-"function! WelcomeCoder()
-"    silent! %bwipeout!
-"    silent! execute '0read ~/.config/nvim/welcome.txt'
-"    set laststatus=0
-"endfunction
-" Llama a WelcomeCoder() al iniciar neovim
-"autocmd VimEnter * call WelcomeCoder()
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝  ██║   ██║██║████╗ ████║
