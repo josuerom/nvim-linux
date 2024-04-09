@@ -21,13 +21,13 @@
     "description": "Formatted standard output"
   },
   "System ternary operator": {
-    "prefix": "sst",
+    "prefix": "sot",
     "body": [
       "System.out.println($1 ? $2 : $3);"
-    ]
+    ],
   },
   "System veredict Y/N": {
-    "prefix": "ssv",
+    "prefix": "sov",
     "body": [
       "System.out.println($1 ? \"YES\" : \"NO\");"
     ],
@@ -50,7 +50,7 @@
     "prefix": "ppt",
     "body": [
       "io.println($1 ? $2 : $3);"
-    ]
+    ],
   },
   "Print veredict Y/N": {
     "prefix": "ppv",
@@ -66,10 +66,10 @@
     "description": "Printf with format"
   },
   "Return ternary operator": {
-    "prefix": "rot",
+    "prefix": "aot",
     "body": [
       "${1:boolean} $2 = ($3) ? $4 : $5;"
-    ]
+    ],
   },
   "Scanner(System.in)": {
     "prefix": "sc",
@@ -103,12 +103,12 @@
     "description": "Method I use most often"
   },
   "Method template": {
-    "prefix": "temfun",
+    "prefix": "funpre",
     "body": [
-      "public ${1:static} ${2:void} ${3}($4) {",
+      "public static ${1:void} preCalculate($2) {",
       "}"
     ],
-    "description": "Template for create methods"
+    "description": "Function preCalculate"
   },
   "try catch": {
     "prefix": "try",
@@ -125,62 +125,60 @@
     "prefix": "if",
     "body": [
       "if (${1:condition}) $2"
-    ]
+    ],
   },
   "else": {
     "prefix": "el",
     "body": [
-      "else $2"
-    ]
+      "else $2",
+    ],
   },
   "else if ()": {
     "prefix": "eli",
     "body": [
-      "else if ($1) $2"
-    ]
+      "else if ($1) $2",
+    ],
   },
   "do while": {
     "prefix": "do",
     "body": [
       "do {\n\t$1",
       "} while ($2);"
-    ]
+    ],
   },
   "while": {
     "prefix": "wh",
     "body": [
       "while ($1) {",
       "}"
-    ]
+    ],
   },
   "for iterator": {
     "prefix": "fori",
     "body": [
       "for (int ${1:i} = 0; ${1:i} < $2; ${1:i}++) $3{",
       "}"
-    ]
+    ],
   },
   "for reverse iterator": {
     "prefix": "forr",
     "body": [
       "for (int ${1:i} = $2 - 1; ${1:i} >= 0; ${1:i}--) $3{",
       "}"
-    ]
+    ],
   },
   "for each": {
     "prefix": "fore",
     "body": [
-      "for (${1:int} e : $2) {",
-      "\t${3:System.out}.print(e + \" \");",
-      "}",
+      "for (${1:int} e : $2) ${3:System.out}.print(e + \" \");",
       "${3:System.out}.println();"
-    ]
+    ],
   },
   "Object creation": {
     "prefix": "obj",
     "body": [
       "${1:nameClass} ${2:name} = new ${1:nameConstructor}();"
-    ]
+    ],
   },
   "Constructor ()": {
     "prefix": "construct",
@@ -188,12 +186,12 @@
       "public ${TM_FILENAME_BASE}($1) {",
       "\tthis.$2 = $2;",
       "}"
-    ]
+    ],
   },
   "import": {
-    "prefix": "im",
+    "prefix": "in",
     "body": [
-      "import java.$1;"
+      "import java.$1;",
     ],
     "description": "Import packages"
   },
@@ -221,8 +219,8 @@
     "prefix": "author",
     "body": [
       "/**",
-      "-*   author:  josuerom",
-      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      " *   author:  josuerom",
+      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/"
     ],
     "description": "Encabezado"
@@ -230,7 +228,7 @@
   "Date": {
     "prefix": "date",
     "body": [
-      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
+      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
     ],
     "description": "Encabezado"
   },
@@ -238,74 +236,80 @@
     "prefix": "tostr",
     "body": [
       "Arrays.toString($1)"
-    ]
+    ],
   },
   "Set static array": {
     "prefix": "arr",
     "body": [
       "${1:int}[] a$2 = new ${1:int}[MAX$3];"
-    ]
+    ],
   },
   "Read int": {
     "prefix": "ri",
     "body": [
       "int $1 = io.nextInt();"
-    ]
+    ],
   },
   "Read Line": {
     "prefix": "rln",
     "body": [
       "String line = io.nextLine();"
-    ]
+    ],
   },
   "Read long": {
     "prefix": "rl",
     "body": [
       "long $1 = io.nextLong();"
-    ]
+    ],
   },
   "Read double": {
     "prefix": "rd",
     "body": [
       "double $1 = io.nextDouble();"
-    ]
+    ],
   },
-  "Read int array": {
-    "prefix": "rarr",
+  "Read int[] array": {
+    "prefix": "rai",
     "body": [
       "int[] $1 = io.readArray($2);"
-    ]
+    ],
   },
   "Read char[] array": {
     "prefix": "rac",
     "body": [
       "char[] $2 = io.next().toCharArray();"
-    ]
+    ],
+  },
+  "Read long[] array": {
+    "prefix": "ral",
+    "body": [
+      "long[] $2 = io.next().readArray();"
+    ],
+  },
+  "Read double[] array": {
+    "prefix": "rad",
+    "body": [
+      "double[] $2 = io.next().readArray();"
+    ],
   },
   "Set constant int": {
-    "prefix": "MAX",
+    "prefix": "N",
     "body": [
-      "final int MAX = 100000$1_7;"
-    ]
+      "static final int N = 1$1_000_000;"
+    ],
   },
   "read test cases": {
     "prefix": "tt",
     "body": [
       "int tt = io.nextInt();",
-      "while (tt-- > 0) {",
-      "\t$1",
-      "\tsolve(io, $2);",
-      "}"
-    ]
+      "while (tt-- > 0) solve(io);",
+    ],
   },
-  "read test cases with Scanner": {
-    "prefix": "ttt",
+  "no test cases": {
+    "prefix": "nt",
     "body": [
-      "int tt = sc.nextInt();",
-      "while (tt-- > 0) {",
-      "\t$1",
-      "}"
-    ]
+      "solve(io);"
+    ],
   },
   "style josuerom": {
     "prefix": "header",
@@ -314,15 +318,15 @@
       "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
       "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
       "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/"
+      "**/",
     ]
   },
   "Template for codeforces": {
     "prefix": "tem1",
     "body": [
       "/**",
-      "-*   author:  josuerom",
-      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      " *   author:  josuerom",
+      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/",
       "import java.io.*;",
       "import java.util.*;",
@@ -331,16 +335,17 @@
       "   public static void main(String[] args) {",
       "      try (FastReader io = new FastReader()) {",
       "         int tt = 1;",
-      "         $1tt = io.nextInt();",
-      "         while (tt-- > 0) {",
-      "            $2",
-      "            solve(io, $3);",
-      "         }",
+      "         // tt = io.nextInt();$1",
+      "         while (tt-- > 0) solve(io);",
       "      }",
       "      System.exit(0);",
       "   }",
       "",
-      "   public static void solve(FastReader io, $4) {",
+      "   static final int N = 10 + $2;",
+      "   static int[] a = new int[N];",
+      "   static int n;",
+      "",
+      "   public static void solve(FastReader io) {$3",
       "   }",
       "",
       "   static class FastReader extends PrintWriter {",
@@ -404,17 +409,36 @@
       "   }",
       "}"
     ],
-    "description": "Plantilla para CF"
+    "description": "Plantilla efectiva y efizaz"
   },
-  "Template 2 BITS()": {
+  "Template Ultra-Ligth": {
     "prefix": "tem2",
     "body": [
       "/**",
-      "-*   █▀█  █▀▀▄ ─▀─ ▀▀█▀▀ █▀▀ ▄▀ ▀▄",
-      "-*   ─▄▀  █▀▀▄ ▀█▀ ──█── ▀▀█ █─ ─█",
-      "-*   █▄▄  ▀▀▀─ ▀▀▀ ──▀── ▀▀▀ ▀▄ ▄▀",
-      "-*   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
+      "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
+      "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
       "**/",
+      "import java.util.*;\n",
+      "public class ${TM_FILENAME_BASE} {",
+      "\tpublic static void main(String[] args) {",
+      "\t\tScanner sc = new Scanner(System.in);",
+      "\t\t$1",
+      "\t\tSystem.exit(0);",
+      "\t}",
+      "}"
+    ],
+    "description": "Plantilla estandar simple"
+  },
+  "Template 2 BITS()": {
+    "prefix": "tem3",
+    "body": [
+      "/**",
+      " *   █▀█  █▀▀▄ ─▀─ ▀▀█▀▀ █▀▀ ▄▀ ▀▄",
+      " *   ─▄▀  █▀▀▄ ▀█▀ ──█── ▀▀█ █─ ─█",
+      " *   █▄▄  ▀▀▀─ ▀▀▀ ──▀── ▀▀▀ ▀▄ ▄▀",
+      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+      " **/",
       "import java.io.*;",
       "import java.util.*;",
       "import static java.lang.Math.*;\n",
@@ -422,16 +446,13 @@
       "   public static void main(String[] args) {",
       "      try (FastReader io = new FastReader()) {",
       "         int tt = 1;",
-      "         $1tt = io.nextInt();",
-      "         while (tt-- > 0) {",
-      "            $2",
-      "            solve(io, $3);",
-      "         }",
+      "         // tt = io.nextInt();$1",
+      "         while (tt-- > 0) solve(io);",
       "      }",
       "      System.exit(0);",
       "   }",
       "",
-      "   public static void solve(FastReader io, $4) {",
+      "   public static void solve(FastReader io) {$2",
       "   }",
       "",
       "   static class FastReader extends PrintWriter {",
@@ -496,24 +517,5 @@
       "}"
     ],
     "description": "Plantilla equipo 2 Bits()"
-  },
-  "Template Ultra-Ligth": {
-    "prefix": "tem3",
-    "body": [
-      "/**",
-      "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
-      "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
-      "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/",
-      "import java.util.*;\n",
-      "public class ${TM_FILENAME_BASE} {",
-      "\tpublic static void main(String[] args) {",
-      "\t\tScanner sc = new Scanner(System.in);",
-      "\t\t$1",
-      "\t\tSystem.exit(0);",
-      "\t}",
-      "}"
-    ],
-    "description": "Plantilla estandar simple"
   }
 }
