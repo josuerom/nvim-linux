@@ -1,4 +1,4 @@
-"*-------------- Configuración Inicial [init.vim] 15/Octubre/2023 17:43 COL --------------*
+" *--------------------- Configuración general 08/Abril/2024 16:38 COL ---------------------*
 
 "                        ██╗███╗░░██╗██╗████████╗░░░██╗░░░██╗██╗███╗░░░███╗
 "                        ██║████╗░██║██║╚══██╔══╝░░░██║░░░██║██║████╗░████║
@@ -7,7 +7,10 @@
 "                        ██║██║░╚███║██║░░░██║░░░██╗░░╚██╔╝░░██║██║░╚═╝░██║
 "                        ╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
 "                                      Creado por >> josuerom
-"                             Twitter >> https://twitter.com/josueromr
+
+" - PROGRAMS NEEDED. python3 g++ java nodejs npm xclip nerd-font
+" - INSTALL VIM-PLUG. sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" - INSIDE NVIM EXECUTE. :PlugInstall
 
 syntax enable
 set number
@@ -39,6 +42,8 @@ set shortmess+=c
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
+autocmd FileType python :call RunPython()
+"autocmd FileType javascript :call RunNodeJS()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -66,7 +71,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
-" ajuste del tema
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 "colorscheme onedark
@@ -79,7 +83,6 @@ colorscheme gruvbox
 "██║     ███████╗╚██████╔╝╚██████╔╝      ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝██╗╚████╔╝ ██║██║ ╚═╝ ██║
 "╚═╝     ╚══════╝ ╚═════╝  ╚═════╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ ╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-" configuración de la barra de estado inferior
 let g:lightline = {
     \ 'active': {
     \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
@@ -113,7 +116,6 @@ imap <C-l> <Plug>(coc-snippets-expand)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <Leader>cs <Plug>(coc-convert-snippet)
 
-" cerrado automatico de la barra lateral o tree
 let NERDTreeWinPos='right'
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
@@ -122,48 +124,8 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 
-" navegación rápida tmux
+" tmux navegación rápida
 let g:tmux_navigator_no_mappings=1
-
-"*---------------------- FUNCIÓN PARA INTEGRAR LA SHELL BASH O ZSH -------------------------*
-function! OpenTerminal()
-  execute "normal \<C-l>"
-  execute "normal \<C-l>"
-  execute "normal \<C-l>"
-  execute "normal \<C-l>"
-
-  let bufNum = bufnr("%")
-  let bufType = getbufvar(bufNum, "&buftype", "not found")
-
-  if bufType == "terminal"
-    " cerrar terminal existente
-    execute "q"
-  else
-    " se abrirá la shell zsh, pero si usted utilizas otra, debes poner el nombre
-    " de la shell en la línea 194, ya sea: 'zsh, bash, fish', quedando la así:
-    " execute 'sp term://zsh'
-    execute "sp term://bash"
-    " apagar números
-    execute "set nonu"
-    execute "set nornu"
-
-    " alternar insertar en entrar o salir
-    silent au BufLeave <buffer> stopinsert!
-    silent au BufWinEnter,WinEnter <buffer> startinsert!
-
-    " establezco atajos dentro de la terminal
-    execute "tnoremap <buffer> <Esc> <C-\\><C-n><C-w><C-h>"
-    execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
-    execute "tnoremap <buffer> <C-7> <C-\\><C-\\><C-n>"
-    startinsert!
-  endif
-endfunction
-
-"*---------------------- SOLUCIÓN A EL ERROR DE COC-SNIPPETS -----------------------*
-" Si al iniciar neovim te aparece siempre este molestoso error:
-" [coc.nvim] Error on execute :pyx command, ultisnips feature of coc-snippets requires pyx support on vim.
-" ejecuta el sgt comando en tu distribución:
-" sudo apt install python3 python3-pip -y && pip install pynvim
 
 "░█████╗░░█████╗░███╗░░░███╗██████╗░██╗██╗░░░░░███████╗██████╗░░░░██╗░░░██╗██╗███╗░░░███╗
 "██╔══██╗██╔══██╗████╗░████║██╔══██╗██║██║░░░░░██╔════╝██╔══██╗░░░██║░░░██║██║████╗░████║
@@ -174,44 +136,64 @@ endfunction
 
 function! CompileJava()
     let l:filename = expand('%:t')
-    let l:compile_command = 'javac -d ~/workspace/bin ' . l:filename
+    let l:compile_command = 'javac -d ~/Workspace/bin ' . l:filename
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
         echo "OJO:"
         echo l:error_output
     else
-        echo "Compilación Exitosa :)"
+        echo "Compilación exitosa :)"
     endif
 endfunction
 
 function! CompileCpp()
     let l:filename = expand('%:t')
-    let l:compile_command = 'g++ ' . l:filename . ' -o ~/workspace/bin/sol.out -std=c++17 -march=native -Wall -Wno-sign-conversion -DDEBUG -DLOCAL'
+    let l:compile_command = 'g++ ' . l:filename . ' -o ~/Workspace/bin/sol.out -std=c++17 -O2 -DLOCAL'
     let l:error_output = system(l:compile_command . ' 2>&1')
     if v:shell_error
         echo "OJO:"
         echo l:error_output
     else
-        echo "Compilación Exitosa :)"
+        echo "Compilación exitosa :)"
     endif
 endfunction
 
 function! RunJava()
-    imap <silent><F1> <Esc> :w<CR> :cd %:h<CR> :call CompileJava()<CR>
-    nmap <silent><F1> :w<CR> :cd %:h<CR> :call CompileJava()<CR>
-    imap <F2> <Esc> :w<CR> :!java -cp ~/workspace/bin %:r < ~/workspace/samples/in1
-    nmap <F2> :w<CR> :!java -cp ~/workspace/bin %:r < ~/workspace/samples/in1
-    imap <F3> <Esc> :w<CR> :terminal java %<CR>i
-    nmap <F3> :w<CR> :terminal java %<CR>i
+    imap <silent><F5> <Esc> :w<CR> :cd %:h<CR> :call CompileJava()<CR>
+    nmap <silent><F5> :w<CR> :cd %:h<CR> :call CompileJava()<CR>
+    imap <F6> <Esc> :w<CR> :!java -cp ~/Workspace/bin %:r < in1
+    nmap <F6> :w<CR> :!java -cp ~/Workspace/bin %:r < in1
+    imap <C-r> <Esc> :w<CR> :vertical term java %<CR>i
+    nmap <C-r> :w<CR> :vertical term java %<CR>i
+    imap <F7> <Esc> :w<CR> :terminal<CR>java i
+    nmap <F7> :w<CR> :terminal<CR>java i
 endfunction
 
 function! RunCpp()
-    imap <silent><F1> <Esc> :w<CR> :cd %:h<CR> :call CompileCpp()<CR>
-    nmap <silent><F1> :w<CR> :cd %:h<CR> :call CompileCpp()<CR>
-    imap <F2> <Esc> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in1
-    nmap <F2> :w<CR> :!~/workspace/bin/sol.out % < ~/workspace/samples/in1
-    imap <F3> <Esc> :w<CR> :terminal ~/workspace/bin/sol.out<CR>i
-    nmap <F3> :w<CR> :terminal ~/workspace/bin/sol.out<CR>i
+    imap <silent><F5> <Esc> :w<CR> :cd %:h<CR> :call CompileCpp()<CR>
+    nmap <silent><F5> :w<CR> :cd %:h<CR> :call CompileCpp()<CR>
+    imap <F6> <Esc> :w<CR> :!~/Workspace/bin/sol.out % < in1
+    nmap <F6> :w<CR> :!~/Workspace/bin/sol.out % < in1
+    imap <C-r> <Esc> :w<CR> :vertical term ~/Workspace/bin/sol.out<CR>i
+    nmap <C-r> :w<CR> :vertical term ~/Workspace/bin/sol.out<CR>i
+    imap <F7> <Esc> :w<CR> :terminal<CR>~/Workspace/bin/sol.outi
+    nmap <F7> :w<CR> :terminal<CR>~/Workspace/bin/sol.outi
+endfunction
+
+function! RunPython()
+    imap <F6> <Esc> :w<CR> :!python3 -O -q % < in1
+    nmap <F6> :w<CR> :!python3 -O -q % < in1
+    imap <C-r> <Esc> :w<CR> :vertical term python3 -O -q %<CR>i
+    nmap <C-r> :w<CR> :vertical term python3 -O -q %<CR>i
+    imap <F7> <Esc> :w<CR> :call KeepRunning()<CR>
+    nmap <F7> :w<CR> :call KeepRunning()<CR>
+endfunction
+
+function! OpenTerminal()
+    let l:current_file = shellescape(expand('%:p:h'))
+    " cambie zsh por su shell para evitar errores
+    execute 'vert term zsh -c "cd ' . l:current_file . ' && zsh"'
+    wincmd l
 endfunction
 
 "███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗  ██╗   ██╗██╗███╗   ███╗
@@ -239,17 +221,16 @@ nnoremap < 5<C-w><
 
 nnoremap <Leader>, $a;<Esc>
 
-nmap <Leader>t :call OpenTerminal()<CR> <Esc> :resize 14<CR>
+nnoremap <Leader>t :call OpenTerminal()<CR>i
 nmap <Leader>¿ :e ~/.config/nvim/init.vim<CR>
 
-" editar archivos de entrada: agrege su número y presione Enter
-imap <F4> <Esc> :w<CR> :e ~/workspace/samples/in
-nmap <F4> :w<CR> :e ~/workspace/samples/in
+imap <F8> <Esc> :w<CR> :e in
+nmap <F8> :w<CR> :e in
 
-nmap <F5> :w<CR> :so ~/.config/nvim/init.vim<CR>
-imap <F5> <Esc> :w<CR> :so ~/.config/nvim/init.vim<CR>
-nmap <F6> kp :let @*=expand("%")<CR>
-imap <F6> <Esc> :w<CR> kp :let @*=expand("%")<CR>
+nmap <F2> :w<CR> :so ~/.config/nvim/init.vim<CR>
+imap <F2> <Esc> :w<CR> :so ~/.config/nvim/init.vim<CR>
+nmap <F3> kp :let @*=expand("%")<CR>
+imap <F3> <Esc> :w<CR> kp :let @*=expand("%")<CR>
 
 imap <C-a> <Esc> :w<CR> :%y+<CR>
 nmap <C-a> :w<CR> :%y+<CR>
@@ -311,13 +292,13 @@ xmap s <Plug>VSurround
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
-" cambia la posición de una línea
+" cambia la posición de una línea de código
 nnoremap n :m .-2<CR>==
 nnoremap m :m .+1<CR>==
-
-nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
-nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
 
 " Para camiar el carácter que contenga una cadena de texto o cambiar el carácteres que los contiene,
 " por ejemplo: si tienes un: 'Hi! World' al presionar <cs+el-simbolo-a-usar> la cadena de carácteres
 " que los agrupa magicamente se cambiaran sin necesidad de realizarlo manualmente
+
+nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
+nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
