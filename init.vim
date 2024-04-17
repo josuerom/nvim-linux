@@ -43,7 +43,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType java :call RunJava()
 autocmd FileType cpp :call RunCpp()
 autocmd FileType python :call RunPython()
-"autocmd FileType javascript :call RunNodeJS()
+"autocmd FileType javascript,typescript :call RunNodeJS()
 
 "██████╗ ██╗     ██╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗  ██╗   ██╗██╗███╗   ███╗
 "██╔══██╗██║     ██║   ██║██╔════╝ ██║████╗  ██║██╔════╝  ██║   ██║██║████╗ ████║
@@ -210,7 +210,6 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-imap <C-c> <Esc>
 imap ññ <Esc>
 
 nnoremap <C-k> 50 <C-e>
@@ -224,8 +223,8 @@ nnoremap <Leader>, $a;<Esc>
 nnoremap <Leader>t :call OpenTerminal()<CR>i
 nmap <Leader>¿ :e ~/.config/nvim/init.vim<CR>
 
-imap <F8> <Esc> :w<CR> :e in
-nmap <F8> :w<CR> :e in
+imap <F8> <Esc> :w<CR> :e in1
+nmap <F8> :w<CR> :e in1
 
 nmap <F2> :w<CR> :so ~/.config/nvim/init.vim<CR>
 imap <F2> <Esc> :w<CR> :so ~/.config/nvim/init.vim<CR>
@@ -264,7 +263,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <Leader>ii :vsp<CR>
-
 nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprevious<CR>
 nnoremap <Leader>dl :bdelete<CR>
@@ -278,27 +276,11 @@ nnoremap <Leader>pp :PlugUpgrade<CR>
 
 vnoremap < <gv
 vnoremap > >gv
-
-" para multiples cursores debe poner el cursor encima de una palabra y presionar
-" <ctrl+n> para buscar las coincidencias en el archivo y luego presione <c>
-" para editar el contenido seleccionado
-
-" para agrupar una cadena de texto con cualquier simbolo ya sea: () [] {} '' ""
-" debes selecionar la palabra hasta un carácter antes y presionar: <s+el-simbolo-a-usar>
-" por ejemplo: <s+[>
 xmap s <Plug>VSurround
-
-" mover bloques de código seleccionado en modo VISUAL, V-LINE o V-BLOCK con <K> subes el código y con <J> lo bajas
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
-" cambia la posición de una línea de código
 nnoremap n :m .-2<CR>==
 nnoremap m :m .+1<CR>==
-
-" Para camiar el carácter que contenga una cadena de texto o cambiar el carácteres que los contiene,
-" por ejemplo: si tienes un: 'Hi! World' al presionar <cs+el-simbolo-a-usar> la cadena de carácteres
-" que los agrupa magicamente se cambiaran sin necesidad de realizarlo manualmente
-
 nnoremap <silent><nowait> <F12> :<C-u>CocList snippets<CR>
 nnoremap <silent><nowait> <Leader>cup :<C-u>CocUpdate<CR>
