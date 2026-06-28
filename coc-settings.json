@@ -1,25 +1,4 @@
 {
-  // Python
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.typeCheckingMode": "basic",
-  "python.formatting.provider": "black",
-  // "python.formatting.blackPath": "black",
-  "python.linting.mypyEnabled": true,
-  "python.linting.pylintEnabled": true,
-  // Java
-  "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-11",
-      "path": "/usr/lib/jvm/java-11-openjdk-11.0.20.0.8-1.fc38.x86_64/",
-      "default": true
-    }
-  ],
-  // Snippets
-  "snippets.priority": 1,
-  "snippets.extends": {
-    "cpp": ["c"]
-  },
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets/ultisnips",
   "snippets.shortcut": "S",
   "snippets.autoTrigger": true,
   "snippets.triggerCharacters": [],
@@ -27,7 +6,6 @@
   "snippets.textmateSnippetsRoots": ["~/.config/nvim/snippets/vscode"],
   "snippets.ultisnips.enable": true,
   "snippets.ultisnips.usePythonx": true,
-  "snippets.ultisnips.directories": ["ultisnips"],
   "snippets.snipmate.enable": true,
   "snippets.snipmate.author": "josuerom"
 }

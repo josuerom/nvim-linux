@@ -1,521 +1,522 @@
 { // @author josuerom
   "System.out.print()": {
-    "prefix": "s",
-    "body": [
-      "System.out.print($1);"
-    ],
-    "description": "Standard data output"
+  "prefix": "s",
+  "body": [
+  "System.out.print($1);"
+  ]
   },
   "System.out.println()": {
-    "prefix": "ss",
-    "body": [
-      "System.out.println($1);"
-    ],
-    "description": "Standard output with line break"
+  "prefix": "ss",
+  "body": [
+  "System.out.println($1);"
+  ]
   },
   "System.out.prinf()": {
-    "prefix": "sf",
-    "body": [
-      "System.out.printf(\"%$1\", $2);"
-    ],
-    "description": "Formatted standard output"
+  "prefix": "sf",
+  "body": [
+  "System.out.printf(\"%$1\", $2);"
+  ]
   },
   "System ternary operator": {
-    "prefix": "sot",
-    "body": [
-      "System.out.println($1 ? $2 : $3);"
-    ],
+  "prefix": "ssto",
+  "body": [
+  "System.out.println($1 ? $2 : $3);"
+  ]
   },
-  "System veredict Y/N": {
-    "prefix": "sov",
-    "body": [
-      "System.out.println($1 ? \"YES\" : \"NO\");"
-    ],
+  "print veredict YES or NO": {
+  "prefix": "soutv1",
+  "body": [
+  "System.out.println($1 ? \"YES\" : \"NO\");"
+  ]
   },
-  "pw.print()": {
-    "prefix": "p",
-    "body": [
-      "io.print($1);"
-    ],
-    "description": "Print standard output"
+  "print veredict yes or no": {
+  "prefix": "soutv2",
+  "body": [
+  "System.out.println($1 ? \"yes\" : \"no\");"
+  ]
   },
-  "pw.println()": {
-    "prefix": "pp",
-    "body": [
-      "io.println($1);"
-    ],
-    "description": "Println standard output"
+  "print veredict Yes or No": {
+  "prefix": "soutv3",
+  "body": [
+  "System.out.println($1 ? \"Yes\" : \"No\");"
+  ]
   },
-  "Print ternary operator": {
-    "prefix": "ppt",
-    "body": [
-      "io.println($1 ? $2 : $3);"
-    ],
+  "io.print()": {
+  "prefix": "p",
+  "body": [
+  "io.print($1);"
+  ]
   },
-  "Print veredict Y/N": {
-    "prefix": "ppv",
-    "body": [
-      "io.println($1 ? \"YES\" : \"NO\");"
-    ],
+  "io.println()": {
+  "prefix": "pp",
+  "body": [
+  "io.println($1);"
+  ]
   },
-  "pw.printf()": {
-    "prefix": "pf",
-    "body": [
-      "io.printf(\"%d$1\\n\", $2);"
-    ],
-    "description": "Printf with format"
+  "print ternary operator": {
+  "prefix": "ppto",
+  "body": [
+  "io.println($1 ? $2 : $3);"
+  ]
   },
-  "Return ternary operator": {
-    "prefix": "aot",
-    "body": [
-      "${1:boolean} $2 = ($3) ? $4 : $5;"
-    ],
+  "io.print veredict YES or NO": {
+  "prefix": "ppv1",
+  "body": [
+  "io.println($1 ? \"YES\" : \"NO\");"
+  ]
   },
-  "Scanner(System.in)": {
-    "prefix": "sc",
-    "body": [
-      "Scanner sc = new Scanner(System.in);$1"
-    ],
-    "description": "Standard input using the Scanner method"
+  "ioprint veredict yes or no": {
+  "prefix": "ppv2",
+  "body": [
+  "io.println($1 ? \"yes\" : \"no\");"
+  ]
+  },
+  "ioprint veredict Yes or No": {
+  "prefix": "ppv3",
+  "body": [
+  "io.println($1 ? \"Yes\" : \"No\");"
+  ]
+  },
+  "io.printf()": {
+  "prefix": "ppf",
+  "body": [
+  "io.printf(\"%d$1\\n\", $2);"
+  ]
+  },
+  "assing ternary operator": {
+  "prefix": "ato",
+  "body": [
+  "${1:int} $2 = ($3) ? $4 : $5;"
+  ]
+  },
+  "Scanner sc = new Scanner(System.in)": {
+  "prefix": "sc",
+  "body": [
+  "Scanner sc = new Scanner(System.in);$1"
+  ]
   },
   "main() method": {
-    "prefix": "fm",
-    "body": [
-      "public static void main(String[] args) {",
-      "\t$1",
-      "}"
-    ],
-    "description": "This is the main method that java executes"
-  },
-  "solve() method": {
-    "prefix": "fsol",
-    "body": [
-      "public static ${1:void} solve($2) {",
-      "}"
-    ]
+  "prefix": "main",
+  "body": [
+  "public static void main(String[] args) {",
+  "\t$1",
+  "}"
+  ]
   },
   "public static void nameMethod": {
-    "prefix": "psv",
-    "body": [
-      "public static void ${1:nameMethod}($2) {",
-      "}"
-    ],
-    "description": "Method I use most often"
+  "prefix": "psv",
+  "body": [
+  "public static void ${1:nameMethod}($2) {",
+  "}"
+  ]
   },
-  "Method template": {
-    "prefix": "funpre",
-    "body": [
-      "public static ${1:void} preCalculate($2) {",
-      "}"
-    ],
-    "description": "Function preCalculate"
+  "function solve()": {
+  "prefix": "fsol",
+  "body": [
+  "public static ${1:void} solve($2) {",
+  "}"
+  ]
+  },
+  "function preCalculate()": {
+  "prefix": "fpre",
+  "body": [
+  "public static ${1:void} preCalculate($2) {",
+  "}"
+  ]
+  },
+  "function getValue()": {
+  "prefix": "fpre",
+  "body": [
+  "public static ${1:void} getValue($2) {",
+  "}"
+  ]
   },
   "try catch": {
-    "prefix": "try",
-    "body": [
-      "try {",
-      "\t$1",
-      "} catch (Exception$2 e) {",
-      "\te.printStackTrace();",
-      "}"
-    ],
-    "description": "Methods for handling exceptions"
+  "prefix": "try",
+  "body": [
+  "try {",
+  "\t$1",
+  "} catch (Exception$2 e) {",
+  "\te.printStackTrace();",
+  "}"
+  ]
   },
   "if": {
-    "prefix": "if",
-    "body": [
-      "if (${1:condition}) $2"
-    ],
+  "prefix": "if",
+  "body": [
+  "if (${1:condition}) $2"
+  ]
   },
   "else": {
-    "prefix": "el",
-    "body": [
-      "else $2",
-    ],
+  "prefix": "el",
+  "body": [
+  "else $2"
+  ]
   },
   "else if ()": {
-    "prefix": "eli",
-    "body": [
-      "else if ($1) $2",
-    ],
+  "prefix": "elif",
+  "body": [
+  "else if ($1) $2"
+  ]
   },
   "do while": {
-    "prefix": "do",
-    "body": [
-      "do {\n\t$1",
-      "} while ($2);"
-    ],
+  "prefix": "do",
+  "body": [
+  "do {\n\t$2",
+  "} while ($1);"
+  ]
   },
   "while": {
-    "prefix": "wh",
-    "body": [
-      "while ($1) {",
-      "}"
-    ],
+  "prefix": "wh",
+  "body": [
+  "while ($1) {",
+  "}"
+  ]
   },
   "for iterator": {
-    "prefix": "fori",
-    "body": [
-      "for (int ${1:i} = 0; ${1:i} < $2; ${1:i}++) $3{",
-      "}"
-    ],
+  "prefix": "fori",
+  "body": [
+  "for (int ${1:i} = 0; ${1:i} < $2; ${1:i}++) {\n$3\n}"
+  ]
   },
   "for reverse iterator": {
-    "prefix": "forr",
-    "body": [
-      "for (int ${1:i} = $2 - 1; ${1:i} >= 0; ${1:i}--) $3{",
-      "}"
-    ],
+  "prefix": "forr",
+  "body": [
+  "for (int ${1:j} = $2 - 1; ${1:j} >= 0; ${1:j}--) {$3}"
+  ]
   },
   "for each": {
-    "prefix": "fore",
-    "body": [
-      "for (${1:int} e : $2) ${3:System.out}.print(e + \" \");",
-      "${3:System.out}.println();"
-    ],
+  "prefix": "fore",
+  "body": [
+  "for (${1} e : $2) ${3:System.out}.print(e + \" \");",
+  "${3:System.out}.println();"
+  ]
   },
-  "Object creation": {
-    "prefix": "obj",
-    "body": [
-      "${1:nameClass} ${2:name} = new ${1:nameConstructor}();"
-    ],
+  "object creation": {
+  "prefix": "obj",
+  "body": [
+  "${1:nameClass} ${2:name} = new ${1:nameConstructor}();"
+  ]
   },
-  "Constructor ()": {
-    "prefix": "construct",
-    "body": [
-      "public ${TM_FILENAME_BASE}($1) {",
-      "\tthis.$2 = $2;",
-      "}"
-    ],
+  "constructor": {
+  "prefix": "construct",
+  "body": [
+  "public ${TM_FILENAME_BASE}($1) {",
+  "\tthis.$2 = $2;",
+  "}"
+  ]
   },
-  "import": {
-    "prefix": "in",
-    "body": [
-      "import java.$1;",
-    ],
-    "description": "Import packages"
+  "import all librarys": {
+  "prefix": "inli",
+  "body": [
+  "import java.io.*;",
+  "import java.util.*;",
+  "import static java.lang.Math.*;\n"
+  ]
   },
-  "JavaClass Template": {
-    "prefix": "class",
-    "body": [
-      "public class ${TM_FILENAME_BASE} {",
-      "\t$1",
-      "}"
-    ],
-    "description": "JavaClass template"
+  "JavaClass template": {
+  "prefix": "javaclass",
+  "body": [
+  "public class ${TM_FILENAME_BASE} {",
+  "\t$1\n",
+  "\tpublic ${TM_FILENAME_BASE}($1) {",
+  "\t\tthis.$2 = $2;",
+  "\t}",
+  "}"
+  ]
   },
-  "JavaMainClass Template": {
-    "prefix": "mainclass",
-    "body": [
-      "public class ${TM_FILENAME_BASE} {",
-      "\tpublic static void main(String[] args) {",
-      "\t\t$1",
-      "\t}",
-      "}"
-    ],
-    "description": "JavaMainClass template"
+  "JavaMainClass template": {
+  "prefix": "mainclass",
+  "body": [
+  "public class ${TM_FILENAME_BASE} {",
+  "\tpublic static void main(String[] args) {",
+  "\t\t$1",
+  "\t}",
+  "}"
+  ]
   },
-  "Header": {
-    "prefix": "author",
-    "body": [
-      "/**",
-      " *   author:  josuerom",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/"
-    ],
-    "description": "Encabezado"
+  "header for file": {
+  "prefix": "author",
+  "body": [
+  "/**",
+  " *   author:  josuerom",
+  " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+  "**/"
+  ]
   },
-  "Date": {
-    "prefix": "date",
-    "body": [
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-    ],
-    "description": "Encabezado"
+  "date for file": {
+  "prefix": "date",
+  "body": [
+  " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
+  ]
   },
   "Arrays.toString()": {
-    "prefix": "tostr",
-    "body": [
-      "Arrays.toString($1)"
-    ],
+  "prefix": "tostr",
+  "body": [
+  "Arrays.toString($1)"
+  ]
   },
-  "Set static array": {
-    "prefix": "arr",
-    "body": [
-      "${1:int}[] a$2 = new ${1:int}[MAX$3];"
-    ],
+  "Arrays.sort()": {
+  "prefix": "sort",
+  "body": [
+  "Arrays.sort($1);"
+  ]
   },
-  "Read int": {
-    "prefix": "ri",
-    "body": [
-      "int $1 = io.nextInt();"
-    ],
+  "set static array": {
+  "prefix": "arr",
+  "body": [
+  "${1:int}[] a$2 = new ${1:int}[MAX$3];"
+  ]
   },
-  "Read Line": {
-    "prefix": "rln",
-    "body": [
-      "String line = io.nextLine();"
-    ],
+  "read int": {
+  "prefix": "ri",
+  "body": [
+  "int $1 = io.nextInt();"
+  ]
   },
-  "Read long": {
-    "prefix": "rl",
-    "body": [
-      "long $1 = io.nextLong();"
-    ],
+  "read line": {
+  "prefix": "rln",
+  "body": [
+  "String line = io.nextLine();"
+  ]
   },
-  "Read double": {
-    "prefix": "rd",
-    "body": [
-      "double $1 = io.nextDouble();"
-    ],
+  "read long": {
+  "prefix": "rl",
+  "body": [
+  "long $1 = io.nextLong();"
+  ]
   },
-  "Read int[] array": {
-    "prefix": "rai",
-    "body": [
-      "int[] $1 = io.readArray($2);"
-    ],
+  "read double": {
+  "prefix": "rd",
+  "body": [
+  "double $1 = io.nextDouble();"
+  ]
   },
-  "Read char[] array": {
-    "prefix": "rac",
-    "body": [
-      "char[] $2 = io.next().toCharArray();"
-    ],
+  "read int[] array": {
+  "prefix": "rai",
+  "body": [
+  "int[] $1 = io.readArray($2);"
+  ]
   },
-  "Read long[] array": {
-    "prefix": "ral",
-    "body": [
-      "long[] $2 = io.next().readArray();"
-    ],
+  "read char[] array": {
+  "prefix": "rac",
+  "body": [
+  "char[] $2 = io.next().toCharArray();"
+  ]
   },
-  "Read double[] array": {
-    "prefix": "rad",
-    "body": [
-      "double[] $2 = io.next().readArray();"
-    ],
+  "read long[] array": {
+  "prefix": "ral",
+  "body": [
+  "long[] $2 = io.next().readArray();"
+  ]
   },
-  "Set constant int": {
-    "prefix": "N",
-    "body": [
-      "static final int N = 1$1_000_000;"
-    ],
+  "read double[] array": {
+  "prefix": "rad",
+  "body": [
+  "double[] $2 = io.next().readArray();"
+  ]
+  },
+  "set const int": {
+  "prefix": "setn",
+  "body": [
+  "static final int N = 1$1_000_000;"
+  ]
   },
   "read test cases": {
-    "prefix": "tt",
-    "body": [
-      "int tt = io.nextInt();",
-      "while (tt-- > 0) solve(io);",
-    ],
+  "prefix": "tt",
+  "body": [
+  "int tt = sc.nextInt();",
+  "while (tt--) {\n$1\n}"
+  ]
   },
-  "no test cases": {
-    "prefix": "nt",
-    "body": [
-      "solve(io);"
-    ],
+  "read tc for solve()": {
+  "prefix": "tc",
+  "body": [
+  "int tc = io.nextInt();",
+  "while (tc--) solve(io);"
+  ]
   },
-  "style josuerom": {
-    "prefix": "header",
-    "body": [
-      "/**",
-      "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
-      "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
-      "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/",
-    ]
+  "Codeforces template": {
+  "prefix": "tem1",
+  "body": [
+  "/**",
+  " *   author:  josuerom",
+  " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+  "**/",
+  "import java.io.*;",
+  "import java.util.*;",
+  "import static java.lang.Math.*;\n",
+  "public class ${TM_FILENAME_BASE} {",
+  "\tpublic static void main(String[] args) {",
+  "\t\ttry (FastReader io = new FastReader()) {",
+  "\t\t\t${1:solve(io);}",
+  "\t\t}",
+  "\t\tSystem.exit(0);",
+  "\t}\n",
+  "\tpublic static void solve(FastReader io) {\n$2\n}\n",
+  "\tstatic class FastReader extends PrintWriter {",
+  "\t\tprivate BufferedReader br;",
+  "\t\tprivate StringTokenizer st;\n",
+  "\t\tpublic FastReader() {",
+  "\t\t\tthis(System.in, System.out);",
+  "\t\t}\n",
+  "\t\tpublic FastReader(InputStream i, OutputStream o) {",
+  "\t\t\tsuper(o);",
+  "\t\t\tbr = new BufferedReader(new InputStreamReader(i));",
+  "\t\t}",
+  "",
+  "\t\tpublic FastReader(String inputFile) throws IOException {",
+  "\t\t\tsuper(\"./output.txt\");",
+  "\t\t\tbr = new BufferedReader(new FileReader(inputFile));",
+  "\t\t}",
+  "",
+  "\t\tpublic String next() {",
+  "\t\t\ttry {",
+  "\t\t\t\twhile (st == null || !st.hasMoreTokens())",
+  "\t\t\t\t\tst = new StringTokenizer(br.readLine());",
+  "\t\t\t\treturn st.nextToken();",
+  "\t\t\t} catch (Exception e) {",
+  "\t\t\t\te.printStackTrace();",
+  "\t\t\t}",
+  "\t\t\treturn null;",
+  "\t\t}",
+  "",
+  "\t\tpublic String nextLine() {",
+  "\t\t\tString line = null;",
+  "\t\t\ttry {",
+  "\t\t\t\tline = br.readLine();",
+  "\t\t\t} catch (IOException e) {",
+  "\t\t\t\te.printStackTrace();",
+  "\t\t\t}",
+  "\t\t\treturn line;",
+  "\t\t}",
+  "",
+  "\t\tpublic int nextInt() {",
+  "\t\t\treturn Integer.parseInt(next());",
+  "\t\t}",
+  "",
+  "\t\tpublic long nextLong() {",
+  "\t\t\treturn Long.parseLong(next());",
+  "\t\t}",
+  "",
+  "\t\tpublic double nextDouble() {",
+  "\t\t\treturn Double.parseDouble(next());",
+  "\t\t}",
+  "",
+  "\t\tpublic int[] readArray(int n) {",
+  "\t\t\tint[] a = new int[n];",
+  "\t\t\tfor (int i = 0; i < n; i++) {",
+  "\t\t\t\ta[i] = nextInt();",
+  "\t\t\t}",
+  "\t\t\treturn a;",
+  "\t\t}",
+  "\t}",
+  "}"
+  ],
+  "description": "Plantilla para entrenar"
   },
-  "Template for codeforces": {
-    "prefix": "tem1",
-    "body": [
-      "/**",
-      " *   author:  josuerom",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/",
-      "import java.io.*;",
-      "import java.util.*;",
-      "import static java.lang.Math.*;\n",
-      "public class ${TM_FILENAME_BASE} {",
-      "   public static void main(String[] args) {",
-      "      try (FastReader io = new FastReader()) {",
-      "         int tt = 1;",
-      "         // tt = io.nextInt();$1",
-      "         while (tt-- > 0) solve(io);",
-      "      }",
-      "      System.exit(0);",
-      "   }",
-      "",
-      "   static final int N = 10 + $2;",
-      "   static int[] a = new int[N];",
-      "   static int n;",
-      "",
-      "   public static void solve(FastReader io) {$3",
-      "   }",
-      "",
-      "   static class FastReader extends PrintWriter {",
-      "      private BufferedReader br;",
-      "      private StringTokenizer st;",
-      "",
-      "      public FastReader() {",
-      "         this(System.in, System.out);",
-      "      }",
-      "",
-      "      public FastReader(InputStream i, OutputStream o) {",
-      "         super(o);",
-      "         br = new BufferedReader(new InputStreamReader(i));",
-      "      }",
-      "",
-      "      public FastReader(String idFile) throws IOException {",
-      "         super(\"samples/output.out\");",
-      "         br = new BufferedReader(new FileReader(\"samples/\" + idFile));",
-      "      }",
-      "",
-      "      public String next() {",
-      "         try {",
-      "            while (st == null || !st.hasMoreTokens())",
-      "               st = new StringTokenizer(br.readLine());",
-      "            return st.nextToken();",
-      "         } catch (Exception e) {",
-      "            e.printStackTrace();",
-      "         }",
-      "         return null;",
-      "      }",
-      "",
-      "      public String nextLine() {",
-      "         String line = null;",
-      "         try {",
-      "            line = br.readLine();",
-      "         } catch (IOException e) {",
-      "            e.printStackTrace();",
-      "         }",
-      "         return line;",
-      "      }",
-      "",
-      "      public int nextInt() {",
-      "         return Integer.parseInt(next());",
-      "      }",
-      "",
-      "      public long nextLong() {",
-      "         return Long.parseLong(next());",
-      "      }",
-      "",
-      "      public double nextDouble() {",
-      "         return Double.parseDouble(next());",
-      "      }",
-      "",
-      "      public int[] readArray(int n) {",
-      "         int[] a = new int[n];",
-      "         for (int i = 0; i < n; i++) {",
-      "            a[i] = nextInt();",
-      "         }",
-      "         return a;",
-      "      }",
-      "   }",
-      "}"
-    ],
-    "description": "Plantilla efectiva y efizaz"
+  "Ligth template": {
+  "prefix": "tem2",
+  "body": [
+  "/**",
+  " *   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
+  " *   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
+  " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+  "**/",
+  "import java.io.*;",
+  "import java.util.*;",
+  "import static java.lang.Math.*;\n",
+  "public class ${TM_FILENAME_BASE} {",
+  "\tpublic static void main(String[] args) {",
+  "\t\tScanner sc = new Scanner(System.in);",
+  "\t\t$1",
+  "\t\tSystem.exit(0);",
+  "\t}",
+  "}"
+  ],
+  "description": "Plantilla estándar simple sin atajos"
   },
-  "Template Ultra-Ligth": {
-    "prefix": "tem2",
-    "body": [
-      "/**",
-      "   ░░█ █▀█ █▀ █░█ █▀▀ █▀█ █▀█ █▀▄▀█",
-      "   █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█",
-      "   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      "**/",
-      "import java.util.*;\n",
-      "public class ${TM_FILENAME_BASE} {",
-      "\tpublic static void main(String[] args) {",
-      "\t\tScanner sc = new Scanner(System.in);",
-      "\t\t$1",
-      "\t\tSystem.exit(0);",
-      "\t}",
-      "}"
-    ],
-    "description": "Plantilla estandar simple"
-  },
-  "Template 2 BITS()": {
-    "prefix": "tem3",
-    "body": [
-      "/**",
-      " *   █▀█  █▀▀▄ ─▀─ ▀▀█▀▀ █▀▀ ▄▀ ▀▄",
-      " *   ─▄▀  █▀▀▄ ▀█▀ ──█── ▀▀█ █─ ─█",
-      " *   █▄▄  ▀▀▀─ ▀▀▀ ──▀── ▀▀▀ ▀▄ ▄▀",
-      " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
-      " **/",
-      "import java.io.*;",
-      "import java.util.*;",
-      "import static java.lang.Math.*;\n",
-      "public class ${TM_FILENAME_BASE} {",
-      "   public static void main(String[] args) {",
-      "      try (FastReader io = new FastReader()) {",
-      "         int tt = 1;",
-      "         // tt = io.nextInt();$1",
-      "         while (tt-- > 0) solve(io);",
-      "      }",
-      "      System.exit(0);",
-      "   }",
-      "",
-      "   public static void solve(FastReader io) {$2",
-      "   }",
-      "",
-      "   static class FastReader extends PrintWriter {",
-      "      private BufferedReader br;",
-      "      private StringTokenizer st;",
-      "",
-      "      public FastReader() {",
-      "         this(System.in, System.out);",
-      "      }",
-      "",
-      "      public FastReader(InputStream i, OutputStream o) {",
-      "         super(o);",
-      "         br = new BufferedReader(new InputStreamReader(i));",
-      "      }",
-      "",
-      "      public FastReader(String idFile) throws IOException {",
-      "         super(\"samples/output.out\");",
-      "         br = new BufferedReader(new FileReader(\"samples/\" + idFile));",
-      "      }",
-      "",
-      "      public String next() {",
-      "         try {",
-      "            while (st == null || !st.hasMoreTokens())",
-      "               st = new StringTokenizer(br.readLine());",
-      "            return st.nextToken();",
-      "         } catch (Exception e) {",
-      "            e.printStackTrace();",
-      "         }",
-      "         return null;",
-      "      }",
-      "",
-      "      public String nextLine() {",
-      "         String line = null;",
-      "         try {",
-      "            line = br.readLine();",
-      "         } catch (IOException e) {",
-      "            e.printStackTrace();",
-      "         }",
-      "         return line;",
-      "      }",
-      "",
-      "      public int nextInt() {",
-      "         return Integer.parseInt(next());",
-      "      }",
-      "",
-      "      public long nextLong() {",
-      "         return Long.parseLong(next());",
-      "      }",
-      "",
-      "      public double nextDouble() {",
-      "         return Double.parseDouble(next());",
-      "      }",
-      "",
-      "      public int[] readArray(int n) {",
-      "         int[] a = new int[n];",
-      "         for (int i = 0; i < n; i++) {",
-      "            a[i] = nextInt();",
-      "         }",
-      "         return a;",
-      "      }",
-      "   }",
-      "}"
-    ],
-    "description": "Plantilla equipo 2 Bits()"
+  "2 Bits template": {
+  "prefix": "tem3",
+  "body": [
+  "/**",
+  " *   author:  2Bits",
+  " *   created: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR_SHORT} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+  "**/",
+  "import java.io.*;",
+  "import java.util.*;",
+  "import static java.lang.Math.*;\n",
+  "public class ${TM_FILENAME_BASE} {",
+  "\tpublic static void main(String[] args) {",
+  "\t\ttry (FastReader io = new FastReader()) {",
+  "\t\t\t${1:solve(io);}",
+  "\t\t}",
+  "\t\tSystem.exit(0);",
+  "\t}",
+  "",
+  "\tpublic static void solve(FastReader io) {\n$2\n}",
+  "",
+  "\tstatic class FastReader extends PrintWriter {",
+  "\t\tprivate BufferedReader br;",
+  "\t\tprivate StringTokenizer st;",
+  "",
+  "\t\tpublic FastReader() {",
+  "\t\t\tthis(System.in, System.out);",
+  "\t\t}",
+  "",
+  "\t\tpublic FastReader(InputStream i, OutputStream o) {",
+  "\t\t\tsuper(o);",
+  "\t\t\tbr = new BufferedReader(new InputStreamReader(i));",
+  "\t\t}",
+  "",
+  "\t\tpublic FastReader(String inputFile) throws IOException {",
+  "\t\t\tsuper(\"./output.txt\");",
+  "\t\t\tbr = new BufferedReader(new FileReader(inputFile));",
+  "\t\t}",
+  "",
+  "\t\tpublic String next() {",
+  "\t\t\ttry {",
+  "\t\t\t\twhile (st == null || !st.hasMoreTokens())",
+  "\t\t\t\t\tst = new StringTokenizer(br.readLine());",
+  "\t\t\t\treturn st.nextToken();",
+  "\t\t\t} catch (Exception e) {",
+  "\t\t\t\te.printStackTrace();",
+  "\t\t\t}",
+  "\t\t\treturn null;",
+  "\t\t}",
+  "",
+  "\t\tpublic String nextLine() {",
+  "\t\t\tString line = null;",
+  "\t\t\ttry {",
+  "\t\t\t\tline = br.readLine();",
+  "\t\t\t} catch (IOException e) {",
+  "\t\t\t\te.printStackTrace();",
+  "\t\t\t}",
+  "\t\t\treturn line;",
+  "\t\t}",
+  "",
+  "\t\tpublic int nextInt() {",
+  "\t\t\treturn Integer.parseInt(next());",
+  "\t\t}",
+  "",
+  "\t\tpublic long nextLong() {",
+  "\t\t\treturn Long.parseLong(next());",
+  "\t\t}",
+  "",
+  "\t\tpublic double nextDouble() {",
+  "\t\t\treturn Double.parseDouble(next());",
+  "\t\t}",
+  "",
+  "\t\tpublic int[] readArray(int n) {",
+  "\t\t\tint[] a = new int[n];",
+  "\t\t\tfor (int i = 0; i < n; i++) {",
+  "\t\t\t\ta[i] = nextInt();",
+  "\t\t\t}",
+  "\t\t\treturn a;",
+  "\t\t}",
+  "\t}",
+  "}"
+  ],
+  "description": "Plantilla del equipo 2Bits UNIMINUTO"
   }
 }
